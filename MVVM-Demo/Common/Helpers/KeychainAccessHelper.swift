@@ -17,7 +17,7 @@ protocol KeychainAccessHelper {
     func resetUserToken() throws
 }
 
-class KeychainAccessHelperImpl: KeychainAccessHelper {
+final class KeychainAccessHelperImpl: KeychainAccessHelper {
     
     var keychain: Keychain {
         return Keychain(service: Constants.KeychainAccessServices.githubToken)

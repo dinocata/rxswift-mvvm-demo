@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Colors {
+final class Colors {
     static let primary = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     static let primaryDark = #colorLiteral(red: 0.1137254902, green: 0.1294117647, blue: 0.2588235294, alpha: 1)
     static let accent = #colorLiteral(red: 0.03137254902, green: 0.6745098039, blue: 0.9529411765, alpha: 1)

@@ -8,10 +8,10 @@ target 'MVVM-Demo' do
   # Pods for MVVM-Demo
   pod 'RxSwift',    '~> 4.0'
   pod 'RxCocoa',    '~> 4.0'
-  pod 'Action'
   pod 'Moya/RxSwift', '~> 12.0'
   pod 'KeychainAccess'
   pod 'Swinject'
+  pod 'MBProgressHUD', '~> 1.1.0'
 
   target 'MVVM-DemoTests' do
     inherit! :search_paths

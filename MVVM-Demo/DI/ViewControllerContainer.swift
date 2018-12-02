@@ -15,9 +15,18 @@ class ViewControllerContainer: ChildContainerProtocol {
     func build(parentContainer: Container) -> Container {
         let container = Container(parent: parentContainer)
         
-        // TODO
+        container.register(LoginVC.self) { r in
+            let controller = LoginVC()
+            self.injectCoordinatorController(controller, resolver: r)
+            controller.viewModel = r.resolve(LoginVM.self)!
+            return controller
+        }
         
         return container
+    }
+    
+    private func injectCoordinatorController(_ controller: CoordinatorVC, resolver: Resolver) {
+        controller.coordinator = resolver.resolve(SceneCoordinatorType.self)!
     }
     
 }

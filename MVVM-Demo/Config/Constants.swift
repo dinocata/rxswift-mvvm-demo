@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Constants {
+final class Constants {
     
     static let appleId = "12345"
     

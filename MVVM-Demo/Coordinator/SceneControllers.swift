@@ -16,7 +16,8 @@ extension Scene {
         let controllerContainer = appDelegate.viewControllerContainer!
         switch self {
         case .login:
-            return UIViewController()
+            let controller = controllerContainer.resolve(LoginVC.self)!
+            return UINavigationController.init(rootViewController: controller)
             
         case .synchronization:
             return UIViewController()

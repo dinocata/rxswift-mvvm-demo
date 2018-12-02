@@ -15,7 +15,7 @@ protocol UserDefaultsHelper {
     func setSyncTime(timestamp: Int)
 }
 
-class UserDefaultsHelperImpl: UserDefaultsHelper {
+final class UserDefaultsHelperImpl: UserDefaultsHelper {
  
     private let keychainAccess: KeychainAccessHelper
     

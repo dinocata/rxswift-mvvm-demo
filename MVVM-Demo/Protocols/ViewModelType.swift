@@ -12,7 +12,5 @@ protocol ViewModelType: class {
     associatedtype Input
     associatedtype Output
     
-    var coordinator: SceneCoordinatorType { get }
-    
     func transform(input: Input) -> Output
 }
