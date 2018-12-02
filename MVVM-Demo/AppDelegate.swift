@@ -8,15 +8,34 @@
 
 import UIKit
 import CoreData
+import Swinject
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    private(set) var viewControllerContainer: Container!
+    
+    static func getInstance() -> AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        let appContainer = AppContainer().build()
+        let viewModelContainer = ViewModelContainer().build(parentContainer: appContainer)
+        
+        self.viewControllerContainer = ViewControllerContainer().build(parentContainer: viewModelContainer)
+        
+        let userDefaults = appContainer.resolve(UserDefaultsHelper.self)!
+        let onboardingScene = SceneCoordinator.getOnboardingScene(userDefaults: userDefaults)
+        let sceneCoordinator = appContainer.resolve(SceneCoordinatorType.self)!
+        sceneCoordinator.transition(to: onboardingScene)
+        
         return true
     }
 
