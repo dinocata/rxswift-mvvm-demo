@@ -5,3 +5,7 @@
   Created by UHP Mac 3 on 03/12/2018.
   Copyright © 2018 UHP. All rights reserved.
 */
+
+// Api response samples (for tests)
+"login_user_response" = "{\r\n  \"token\": \"abcd1234\"\r\n}";
+"get_articles_response" = "[\r\n  {\r\n    \"name\": \"apple\",\r\n    \"price\": 1234,\r\n    \"description\": \"Very nice apples\"\r\n  },\r\n  {\r\n    \"name\": \"pear\",\r\n    \"price\": 5432,\r\n    \"description\": \"Fresh and juicy\"\r\n  }\r\n]";

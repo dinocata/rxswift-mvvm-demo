@@ -6,4 +6,32 @@
 //  Copyright © 2018 UHP. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+
+protocol UserService {
+    func login(_ requestBody: LoginRequest) -> Single<ResponseStatus>
+}
+
+class UserServiceImpl: BaseService, UserService {
+    
+    private let keychainAccess: KeychainAccessHelper
+    
+    init(keychainAccess: KeychainAccessHelper, network: NetworkProtocol) {
+        self.keychainAccess = keychainAccess
+        super.init(network: network)
+    }
+    
+    func login(_ requestBody: LoginRequest) -> Single<ResponseStatus> {
+        return request(.login(requestBody), responseType: LoginResponse.self)
+            .map { [unowned self] result in
+                switch result {
+                case .success(let data):
+                    self.keychainAccess.setUserToken(data.token)
+                    return .success
+                case .error(let error):
+                    return error.status
+                }
+        }
+    }
+    
+}
