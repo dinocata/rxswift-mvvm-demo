@@ -12,7 +12,7 @@ import RxSwift
 protocol SceneCoordinatorType {
     init(window: UIWindow)
     
-    var currentViewController: UIViewController! { get }
+    var currentViewController: UIViewController! { get set }
     
     @discardableResult
     func transition(to scene: Scene) -> Completable

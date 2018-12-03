@@ -31,4 +31,8 @@ extension String {
     func contains(substring: String) -> Bool {
         return self.lowercased().range(of: substring) != nil
     }
+    
+    var utf8Encoded: Data {
+        return data(using: .utf8)!
+    }
 }

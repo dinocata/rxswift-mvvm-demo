@@ -12,6 +12,7 @@ target 'MVVM-Demo' do
   pod 'KeychainAccess'
   pod 'Swinject'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'AlamofireNetworkActivityLogger', '~> 2.3'
 
   target 'MVVM-DemoTests' do
     inherit! :search_paths

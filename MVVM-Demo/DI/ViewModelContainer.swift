@@ -16,7 +16,8 @@ class ViewModelContainer: ChildContainerProtocol {
         let container = Container(parent: parentContainer)
         
         container.register(LoginVM.self) { r in
-            LoginVM(coordinator: r.resolve(SceneCoordinatorType.self)!)
+            LoginVM(userService: r.resolve(UserService.self)!,
+                    coordinator: r.resolve(SceneCoordinatorType.self)!)
         }
         
         return container

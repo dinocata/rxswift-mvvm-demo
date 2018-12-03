@@ -13,7 +13,13 @@ import RxCocoa
 final class SceneCoordinator: SceneCoordinatorType {
    
     fileprivate var window: UIWindow
-    var currentViewController: UIViewController!
+    var currentViewController: UIViewController! {
+        didSet {
+            if !(currentViewController is CoordinatorVC) {
+                fatalError("Controller must be an instance of CoordinatorVC")
+            }
+        }
+    }
     
     required init(window: UIWindow) {
         self.window = window
@@ -102,6 +108,11 @@ final class SceneCoordinator: SceneCoordinatorType {
         return subject.ignoreElements()
     }
     
+    /// Called on App start in order to get the initial controller based on current App state.
+    /// If you're not sure which controller you should navigate to next, use this method.
+    ///
+    /// - Parameter userDefaults: User Defaults helper containing info about the Application state
+    /// - Returns: Recommended scene for navigation
     static func getOnboardingScene(userDefaults: UserDefaultsHelper) -> Scene {
         if !userDefaults.isUserLoggedIn() {
             return .login

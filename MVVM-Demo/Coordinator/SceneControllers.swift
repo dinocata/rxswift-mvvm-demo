@@ -20,7 +20,8 @@ extension Scene {
             return UINavigationController.init(rootViewController: controller)
             
         case .synchronization:
-            return UIViewController()
+            let controller = controllerContainer.resolve(SynchronizationVC.self)!
+            return controller
             
         case .dashboard:
             return UIViewController()

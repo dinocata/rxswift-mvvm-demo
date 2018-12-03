@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Swinject
+import AlamofireNetworkActivityLogger
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // For detailed formatted logs of API requests (used for debugging)
+        if Constants.Config.networkActivityLogging {
+            NetworkActivityLogger.shared.level = .debug
+            NetworkActivityLogger.shared.startLogging()
+        }
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()

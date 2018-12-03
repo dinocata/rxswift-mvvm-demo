@@ -46,9 +46,17 @@
                             </constraints>
                             <state key="normal" title="Confirm"/>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbT-m2-ZLp">
+                            <rect key="frame" x="161" y="112.5" width="53" height="24"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="FbT-m2-ZLp" firstAttribute="centerX" secondItem="ZmX-28-BLJ" secondAttribute="centerX" id="12N-gu-7tg"/>
+                        <constraint firstItem="wJW-4D-JMc" firstAttribute="top" secondItem="FbT-m2-ZLp" secondAttribute="bottom" constant="80" id="FeI-SW-2HN"/>
                         <constraint firstItem="qpf-dX-6Lu" firstAttribute="centerX" secondItem="ZmX-28-BLJ" secondAttribute="centerX" id="Ts8-Go-7co"/>
                         <constraint firstItem="iux-oe-IjS" firstAttribute="leading" secondItem="ZmX-28-BLJ" secondAttribute="leading" constant="48" id="U6f-pk-vxF"/>
                         <constraint firstItem="qpf-dX-6Lu" firstAttribute="top" secondItem="iux-oe-IjS" secondAttribute="bottom" constant="16" id="ZIp-At-pkX"/>

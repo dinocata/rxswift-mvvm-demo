@@ -16,17 +16,30 @@ class ViewControllerContainer: ChildContainerProtocol {
         let container = Container(parent: parentContainer)
         
         container.register(LoginVC.self) { r in
-            let controller = LoginVC()
-            self.injectCoordinatorController(controller, resolver: r)
+            let controller = self.initCoordinatorVC(LoginVC.self, resolver: r)
             controller.viewModel = r.resolve(LoginVM.self)!
+            return controller
+        }
+        
+        container.register(SynchronizationVC.self) { r in
+            let controller = self.initCoordinatorVC(SynchronizationVC.self, resolver: r)
+            // TODO
             return controller
         }
         
         return container
     }
     
-    private func injectCoordinatorController(_ controller: CoordinatorVC, resolver: Resolver) {
+    /// Instantiates a CoordinatorVC type injected with a coordinator instance
+    /// Call this for every controller which has routing (able to transition to another controller).
+    ///
+    /// - Parameters:
+    ///   - type: View Controller type to instantiate
+    ///   - resolver: Container resolver
+    private func initCoordinatorVC<T: CoordinatorVC>(_ type: T.Type, resolver: Resolver) -> T {
+        let controller = T()
         controller.coordinator = resolver.resolve(SceneCoordinatorType.self)!
+        return controller
     }
     
 }

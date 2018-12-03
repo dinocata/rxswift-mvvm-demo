@@ -31,6 +31,28 @@ final class AppContainer: ContainerProtocol {
         container.register(SceneCoordinatorType.self) { _ in
             SceneCoordinator(window: AppDelegate.getInstance().window!)
         }
+        
+        // Core Data Stack
+        container.register(CoreDataStack.self) { _ in
+            CoreDataStackImpl()
+        }
+        
+        // Core Data Helper
+        container.register(CoreDataHelper.self) { r in
+            CoreDataHelperImpl(coreDataStack: r.resolve(CoreDataStack.self)!)
+        }
+        
+        // Moya Provider
+        container.register(MoyaProvider<ApiService>.self) { r in
+            let keychainAccess = r.resolve(KeychainAccessHelper.self)
+            let authPlugin = AccessTokenPlugin(tokenClosure: { keychainAccess?.getUserToken() ?? "" })
+            return MoyaProvider<ApiService>(plugins: [authPlugin])
+        }
+        
+        container.register(NetworkProtocol.self) { r in
+            ApiNetwork(provider: r.resolve(MoyaProvider<ApiService>.self)!)
+        }
+        
     }
     
     /// Repository dependency injections
@@ -40,7 +62,10 @@ final class AppContainer: ContainerProtocol {
     
     /// Service dependency injections
     private func registerServices(on container: Container) {
-        // TODO
+        container.register(UserService.self) { r in
+            UserServiceImpl(keychainAccess: r.resolve(KeychainAccessHelper.self)!,
+                            network: r.resolve(NetworkProtocol.self)!)
+        }
     }
     
     func build() -> Container {
