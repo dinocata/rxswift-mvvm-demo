@@ -17,7 +17,7 @@ class ViewModelContainer: ChildContainerProtocol {
         
         container.register(LoginVM.self) { r in
             LoginVM(userService: r.resolve(UserService.self)!,
-                    coordinator: r.resolve(SceneCoordinatorType.self)!)
+                    validationHelper: r.resolve(ValidationHelper.self)!)
         }
         
         return container

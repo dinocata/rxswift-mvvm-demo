@@ -49,8 +49,14 @@ final class AppContainer: ContainerProtocol {
             return MoyaProvider<ApiService>(plugins: [authPlugin])
         }
         
+        // Network
         container.register(NetworkProtocol.self) { r in
             ApiNetwork(provider: r.resolve(MoyaProvider<ApiService>.self)!)
+        }
+        
+        // Validation Helper
+        container.register(ValidationHelper.self) { _ in
+            ValidationHelperImpl()
         }
         
     }

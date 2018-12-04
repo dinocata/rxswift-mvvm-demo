@@ -15,7 +15,7 @@ final class Constants {
     class Config {
         static let persistentContainerName = "mvvm_demo"
         // Whether to log network requests and responses in the console. Used for debugging.
-        static let networkActivityLogging = true
+        static let networkActivityLogging = false
     }
     
     class Api {

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2F5863BD91794531BA62F40D /* Pods_MVVM_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */; };
+		8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */; };
+		8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */; };
+		8D4A960221B687F200A6CA15 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A960121B687F200A6CA15 /* ValidationHelper.swift */; };
 		8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C5A21B40901009D2113 /* AppDelegate.swift */; };
 		8D617C6321B40901009D2113 /* MVVM_Demo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C6121B40901009D2113 /* MVVM_Demo.xcdatamodeld */; };
 		8D617C6521B40902009D2113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6421B40902009D2113 /* Assets.xcassets */; };
@@ -48,7 +51,6 @@
 		8D9D640A21B54A6900979814 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640921B54A6900979814 /* UserService.swift */; };
 		8D9D641021B54ADC00979814 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640F21B54ADC00979814 /* LoginRequest.swift */; };
 		8D9D641221B54E3A00979814 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D641121B54E3A00979814 /* BaseService.swift */; };
-		8D9D641721B56DDD00979814 /* InputWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D641621B56DDD00979814 /* InputWrapper.swift */; };
 		E89E49FEB8B3A9F801E5C8F1 /* Pods_MVVM_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,9 @@
 		10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldVM.swift; sourceTree = "<group>"; };
+		8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
+		8D4A960121B687F200A6CA15 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		8D617C5721B40901009D2113 /* MVVM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D617C5A21B40901009D2113 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D617C6221B40901009D2113 /* MVVM_Demo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MVVM_Demo.xcdatamodel; sourceTree = "<group>"; };
@@ -110,7 +115,6 @@
 		8D9D640921B54A6900979814 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8D9D640F21B54ADC00979814 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		8D9D641121B54E3A00979814 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		8D9D641621B56DDD00979814 /* InputWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputWrapper.swift; sourceTree = "<group>"; };
 		902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6EFCA11D39FF92FBCB6F240 /* Pods-MVVM-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF03F00BB4C4D0564BF4B3A /* Pods-MVVM-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			children = (
 				8D617C9E21B448A4009D2113 /* ViewControllerExtension.swift */,
 				8D617CB221B464F2009D2113 /* StringExtension.swift */,
+				8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				8D617CA521B45637009D2113 /* KeychainAccessHelper.swift */,
 				8D9D640421B5458A00979814 /* CoreDataStack.swift */,
 				8D9D640621B546E800979814 /* CoreDataHelper.swift */,
+				8D4A960121B687F200A6CA15 /* ValidationHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,7 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				8D617CB021B464A9009D2113 /* Validator.swift */,
-				8D9D641621B56DDD00979814 /* InputWrapper.swift */,
+				8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -599,11 +605,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */,
 				8D617C8821B41B31009D2113 /* ViewModelContainer.swift in Sources */,
 				8D9D641021B54ADC00979814 /* LoginRequest.swift in Sources */,
 				8D617CAB21B456AF009D2113 /* Colors.swift in Sources */,
 				8D617CA921B456A6009D2113 /* Constants.swift in Sources */,
-				8D9D641721B56DDD00979814 /* InputWrapper.swift in Sources */,
 				8D617CAF21B4635F009D2113 /* LoginVM.swift in Sources */,
 				8D9D640121B525FA00979814 /* ResponseStatus.swift in Sources */,
 				8D617C6321B40901009D2113 /* MVVM_Demo.xcdatamodeld in Sources */,
@@ -617,6 +623,7 @@
 				8D617C9A21B447A6009D2113 /* SceneCoordinator.swift in Sources */,
 				8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */,
 				8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */,
+				8D4A960221B687F200A6CA15 /* ValidationHelper.swift in Sources */,
 				8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */,
 				8D9D641221B54E3A00979814 /* BaseService.swift in Sources */,
 				8D9D640A21B54A6900979814 /* UserService.swift in Sources */,
@@ -625,6 +632,7 @@
 				8D9D63F521B51D1500979814 /* ApiService.swift in Sources */,
 				8D617C8421B41590009D2113 /* AppContainer.swift in Sources */,
 				8D617CB121B464A9009D2113 /* Validator.swift in Sources */,
+				8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */,
 				8D617C8A21B41C45009D2113 /* ViewControllerContainer.swift in Sources */,
 				8D617C9C21B447EC009D2113 /* SceneControllers.swift in Sources */,
 				8D617C9621B444F1009D2113 /* SceneCoordinatorType.swift in Sources */,

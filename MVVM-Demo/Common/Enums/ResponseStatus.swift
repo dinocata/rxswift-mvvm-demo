@@ -25,7 +25,7 @@ enum ResponseStatus: Int {
     case serviceUnavailable = 503
     case unrecognized = -1
     case parseError = -2
-    case loading = -3 // Use to indicate when the request is still processing
+    //case loading = -3 // Use to indicate when the request is still processing
     
     var errorDescription: String {
         switch self {
