@@ -13,31 +13,23 @@ import RxCocoa
 class LoginVC: CoordinatorVC, BindableType {
     
     // Outlets
-    @IBOutlet weak var tfEmail: UITextField!
-    @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var tfEmail: BaseTextField!
+    @IBOutlet weak var tfPassword: BaseTextField!
     @IBOutlet weak var btnConfirm: UIButton!
     
     var viewModel: LoginVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         bindViewModel()
     }
     
     func generateInputs() -> LoginVM.Input {
-        let emailVM = TextFieldVM()
-        tfEmail.rx.text.orEmpty
-            .bind(to: emailVM.value)
-            .disposed(by: disposeBag)
+        tfEmail.bindViewModel(TextFieldVM())
+        tfPassword.bindViewModel(TextFieldVM())
         
-        let passwordVM = TextFieldVM()
-        tfPassword.rx.text.orEmpty
-            .bind(to: passwordVM.value)
-            .disposed(by: disposeBag)
-        
-        let inputs = LoginVM.Input(emailInput: emailVM,
-                                   passwordInput: passwordVM)
+        let inputs = LoginVM.Input(emailInput: tfEmail.fieldModel!,
+                                   passwordInput: tfPassword.fieldModel!)
         
         btnConfirm.rx.tap
             .bind(to: inputs.confirm)

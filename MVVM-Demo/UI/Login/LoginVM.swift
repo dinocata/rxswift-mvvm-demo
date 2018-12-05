@@ -70,20 +70,12 @@ class LoginVM: ViewModelType {
         }
     }
     
-    func constructLoader(_ eventSource: PublishSubject<Void>, logicDriver: Observable<LoginEvent>) -> Driver<LoginEvent> {
-        let delayedLogic = logicDriver
-            .delay(0.5, scheduler: MainScheduler.instance)
-        
-        let loading = eventSource
-            .delay(0.05, scheduler: MainScheduler.instance)
-            .map { _ in LoginEvent.loading }
-        
-        let loadingThenData = Observable.merge(loading, delayedLogic)
-        
-        return logicDriver
-            .amb(loadingThenData)
-            .filter { $0.isLoading() }
-            .asDriver(onErrorJustReturn: .unknownError())
+    func constructLoader(_ eventSource: Observable<Void>, events: Observable<LoginEvent>) -> Driver<LoginEvent> {
+        // Show loader as soon as button is pressed
+        let loading = eventSource.map { LoginEvent.loading }
+        // Makes sure loader is shown for at least half a second (to avoid flickering)
+       // let delayedEvents = events.delay(0.5, scheduler: MainScheduler.instance)
+        return Observable.merge(loading, events).asDriver(onErrorJustReturn: .unknownError())
     }
     
     func transform(input: Input) -> Output {
@@ -100,7 +92,10 @@ class LoginVM: ViewModelType {
             .map { [unowned self] in self.mapResponseStatus($0) }
         
         let mergedEvents = Observable.merge(validationEventDriver, loginEventDriver)
-        let fullLoginDriver = constructLoader(input.confirm, logicDriver: mergedEvents)
+            .filter { !$0.validationSuccessful() }
+            .share()
+        
+        let fullLoginDriver = constructLoader(input.confirm, events: mergedEvents)
         
         let successDriver = fullLoginDriver
             .filter { $0.loginSuccessful() }
@@ -112,8 +107,7 @@ class LoginVM: ViewModelType {
             .map { $0! }
         
         let loadingDriver = fullLoginDriver
-            .map { $0.isLoading() }
-            .distinctUntilChanged()
+            .filter { $0.isLoading() }
             .map { _ in return }
         
         return Output(success: successDriver, failure: failureDriver, loading: loadingDriver)
@@ -140,16 +134,13 @@ extension LoginVM {
                             password: input.passwordInput.value.value)
     }
     
-    func mapValidationResult(_ error: Error) -> LoginEvent {
-        if let result = error as? ValidationResult {
-            switch result {
-            case .success:
-                return .validationSuccess
-            case .failure(let errorMessage):
-                return .failure(errorMessage)
-            }
+    func mapValidationResult(_ result: ValidationResult) -> LoginEvent {
+        switch result {
+        case .success:
+            return .validationSuccess
+        case .failure(let errorMessage):
+            return .failure(errorMessage)
         }
-        return .unknownError()
     }
     
     func mapResponseStatus(_ status: ResponseStatus) -> LoginEvent {

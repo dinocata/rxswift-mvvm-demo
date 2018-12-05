@@ -45,7 +45,7 @@ final class SceneCoordinator: SceneCoordinatorType {
                 subject.onCompleted()
             }
             
-        case .modal(let animated):
+        case .present(let animated):
             currentViewController.present(viewController, animated: animated) {
                 subject.onCompleted()
             }
@@ -53,6 +53,15 @@ final class SceneCoordinator: SceneCoordinatorType {
         
         currentViewController = viewController.actualViewController()
         
+        return subject.ignoreElements()
+    }
+    
+    func transitionRoot(to scene: Scene) -> Completable {
+        let subject = PublishSubject<Void>()
+        let viewController = scene.viewController
+        window.rootViewController = viewController
+        currentViewController = viewController.actualViewController()
+        subject.onCompleted()
         return subject.ignoreElements()
     }
     
@@ -114,12 +123,12 @@ final class SceneCoordinator: SceneCoordinatorType {
     /// - Parameter userDefaults: User Defaults helper containing info about the Application state
     /// - Returns: Recommended scene for navigation
     static func getOnboardingScene(userDefaults: UserDefaultsHelper) -> Scene {
-        if !userDefaults.isUserLoggedIn() {
+      if !userDefaults.isUserLoggedIn() {
             return .login
         }
         
         if !userDefaults.isUserDataSynced() {
-            return .synchronization
+            return .onboardingSynchronization
         }
         
         return .dashboard

@@ -19,9 +19,14 @@ extension Scene {
             let controller = controllerContainer.resolve(LoginVC.self)!
             return UINavigationController.init(rootViewController: controller)
             
+        case .onboardingSynchronization:
+            let loginController = controllerContainer.resolve(LoginVC.self)!
+            let navigationController = UINavigationController.init(rootViewController: loginController)
+            navigationController.viewControllers.append(controllerContainer.resolve(SynchronizationVC.self)!)
+            return navigationController
+            
         case .synchronization:
-            let controller = controllerContainer.resolve(SynchronizationVC.self)!
-            return controller
+            return controllerContainer.resolve(SynchronizationVC.self)!
             
         case .dashboard:
             return UIViewController()
@@ -39,7 +44,7 @@ extension Scene {
         switch self {
         case .login,
              .dashboard:
-            return .root
+            return .present(animated: true)
         default:
             return .push(animated: true)
         }

@@ -11,5 +11,5 @@ import Foundation
 enum SceneTransition {
     case root
     case push(animated: Bool)
-    case modal(animated: Bool)
+    case present(animated: Bool)
 }

@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = appContainer.resolve(UserDefaultsHelper.self)!
         let onboardingScene = SceneCoordinator.getOnboardingScene(userDefaults: userDefaults)
         let sceneCoordinator = appContainer.resolve(SceneCoordinatorType.self)!
-        sceneCoordinator.transition(to: onboardingScene)
+        sceneCoordinator.transitionRoot(to: onboardingScene)
         
         return true
     }

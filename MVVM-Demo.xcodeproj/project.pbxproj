@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2F5863BD91794531BA62F40D /* Pods_MVVM_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */; };
+		8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D409EDE21B80BE700F32497 /* BaseTextField.swift */; };
 		8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */; };
 		8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */; };
 		8D4A960221B687F200A6CA15 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A960121B687F200A6CA15 /* ValidationHelper.swift */; };
@@ -68,6 +69,7 @@
 		10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		8D409EDE21B80BE700F32497 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldVM.swift; sourceTree = "<group>"; };
 		8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
 		8D4A960121B687F200A6CA15 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 				902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D409EDD21B80BBF00F32497 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8D409EDE21B80BE700F32497 /* BaseTextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8D617C4E21B40901009D2113 = {
@@ -248,6 +258,7 @@
 		8D617CA021B4552C009D2113 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8D409EDD21B80BBF00F32497 /* Views */,
 				8D9D641521B56D9800979814 /* Utility */,
 				8D9D63FF21B525DE00979814 /* Enums */,
 				8D617CA121B45531009D2113 /* Helpers */,
@@ -611,6 +622,7 @@
 				8D617CAB21B456AF009D2113 /* Colors.swift in Sources */,
 				8D617CA921B456A6009D2113 /* Constants.swift in Sources */,
 				8D617CAF21B4635F009D2113 /* LoginVM.swift in Sources */,
+				8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */,
 				8D9D640121B525FA00979814 /* ResponseStatus.swift in Sources */,
 				8D617C6321B40901009D2113 /* MVVM_Demo.xcdatamodeld in Sources */,
 				8D9D640321B53F5500979814 /* Result.swift in Sources */,

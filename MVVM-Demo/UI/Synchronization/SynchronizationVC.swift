@@ -15,5 +15,13 @@ class SynchronizationVC: CoordinatorVC {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.coordinator.pop(animated: true)
+        }
+    }
 
 }
