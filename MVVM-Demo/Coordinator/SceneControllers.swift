@@ -10,20 +10,13 @@ import UIKit
 
 extension Scene {
     
-    /// Returns the View Controller associated with this scene (along with all its dependencies)
+    /// Returns the View Controller associated with this scene (along with all its dependencies).
     var viewController: UIViewController {
-        let appDelegate = AppDelegate.getInstance()
-        let controllerContainer = appDelegate.viewControllerContainer!
+        let controllerContainer = ViewControllerContainer.instance!
         switch self {
         case .login:
             let controller = controllerContainer.resolve(LoginVC.self)!
             return UINavigationController.init(rootViewController: controller)
-            
-        case .onboardingSynchronization:
-            let loginController = controllerContainer.resolve(LoginVC.self)!
-            let navigationController = UINavigationController.init(rootViewController: loginController)
-            navigationController.viewControllers.append(controllerContainer.resolve(SynchronizationVC.self)!)
-            return navigationController
             
         case .synchronization:
             return controllerContainer.resolve(SynchronizationVC.self)!
@@ -39,8 +32,8 @@ extension Scene {
         }
     }
     
-    /// Returns the controller transition type associated with this scene
-    var transition: SceneTransition {
+    /// Returns the controller transition type associated with this scene.
+    var defaultTransition: SceneTransition {
         switch self {
         case .login,
              .dashboard:

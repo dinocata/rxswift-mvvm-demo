@@ -11,8 +11,10 @@ import RxSwift
 import RxCocoa
 
 final class SceneCoordinator: SceneCoordinatorType {
-   
-    fileprivate var window: UIWindow
+    
+    private var window: UIWindow
+    private let userDefaults: UserDefaultsHelper
+    
     var currentViewController: UIViewController! {
         didSet {
             if !(currentViewController is CoordinatorVC) {
@@ -21,15 +23,15 @@ final class SceneCoordinator: SceneCoordinatorType {
         }
     }
     
-    required init(window: UIWindow) {
+    required init(window: UIWindow, userDefaults: UserDefaultsHelper) {
         self.window = window
+        self.userDefaults = userDefaults
     }
-
+    
     @discardableResult
-    func transition(to scene: Scene) -> Completable {
+    func transition(to scene: Scene, type: SceneTransition) -> Completable {
         let subject = PublishSubject<Void>()
         let viewController = scene.viewController
-        let type = scene.transition
         
         switch type {
         case .root:
@@ -49,19 +51,23 @@ final class SceneCoordinator: SceneCoordinatorType {
             currentViewController.present(viewController, animated: animated) {
                 subject.onCompleted()
             }
+            
+        case .pushToScene(let stack, let animated):
+            guard let navigationController = currentViewController.navigationController else {
+                fatalError("Can't push a view controller without a current navigation controller")
+            }
+            
+            var controllers = navigationController.viewControllers
+            stack.forEach { controllers.append($0.viewController) }
+            controllers.append(viewController)
+            
+            navigationController.setViewControllers(controllers, animated: animated) {
+                subject.onCompleted()
+            }
         }
         
         currentViewController = viewController.actualViewController()
         
-        return subject.ignoreElements()
-    }
-    
-    func transitionRoot(to scene: Scene) -> Completable {
-        let subject = PublishSubject<Void>()
-        let viewController = scene.viewController
-        window.rootViewController = viewController
-        currentViewController = viewController.actualViewController()
-        subject.onCompleted()
         return subject.ignoreElements()
     }
     
@@ -117,22 +123,23 @@ final class SceneCoordinator: SceneCoordinatorType {
         return subject.ignoreElements()
     }
     
-    /// Called on App start in order to get the initial controller based on current App state.
-    /// If you're not sure which controller you should navigate to next, use this method.
-    ///
-    /// - Parameter userDefaults: User Defaults helper containing info about the Application state
-    /// - Returns: Recommended scene for navigation
-    static func getOnboardingScene(userDefaults: UserDefaultsHelper) -> Scene {
-      if !userDefaults.isUserLoggedIn() {
-            return .login
-        }
+    func onboardingTransition() {
+        let transitionType: SceneTransition = window.rootViewController != nil
+            ? .present(animated: true) : .root
         
-        if !userDefaults.isUserDataSynced() {
-            return .onboardingSynchronization
+        if !userDefaults.isUserLoggedIn() {
+            transition(to: .login, type: transitionType)
+            return
         }
-        
-        return .dashboard
-    }
     
+        if !userDefaults.isUserDataSynced() {
+            transition(to: .login, type: transitionType)
+            transition(to: .synchronization, type: .push(animated: false))
+            return
+        }
+        
+        transition(to: .dashboard, type: transitionType)
+    }
+
 }
 

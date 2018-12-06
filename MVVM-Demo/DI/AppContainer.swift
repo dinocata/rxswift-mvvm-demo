@@ -14,73 +14,75 @@ import Moya
 /// Defines helper, service and repository singletons.
 final class AppContainer: ContainerProtocol {
     
+    static var instance: Container!
+    
     /// Helper dependency injections
-    private func registerHelpers(on container: Container) {
-        
+    private static func registerHelpers() {
         // Keychain Access
-        container.register(KeychainAccessHelper.self) { _ in
+        instance.register(KeychainAccessHelper.self) { _ in
             KeychainAccessHelperImpl()
         }
         
         // User Defaults
-        container.register(UserDefaultsHelper.self) { r in
+        instance.register(UserDefaultsHelper.self) { r in
             UserDefaultsHelperImpl(keychainAccess: r.resolve(KeychainAccessHelper.self)!)
         }
         
         // Scene Coordinator
-        container.register(SceneCoordinatorType.self) { _ in
-            SceneCoordinator(window: AppDelegate.getInstance().window!)
+        instance.register(SceneCoordinatorType.self) { r in
+            SceneCoordinator(window: AppDelegate.getInstance().window!,
+                             userDefaults: r.resolve(UserDefaultsHelper.self)!)
         }
         
         // Core Data Stack
-        container.register(CoreDataStack.self) { _ in
+        instance.register(CoreDataStack.self) { _ in
             CoreDataStackImpl()
         }
         
         // Core Data Helper
-        container.register(CoreDataHelper.self) { r in
+        instance.register(CoreDataHelper.self) { r in
             CoreDataHelperImpl(coreDataStack: r.resolve(CoreDataStack.self)!)
         }
         
         // Moya Provider
-        container.register(MoyaProvider<ApiService>.self) { r in
+        instance.register(MoyaProvider<ApiService>.self) { r in
             let keychainAccess = r.resolve(KeychainAccessHelper.self)
             let authPlugin = AccessTokenPlugin(tokenClosure: { keychainAccess?.getUserToken() ?? "" })
             return MoyaProvider<ApiService>(plugins: [authPlugin])
         }
         
         // Network
-        container.register(NetworkProtocol.self) { r in
+        instance.register(NetworkProtocol.self) { r in
             ApiNetwork(provider: r.resolve(MoyaProvider<ApiService>.self)!)
         }
         
         // Validation Helper
-        container.register(ValidationHelper.self) { _ in
+        instance.register(ValidationHelper.self) { _ in
             ValidationHelperImpl()
         }
         
     }
     
     /// Repository dependency injections
-    private func registerRepositories(on container: Container) {
+    private static func registerRepositories() {
         // TODO
     }
     
     /// Service dependency injections
-    private func registerServices(on container: Container) {
-        container.register(UserService.self) { r in
+    private static func registerServices() {
+        instance.register(UserService.self) { r in
             UserServiceImpl(keychainAccess: r.resolve(KeychainAccessHelper.self)!,
                             network: r.resolve(NetworkProtocol.self)!)
         }
     }
     
-    func build() -> Container {
+    static func build() -> Container {
         // Automatically defines all registered dependencies as singletons
-        let container = Container(defaultObjectScope: .container)
-        registerHelpers(on: container)
-        registerRepositories(on: container)
-        registerServices(on: container)
-        return container
+        instance = Container(defaultObjectScope: .container)
+        registerHelpers()
+        registerRepositories()
+        registerServices()
+        return instance
     }
     
 }

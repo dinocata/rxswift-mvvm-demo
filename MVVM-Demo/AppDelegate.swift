@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private(set) var viewControllerContainer: Container!
-    
     static func getInstance() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
@@ -33,15 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let appContainer = AppContainer().build()
-        let viewModelContainer = ViewModelContainer().build(parentContainer: appContainer)
+        let appContainer = AppContainer.build()
+        let viewModelContainer = ViewModelContainer.build(parentContainer: appContainer)
+        ViewControllerContainer.build(parentContainer: viewModelContainer)
         
-        self.viewControllerContainer = ViewControllerContainer().build(parentContainer: viewModelContainer)
-        
-        let userDefaults = appContainer.resolve(UserDefaultsHelper.self)!
-        let onboardingScene = SceneCoordinator.getOnboardingScene(userDefaults: userDefaults)
         let sceneCoordinator = appContainer.resolve(SceneCoordinatorType.self)!
-        sceneCoordinator.transitionRoot(to: onboardingScene)
+        sceneCoordinator.onboardingTransition()
         
         return true
     }

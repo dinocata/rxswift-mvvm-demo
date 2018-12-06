@@ -12,22 +12,25 @@ import Swinject
 /// View Controller dependency injections
 class ViewControllerContainer: ChildContainerProtocol {
     
-    func build(parentContainer: Container) -> Container {
-        let container = Container(parent: parentContainer)
+    static var instance: Container!
+    
+    @discardableResult
+    static func build(parentContainer: Container) -> Container {
+        instance = Container(parent: parentContainer)
         
-        container.register(LoginVC.self) { r in
-            let controller = self.initCoordinatorVC(LoginVC.self, resolver: r)
+        instance.register(LoginVC.self) { r in
+            let controller = initCoordinatorVC(LoginVC.self, resolver: r)
             controller.viewModel = r.resolve(LoginVM.self)!
             return controller
         }
         
-        container.register(SynchronizationVC.self) { r in
-            let controller = self.initCoordinatorVC(SynchronizationVC.self, resolver: r)
+        instance.register(SynchronizationVC.self) { r in
+            let controller = initCoordinatorVC(SynchronizationVC.self, resolver: r)
             // TODO
             return controller
         }
         
-        return container
+        return instance
     }
     
     /// Instantiates a CoordinatorVC type injected with a coordinator instance
@@ -36,7 +39,7 @@ class ViewControllerContainer: ChildContainerProtocol {
     /// - Parameters:
     ///   - type: View Controller type to instantiate
     ///   - resolver: Container resolver
-    private func initCoordinatorVC<T: CoordinatorVC>(_ type: T.Type, resolver: Resolver) -> T {
+    private static func initCoordinatorVC<T: CoordinatorVC>(_ type: T.Type, resolver: Resolver) -> T {
         let controller = T()
         controller.coordinator = resolver.resolve(SceneCoordinatorType.self)!
         return controller

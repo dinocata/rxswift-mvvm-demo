@@ -13,7 +13,6 @@ import Foundation
 enum Scene {
     // Login
     case login
-    case onboardingSynchronization
     case synchronization
     
     // Dashboard

@@ -29,53 +29,36 @@ extension UIViewController {
 extension UINavigationController {
     func pushViewController(viewController: UIViewController, animated: Bool, completion: @escaping () -> ()) {
         pushViewController(viewController, animated: animated)
-        
-        if let coordinator = transitionCoordinator, animated {
-            coordinator.animate(alongsideTransition: nil) { _ in
-                completion()
-            }
-        } else {
-            completion()
-        }
+        handleCompletion(animated: animated, completion: completion)
+    }
+    
+    func setViewControllers(_ viewControllers: [UIViewController], animated: Bool, completion: @escaping () -> ()) {
+        setViewControllers(viewControllers, animated: animated)
+        handleCompletion(animated: animated, completion: completion)
     }
     
     func popViewController(animated: Bool, completion: (() -> Void)? = nil) {
         guard popViewController(animated: animated) != nil else {
             fatalError("can't navigate back from \(self)")
         }
-        
-        if let completion = completion {
-            if let coordinator = transitionCoordinator, animated {
-                coordinator.animate(alongsideTransition: nil) { _ in
-                    completion()
-                }
-            } else {
-                completion()
-            }
-        }
+        handleCompletion(animated: animated, completion: completion)
     }
     
     func popToRootViewController(animated: Bool, completion: (() -> Void)? = nil) {
         guard popToRootViewController(animated: animated) != nil else {
             fatalError("can't navigate back from \(self)")
         }
-        
-        if let completion = completion {
-            if let coordinator = transitionCoordinator, animated {
-                coordinator.animate(alongsideTransition: nil) { _ in
-                    completion()
-                }
-            } else {
-                completion()
-            }
-        }
+        handleCompletion(animated: animated, completion: completion)
     }
     
     func popToViewController(viewController: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         guard popToViewController(viewController, animated: animated) != nil else {
             fatalError("can't navigate back from \(self)")
         }
-        
+        handleCompletion(animated: animated, completion: completion)
+    }
+    
+    func handleCompletion(animated: Bool, completion: (() -> Void)?) {
         if let completion = completion {
             if let coordinator = transitionCoordinator, animated {
                 coordinator.animate(alongsideTransition: nil) { _ in

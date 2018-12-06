@@ -10,6 +10,8 @@ import CoreData
 
 /// Provides helper methods for managing Core Data
 protocol CoreDataHelper {
+    init(coreDataStack: CoreDataStack)
+    
     func saveContext()
     func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> T?
     func create<T: NSManagedObject>(_ type: T.Type) -> T
@@ -37,9 +39,9 @@ extension CoreDataHelper {
 
 class CoreDataHelperImpl: CoreDataHelper {
     
-    private var coreDataStack: CoreDataStack
+    private let coreDataStack: CoreDataStack
     
-    init(coreDataStack: CoreDataStack) {
+    required init(coreDataStack: CoreDataStack) {
         self.coreDataStack = coreDataStack
     }
     

@@ -10,9 +10,13 @@ import Foundation
 import Swinject
 
 protocol ContainerProtocol {
-    func build() -> Container
+    static var instance: Container! { get }
+    
+    static func build() -> Container
 }
 
 protocol ChildContainerProtocol {
-    func build(parentContainer: Container) -> Container
+    static var instance: Container! { get }
+    
+    static func build(parentContainer: Container) -> Container
 }

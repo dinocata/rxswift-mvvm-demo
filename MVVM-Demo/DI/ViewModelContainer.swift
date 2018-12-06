@@ -12,15 +12,17 @@ import Swinject
 /// View Model dependency injections
 class ViewModelContainer: ChildContainerProtocol {
     
-    func build(parentContainer: Container) -> Container {
-        let container = Container(parent: parentContainer)
+    static var instance: Container!
+    
+    static func build(parentContainer: Container) -> Container {
+        instance = Container(parent: parentContainer)
         
-        container.register(LoginVM.self) { r in
+        instance.register(LoginVM.self) { r in
             LoginVM(userService: r.resolve(UserService.self)!,
                     validationHelper: r.resolve(ValidationHelper.self)!)
         }
         
-        return container
+        return instance
     }
     
 }
