@@ -46,4 +46,8 @@ class CoordinatorVC: UIViewController {
             progressHud = nil
         }
     }
+    
+    deinit {
+        print("DEINIT:\(String(describing: self))")
+    }
 }

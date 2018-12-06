@@ -52,6 +52,9 @@
 		8D9D640A21B54A6900979814 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640921B54A6900979814 /* UserService.swift */; };
 		8D9D641021B54ADC00979814 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640F21B54ADC00979814 /* LoginRequest.swift */; };
 		8D9D641221B54E3A00979814 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D641121B54E3A00979814 /* BaseService.swift */; };
+		8DBA296221B931E7009311A9 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA296021B931E7009311A9 /* DashboardVC.swift */; };
+		8DBA296321B931E7009311A9 /* DashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA296121B931E7009311A9 /* DashboardVC.xib */; };
+		8DBA296521B934CA009311A9 /* DashboardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA296421B934CA009311A9 /* DashboardVM.swift */; };
 		E89E49FEB8B3A9F801E5C8F1 /* Pods_MVVM_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,9 @@
 		8D9D640921B54A6900979814 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		8D9D640F21B54ADC00979814 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		8D9D641121B54E3A00979814 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		8DBA296021B931E7009311A9 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
+		8DBA296121B931E7009311A9 /* DashboardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardVC.xib; sourceTree = "<group>"; };
+		8DBA296421B934CA009311A9 /* DashboardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVM.swift; sourceTree = "<group>"; };
 		902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6EFCA11D39FF92FBCB6F240 /* Pods-MVVM-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF03F00BB4C4D0564BF4B3A /* Pods-MVVM-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -290,6 +296,7 @@
 		8D617CAC21B4631D009D2113 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8DBA295F21B931D1009311A9 /* Dashboard */,
 				8D617CAD21B4634C009D2113 /* Login */,
 				8D9D63EE21B513FF00979814 /* Synchronization */,
 			);
@@ -383,6 +390,16 @@
 				8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		8DBA295F21B931D1009311A9 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				8DBA296021B931E7009311A9 /* DashboardVC.swift */,
+				8DBA296121B931E7009311A9 /* DashboardVC.xib */,
+				8DBA296421B934CA009311A9 /* DashboardVM.swift */,
+			);
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
 		B49D5A82BB684C084D6A9390 /* Frameworks */ = {
@@ -480,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9D63F821B5231300979814 /* Localizable.strings in Resources */,
+				8DBA296321B931E7009311A9 /* DashboardVC.xib in Resources */,
 				8D617CB921B46988009D2113 /* LoginVC.xib in Resources */,
 				8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */,
 				8D617C6821B40902009D2113 /* LaunchScreen.storyboard in Resources */,
@@ -617,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */,
+				8DBA296221B931E7009311A9 /* DashboardVC.swift in Sources */,
 				8D617C8821B41B31009D2113 /* ViewModelContainer.swift in Sources */,
 				8D9D641021B54ADC00979814 /* LoginRequest.swift in Sources */,
 				8D617CAB21B456AF009D2113 /* Colors.swift in Sources */,
@@ -630,6 +649,7 @@
 				8D617CA621B45637009D2113 /* KeychainAccessHelper.swift in Sources */,
 				8D9D640521B5458A00979814 /* CoreDataStack.swift in Sources */,
 				8D617C8621B418D7009D2113 /* ContainerProtocol.swift in Sources */,
+				8DBA296521B934CA009311A9 /* DashboardVM.swift in Sources */,
 				8D9D63FC21B524BD00979814 /* ApiServiceTargets.swift in Sources */,
 				8D617CB321B464F2009D2113 /* StringExtension.swift in Sources */,
 				8D617C9A21B447A6009D2113 /* SceneCoordinator.swift in Sources */,

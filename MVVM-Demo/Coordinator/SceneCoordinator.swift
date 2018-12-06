@@ -64,6 +64,24 @@ final class SceneCoordinator: SceneCoordinatorType {
             navigationController.setViewControllers(controllers, animated: animated) {
                 subject.onCompleted()
             }
+            
+        case .presentSceneNavigation(let stack, let animated):
+            guard let navigationController = viewController as? UINavigationController else {
+                fatalError("Can't push a view controller without a current navigation controller")
+            }
+            
+            var controllers = navigationController.viewControllers
+            stack.forEach { controllers.append($0.viewController) }
+            navigationController.setViewControllers(controllers, animated: false)
+
+            if window.rootViewController != nil {
+                currentViewController.present(navigationController, animated: animated) {
+                    subject.onCompleted()
+                }
+            } else {
+                window.rootViewController = navigationController
+                subject.onCompleted()
+            }
         }
         
         currentViewController = viewController.actualViewController()
@@ -74,18 +92,19 @@ final class SceneCoordinator: SceneCoordinatorType {
     @discardableResult
     func pop(animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
+        
         if let presenter = currentViewController.presentingViewController {
             // dismiss a modal controller
             currentViewController.dismiss(animated: animated) {
-                self.currentViewController = presenter.actualViewController()
                 subject.onCompleted()
             }
+            self.currentViewController = presenter.actualViewController()
         } else if let navigationController = currentViewController.navigationController {
             // navigate up the stack
             navigationController.popViewController(animated: animated) {
-                self.currentViewController = navigationController.viewControllers.last!
                 subject.onCompleted()
             }
+            self.currentViewController = navigationController.viewControllers.last!
         } else {
             fatalError("Not a modal, no navigation controller: can't navigate back from \(currentViewController!)")
         }
@@ -94,15 +113,14 @@ final class SceneCoordinator: SceneCoordinatorType {
     
     @discardableResult
     func popToRoot(animated: Bool) -> Completable {
-        
         let subject = PublishSubject<Void>()
         
         if let navigationController = currentViewController.navigationController {
             // navigate up the stack
             navigationController.popToRootViewController(animated: animated) {
-                self.currentViewController = navigationController.viewControllers.first!
                 subject.onCompleted()
             }
+            self.currentViewController = navigationController.viewControllers.first!
         }
         
         return subject.ignoreElements()
@@ -110,15 +128,14 @@ final class SceneCoordinator: SceneCoordinatorType {
     
     @discardableResult
     func popToVC(_ viewController: UIViewController, animated: Bool) -> Completable {
-        
         let subject = PublishSubject<Void>()
         
         if let navigationController = currentViewController.navigationController {
             // navigate up the stack
             navigationController.popToViewController(viewController: viewController, animated: animated) {
-                self.currentViewController = navigationController.viewControllers.last!
                 subject.onCompleted()
             }
+            self.currentViewController = navigationController.viewControllers.last!
         }
         return subject.ignoreElements()
     }
@@ -133,8 +150,7 @@ final class SceneCoordinator: SceneCoordinatorType {
         }
     
         if !userDefaults.isUserDataSynced() {
-            transition(to: .login, type: transitionType)
-            transition(to: .synchronization, type: .push(animated: false))
+            transition(to: .login, type: .presentSceneNavigation(sceneStack: [.synchronization], animated: true))
             return
         }
         

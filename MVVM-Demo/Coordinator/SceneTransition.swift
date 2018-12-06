@@ -13,4 +13,5 @@ enum SceneTransition {
     case push(animated: Bool)
     case present(animated: Bool)
     case pushToScene(stackPath: [Scene], animated: Bool)
+    case presentSceneNavigation(sceneStack: [Scene], animated: Bool)
 }

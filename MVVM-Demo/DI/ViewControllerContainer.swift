@@ -30,6 +30,12 @@ class ViewControllerContainer: ChildContainerProtocol {
             return controller
         }
         
+        instance.register(DashboardVC.self) { r in
+            let controller = initCoordinatorVC(DashboardVC.self, resolver: r)
+            controller.viewModel = r.resolve(DashboardVM.self)!
+            return controller
+        }
+        
         return instance
     }
     

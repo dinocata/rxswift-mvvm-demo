@@ -22,6 +22,10 @@ class ViewModelContainer: ChildContainerProtocol {
                     validationHelper: r.resolve(ValidationHelper.self)!)
         }
         
+        instance.register(DashboardVM.self) { r in
+            DashboardVM(userDefaults: r.resolve(UserDefaultsHelper.self)!)
+        }
+        
         return instance
     }
     

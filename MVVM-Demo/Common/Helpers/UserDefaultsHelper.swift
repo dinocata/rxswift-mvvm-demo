@@ -13,6 +13,7 @@ protocol UserDefaultsHelper {
     func isUserDataSynced() -> Bool
     func getSyncTime() -> Int
     func setSyncTime(timestamp: Int)
+    func clearUserData()
 }
 
 final class UserDefaultsHelperImpl: UserDefaultsHelper {
@@ -37,5 +38,14 @@ final class UserDefaultsHelperImpl: UserDefaultsHelper {
     
     func setSyncTime(timestamp: Int) {
         UserDefaults.standard.set(timestamp, forKey: Constants.UserDefaultsKeys.syncTime)
+    }
+    
+    func clearUserData() {
+        do {
+            try keychainAccess.resetUserToken()
+        } catch {
+            print("Could not reset user token")
+        }
+        setSyncTime(timestamp: 0)
     }
 }

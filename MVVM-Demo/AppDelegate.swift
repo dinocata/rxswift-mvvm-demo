@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // For detailed formatted logs of API requests (used for debugging)
+        // For detailed formatted logs of API requests (used for debugging only)
         if Constants.Config.networkActivityLogging {
             NetworkActivityLogger.shared.level = .debug
             NetworkActivityLogger.shared.startLogging()

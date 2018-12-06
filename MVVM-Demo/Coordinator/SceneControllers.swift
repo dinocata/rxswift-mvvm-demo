@@ -15,14 +15,13 @@ extension Scene {
         let controllerContainer = ViewControllerContainer.instance!
         switch self {
         case .login:
-            let controller = controllerContainer.resolve(LoginVC.self)!
-            return UINavigationController.init(rootViewController: controller)
+            return UINavigationController.init(rootViewController: controllerContainer.resolve(LoginVC.self)!)
             
         case .synchronization:
             return controllerContainer.resolve(SynchronizationVC.self)!
             
         case .dashboard:
-            return UIViewController()
+            return UINavigationController.init(rootViewController: controllerContainer.resolve(DashboardVC.self)!)
             
         case .articleList:
             return UIViewController()
