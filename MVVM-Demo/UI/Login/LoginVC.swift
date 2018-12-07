@@ -19,6 +19,7 @@ class LoginVC: BaseVC<LoginVM>, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Login"
         bindViewModel()
     }
     

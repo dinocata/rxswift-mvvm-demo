@@ -18,18 +18,21 @@ class DashboardVM: ViewModelType {
     }
     
     struct Input {
+        let articles = PublishSubject<Void>()
         let logout = PublishSubject<Void>()
     }
     
     struct Output {
+        let articles: Driver<Void>
         let logout: Driver<Void>
     }
     
     func transform(input: DashboardVM.Input) -> DashboardVM.Output {
-        let inputEventDriver = input.logout
+        let logoutEventDriver = input.logout
             .map { [unowned self] in self.userDefaults.clearUserData() }
         
-        return Output(logout: inputEventDriver.asDriver(onErrorJustReturn: ()))
+        return Output(articles: input.articles.asDriver(onErrorJustReturn: ()),
+                      logout: logoutEventDriver.asDriver(onErrorJustReturn: ()))
     }
     
 }

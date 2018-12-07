@@ -26,6 +26,14 @@ class ViewModelContainer: ChildContainerProtocol {
             DashboardVM(userDefaults: r.resolve(UserDefaultsHelper.self)!)
         }
         
+        instance.register(SynchronizationVM.self) { r in
+            SynchronizationVM()
+        }
+        
+        instance.register(ArticleListVM.self) { r in
+            ArticleListVM()
+        }
+        
         return instance
     }
     

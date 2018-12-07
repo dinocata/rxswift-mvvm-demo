@@ -8,16 +8,22 @@
 
 import UIKit
 
-class SynchronizationVC: CoordinatorVC {
+class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
+        title = "Synchronization"
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.coordinator.transition(to: .dashboard)
         }
+    }
+    
+    func generateInputs() -> SynchronizationVM.Input {
+        return SynchronizationVM.Input()
+    }
+    
+    func onGenerateOutputs(outputs: SynchronizationVM.Output) {
+        // TODO
     }
     
 }

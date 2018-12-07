@@ -16,7 +16,7 @@ class CoordinatorVC: UIViewController {
     
     private var progressHud: MBProgressHUD?
     
-    required init(coordinator: SceneCoordinatorType) {
+    init(coordinator: SceneCoordinatorType) {
         self.coordinator = coordinator
         self.coordinator.sceneCount += 1
         super.init(nibName: nil, bundle: nil)

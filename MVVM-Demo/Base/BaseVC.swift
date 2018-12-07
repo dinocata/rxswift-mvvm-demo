@@ -21,8 +21,4 @@ class BaseVC<T: ViewModelType>: CoordinatorVC {
         fatalError("init(coder:) has not been implemented")
     }
     
-    required init(coordinator: SceneCoordinatorType) {
-        fatalError("Base controller cannot be initialized without a view model")
-    }
-    
 }

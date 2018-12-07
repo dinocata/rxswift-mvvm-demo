@@ -24,7 +24,7 @@ extension Scene {
             return UINavigationController.init(rootViewController: controllerContainer.resolve(DashboardVC.self)!)
             
         case .articleList:
-            return UIViewController()
+            return controllerContainer.resolve(ArticleListVC.self)!
             
         case .articleDetails:
             return UIViewController()
