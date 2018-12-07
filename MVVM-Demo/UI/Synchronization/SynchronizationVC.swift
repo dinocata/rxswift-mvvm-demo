@@ -15,7 +15,7 @@ class SynchronizationVC: CoordinatorVC {
         
         // Do any additional setup after loading the view.
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
             self?.coordinator.transition(to: .dashboard)
         }
     }

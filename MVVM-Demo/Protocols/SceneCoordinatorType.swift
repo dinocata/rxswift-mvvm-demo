@@ -12,6 +12,11 @@ import RxSwift
 protocol SceneCoordinatorType {
     init(window: UIWindow, userDefaults: UserDefaultsHelper)
     
+    /// Keeps track of currently active view controllers. Helpful for preventing controller leaking.
+    /// For a reference, this should always be equal to 1 whenever you navigate back to the Login screen,
+    /// which is considered to be the starting point in your app.
+    var sceneCount: Int { get set }
+    
     /// Current visible view controller.
     var currentViewController: UIViewController! { get set }
     

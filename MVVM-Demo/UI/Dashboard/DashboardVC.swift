@@ -8,12 +8,10 @@
 
 import UIKit
 
-class DashboardVC: CoordinatorVC, BindableType {
-    
+class DashboardVC: BaseVC<DashboardVM>, BindableType {
+ 
     // Outlets
     @IBOutlet weak var btnLogout: UIButton!
-    
-    var viewModel: DashboardVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +31,10 @@ class DashboardVC: CoordinatorVC, BindableType {
     func onGenerateOutputs(outputs: DashboardVM.Output) {
         outputs.logout
             .drive(onNext: { [weak self] in
-                _ = self?.coordinator.pop(animated: true)
+                // Completable is always disposed on completion, so we don't need to add it to the dispose bag
+                _ = self?.coordinator.pop(animated: false)
                     .subscribe(onCompleted: {
-                        self?.coordinator.popToRoot(animated: false)
+                        self?.coordinator.popToRoot(animated: true)
                     })
             })
             .disposed(by: disposeBag)

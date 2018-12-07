@@ -10,14 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class LoginVC: CoordinatorVC, BindableType {
+class LoginVC: BaseVC<LoginVM>, BindableType {
     
     // Outlets
     @IBOutlet weak var tfEmail: BaseTextField!
     @IBOutlet weak var tfPassword: BaseTextField!
     @IBOutlet weak var btnConfirm: UIButton!
-    
-    var viewModel: LoginVM!
     
     override func viewDidLoad() {
         super.viewDidLoad()

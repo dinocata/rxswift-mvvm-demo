@@ -19,36 +19,38 @@ class ViewControllerContainer: ChildContainerProtocol {
         instance = Container(parent: parentContainer)
         
         instance.register(LoginVC.self) { r in
-            let controller = initCoordinatorVC(LoginVC.self, resolver: r)
-            controller.viewModel = r.resolve(LoginVM.self)!
-            return controller
+            return initVC(LoginVC.self, resolver: r)
         }
         
         instance.register(SynchronizationVC.self) { r in
-            let controller = initCoordinatorVC(SynchronizationVC.self, resolver: r)
-            // TODO
-            return controller
+            return initCoordinatorVC(SynchronizationVC.self, resolver: r)
         }
         
         instance.register(DashboardVC.self) { r in
-            let controller = initCoordinatorVC(DashboardVC.self, resolver: r)
-            controller.viewModel = r.resolve(DashboardVM.self)!
-            return controller
+            return initVC(DashboardVC.self, resolver: r)
         }
         
         return instance
     }
     
-    /// Instantiates a CoordinatorVC type injected with a coordinator instance
+    /// Instantiates a controller with view model and coordinator injected to it.
+    ///
+    /// - Parameters:
+    ///   - type: View Controller type to instantiate
+    ///   - resolver: Container resolver
+    private static func initVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type, resolver: Resolver) -> T {
+        return T.init(viewModel: resolver.resolve(H.self)!,
+                      coordinator: resolver.resolve(SceneCoordinatorType.self)!)
+    }
+    
+    /// Instantiates a CoordinatorVC type injected with a coordinator instance.
     /// Call this for every controller which has routing (able to transition to another controller).
     ///
     /// - Parameters:
     ///   - type: View Controller type to instantiate
     ///   - resolver: Container resolver
     private static func initCoordinatorVC<T: CoordinatorVC>(_ type: T.Type, resolver: Resolver) -> T {
-        let controller = T()
-        controller.coordinator = resolver.resolve(SceneCoordinatorType.self)!
-        return controller
+        return T.init(coordinator: resolver.resolve(SceneCoordinatorType.self)!)
     }
     
 }

@@ -11,12 +11,14 @@ import RxSwift
 import MBProgressHUD
 
 class CoordinatorVC: UIViewController {
-    var coordinator: SceneCoordinatorType!
+    var coordinator: SceneCoordinatorType
     var disposeBag = DisposeBag()
     
     private var progressHud: MBProgressHUD?
     
-    required init() {
+    required init(coordinator: SceneCoordinatorType) {
+        self.coordinator = coordinator
+        self.coordinator.sceneCount += 1
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,6 +50,6 @@ class CoordinatorVC: UIViewController {
     }
     
     deinit {
-        print("DEINIT:\(String(describing: self))")
+        coordinator.sceneCount -= 1
     }
 }

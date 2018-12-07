@@ -11,7 +11,7 @@ import UIKit
 protocol BindableType {
     associatedtype VMType: ViewModelType
     
-    var viewModel: VMType! { get set }
+    var viewModel: VMType { get set }
     
     func generateInputs() -> VMType.Input
     func onGenerateOutputs(outputs: VMType.Output)

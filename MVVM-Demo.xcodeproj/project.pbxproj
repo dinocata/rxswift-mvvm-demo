@@ -39,6 +39,7 @@
 		8D617CB821B46988009D2113 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617CB621B46988009D2113 /* LoginVC.swift */; };
 		8D617CB921B46988009D2113 /* LoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D617CB721B46988009D2113 /* LoginVC.xib */; };
 		8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617CBB21B4732E009D2113 /* CoordinatorVC.swift */; };
+		8D690A3321BA5EC5001E4BB2 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A3221BA5EC5001E4BB2 /* BaseVC.swift */; };
 		8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */; };
 		8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63F021B5141D00979814 /* SynchronizationVC.xib */; };
 		8D9D63F521B51D1500979814 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63F421B51D1500979814 /* ApiService.swift */; };
@@ -107,6 +108,7 @@
 		8D617CB621B46988009D2113 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		8D617CB721B46988009D2113 /* LoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginVC.xib; sourceTree = "<group>"; };
 		8D617CBB21B4732E009D2113 /* CoordinatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorVC.swift; sourceTree = "<group>"; };
+		8D690A3221BA5EC5001E4BB2 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationVC.swift; sourceTree = "<group>"; };
 		8D9D63F021B5141D00979814 /* SynchronizationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynchronizationVC.xib; sourceTree = "<group>"; };
 		8D9D63F421B51D1500979814 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				8D617CBB21B4732E009D2113 /* CoordinatorVC.swift */,
 				8D9D641121B54E3A00979814 /* BaseService.swift */,
+				8D690A3221BA5EC5001E4BB2 /* BaseVC.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				8D617C9421B44260009D2113 /* BindableType.swift in Sources */,
 				8D9D640721B546E800979814 /* CoreDataHelper.swift in Sources */,
 				8D9D63F521B51D1500979814 /* ApiService.swift in Sources */,
+				8D690A3321BA5EC5001E4BB2 /* BaseVC.swift in Sources */,
 				8D617C8421B41590009D2113 /* AppContainer.swift in Sources */,
 				8D617CB121B464A9009D2113 /* Validator.swift in Sources */,
 				8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */,

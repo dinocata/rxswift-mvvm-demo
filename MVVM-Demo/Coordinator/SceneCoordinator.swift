@@ -15,6 +15,8 @@ final class SceneCoordinator: SceneCoordinatorType {
     private var window: UIWindow
     private let userDefaults: UserDefaultsHelper
     
+    var sceneCount: Int = 0
+    
     var currentViewController: UIViewController! {
         didSet {
             if !(currentViewController is CoordinatorVC) {

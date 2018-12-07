@@ -73,8 +73,6 @@ class LoginVM: ViewModelType {
     func constructLoader(_ eventSource: Observable<Void>, events: Observable<LoginEvent>) -> Driver<LoginEvent> {
         // Show loader as soon as button is pressed
         let loading = eventSource.map { LoginEvent.loading }
-        // Makes sure loader is shown for at least half a second (to avoid flickering)
-       // let delayedEvents = events.delay(0.5, scheduler: MainScheduler.instance)
         return Observable.merge(loading, events).asDriver(onErrorJustReturn: .unknownError())
     }
     
@@ -91,10 +89,12 @@ class LoginVM: ViewModelType {
             .flatMap { [unowned self] in self.userService.login($0) }
             .map { [unowned self] in self.mapResponseStatus($0) }
         
+        // Merge events so both errors from failed validation and login can be reacted to
         let mergedEvents = Observable.merge(validationEventDriver, loginEventDriver)
             .filter { !$0.validationSuccessful() }
             .share()
         
+        // Adds a progress loader
         let fullLoginDriver = constructLoader(input.confirm, events: mergedEvents)
         
         let successDriver = fullLoginDriver

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// https://medium.com/blablacar-tech/rxswift-mvvm-66827b8b3f10
 protocol ViewModelType: class {
     associatedtype Input
     associatedtype Output
