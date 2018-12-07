@@ -48,6 +48,9 @@
 		8D690A4121BA7754001E4BB2 /* Populatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4021BA7754001E4BB2 /* Populatable.swift */; };
 		8D690A4321BA77C7001E4BB2 /* ArticleRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4221BA77C7001E4BB2 /* ArticleRequest.swift */; };
 		8D690A4621BA7B1F001E4BB2 /* BaseRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4521BA7B1F001E4BB2 /* BaseRepository.swift */; };
+		8D690A4821BA7EBC001E4BB2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4721BA7EBC001E4BB2 /* Reusable.swift */; };
+		8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */; };
+		8D690A4C21BAC20D001E4BB2 /* BaseApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */; };
 		8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */; };
 		8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63F021B5141D00979814 /* SynchronizationVC.xib */; };
 		8D9D63F521B51D1500979814 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63F421B51D1500979814 /* ApiService.swift */; };
@@ -125,6 +128,9 @@
 		8D690A4021BA7754001E4BB2 /* Populatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Populatable.swift; sourceTree = "<group>"; };
 		8D690A4221BA77C7001E4BB2 /* ArticleRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRequest.swift; sourceTree = "<group>"; };
 		8D690A4521BA7B1F001E4BB2 /* BaseRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRepository.swift; sourceTree = "<group>"; };
+		8D690A4721BA7EBC001E4BB2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtension.swift; sourceTree = "<group>"; };
+		8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiResource.swift; sourceTree = "<group>"; };
 		8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationVC.swift; sourceTree = "<group>"; };
 		8D9D63F021B5141D00979814 /* SynchronizationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynchronizationVC.xib; sourceTree = "<group>"; };
 		8D9D63F421B51D1500979814 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -213,7 +219,6 @@
 				8D617CBA21B4730D009D2113 /* Base */,
 				8D617CA721B4569C009D2113 /* Config */,
 				8D617CA021B4552C009D2113 /* Common */,
-				8D617C9D21B4488A009D2113 /* Extensions */,
 				8D617C8D21B420D8009D2113 /* Protocols */,
 				8D617C8021B414FB009D2113 /* DI */,
 				8D617C7D21B41210009D2113 /* Coordinator */,
@@ -277,6 +282,7 @@
 				8D617C9E21B448A4009D2113 /* ViewControllerExtension.swift */,
 				8D617CB221B464F2009D2113 /* StringExtension.swift */,
 				8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */,
+				8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 		8D617CA021B4552C009D2113 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8D617C9D21B4488A009D2113 /* Extensions */,
 				8D409EDD21B80BBF00F32497 /* Views */,
 				8D9D641521B56D9800979814 /* Utility */,
 				8D9D63FF21B525DE00979814 /* Enums */,
@@ -340,6 +347,7 @@
 				8D617CBB21B4732E009D2113 /* CoordinatorVC.swift */,
 				8D9D641121B54E3A00979814 /* BaseService.swift */,
 				8D690A3221BA5EC5001E4BB2 /* BaseVC.swift */,
+				8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -439,6 +447,7 @@
 			children = (
 				8D617CB021B464A9009D2113 /* Validator.swift */,
 				8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */,
+				8D690A4721BA7EBC001E4BB2 /* Reusable.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -706,6 +715,7 @@
 				8D617CB321B464F2009D2113 /* StringExtension.swift in Sources */,
 				8D617C9A21B447A6009D2113 /* SceneCoordinator.swift in Sources */,
 				8D690A4121BA7754001E4BB2 /* Populatable.swift in Sources */,
+				8D690A4C21BAC20D001E4BB2 /* BaseApiResource.swift in Sources */,
 				8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */,
 				8D690A3B21BA6A18001E4BB2 /* ArticleListVM.swift in Sources */,
 				8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */,
@@ -732,8 +742,10 @@
 				8D617C7F21B41262009D2113 /* Scene.swift in Sources */,
 				8D617C9821B44568009D2113 /* SceneTransition.swift in Sources */,
 				8D617C8F21B433D8009D2113 /* ViewModelType.swift in Sources */,
+				8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */,
 				8D9D63FE21B5259900979814 /* Network.swift in Sources */,
 				8D617CB821B46988009D2113 /* LoginVC.swift in Sources */,
+				8D690A4821BA7EBC001E4BB2 /* Reusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

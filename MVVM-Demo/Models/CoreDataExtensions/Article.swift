@@ -10,8 +10,9 @@ import CoreData
 
 extension Article: Populatable {
     typealias DataType = ArticleResponse
+    
 
-    func populate(with data: ArticleResponse) -> Self {
+    func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
         id = data.id
         name = data.name
         price = data.price as NSNumber?

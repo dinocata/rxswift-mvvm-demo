@@ -27,14 +27,9 @@ class LoginVC: BaseVC<LoginVM>, BindableType {
         tfEmail.bindViewModel(TextFieldVM())
         tfPassword.bindViewModel(TextFieldVM())
         
-        let inputs = LoginVM.Input(emailInput: tfEmail.fieldModel!,
-                                   passwordInput: tfPassword.fieldModel!)
-        
-        btnConfirm.rx.tap
-            .bind(to: inputs.confirm)
-            .disposed(by: disposeBag)
-        
-        return inputs
+        return LoginVM.Input(emailInput: tfEmail.fieldModel!,
+                             passwordInput: tfPassword.fieldModel!,
+                             confirm: btnConfirm.rx.tap.asDriver())
     }
     
     func onGenerateOutputs(outputs: LoginVM.Output) {

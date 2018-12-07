@@ -6,10 +6,10 @@
 //  Copyright © 2018 UHP. All rights reserved.
 //
 
-import Foundation
+import CoreData
 
-protocol Populatable {
+protocol Populatable where Self:NSManagedObject {
     associatedtype DataType: Decodable
     
-    func populate(with data: DataType) -> Self
+    func populate(with data: DataType, coreDataHelper: CoreDataHelper) -> Self
 }

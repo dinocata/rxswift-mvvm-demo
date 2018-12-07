@@ -8,6 +8,30 @@
 
 import CoreData
 
-class BaseRepository<ModelType: NSManagedObject> {
+protocol BaseRepository {
+    associatedtype ModelType: Populatable
+    
+    init(coreDataHelper: CoreDataHelper)
+    
+    func initFromResponse(_ apiResponseData: ModelType.DataType)
+    func getById(id: Int32) -> ModelType?
+}
+
+class BaseRepositoryImpl<ModelType: Populatable>: BaseRepository {
+  
+    internal var coreDataHelper: CoreDataHelper
+    
+    required init(coreDataHelper: CoreDataHelper) {
+        self.coreDataHelper = coreDataHelper
+    }
+    
+    func getById(id: Int32) -> ModelType? {
+        return coreDataHelper.getObjectById(ModelType.self, id: id)
+    }
+    
+    func initFromResponse(_ apiResponseData: ModelType.DataType) {
+      //  let coreObject = coreDataHelper.getExistingOrNew(ModelType.self, id: apiResponseData.id)
+    }
+    
     
 }

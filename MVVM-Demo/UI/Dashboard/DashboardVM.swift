@@ -18,8 +18,8 @@ class DashboardVM: ViewModelType {
     }
     
     struct Input {
-        let articles = PublishSubject<Void>()
-        let logout = PublishSubject<Void>()
+        let articles: Driver<Void>
+        let logout: Driver<Void>
     }
     
     struct Output {

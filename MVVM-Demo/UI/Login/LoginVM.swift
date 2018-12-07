@@ -22,7 +22,7 @@ class LoginVM: ViewModelType {
     struct Input {
         var emailInput: TextFieldVM
         var passwordInput: TextFieldVM
-        let confirm = PublishSubject<Void>()
+        let confirm: Driver<Void>
     }
     
     struct Output {
@@ -79,13 +79,15 @@ class LoginVM: ViewModelType {
     func transform(input: Input) -> Output {
         // Handles local validation
         let validationEventDriver = input.confirm
+            .asObservable()
             .flatMapLatest { [unowned self] in self.validate(input: input) }
             .map { [unowned self] in self.mapValidationResult($0) }
         
         // Handles API login
         let loginEventDriver = validationEventDriver
             .filter { $0.validationSuccessful() }
-            .map { [unowned self] _ in self.getLoginRequest(input: input) }
+            .mapToVoid()
+            .map { [unowned self] in self.getLoginRequest(input: input) }
             .flatMap { [unowned self] in self.userService.login($0) }
             .map { [unowned self] in self.mapResponseStatus($0) }
         
@@ -95,11 +97,11 @@ class LoginVM: ViewModelType {
             .share()
         
         // Adds a progress loader
-        let fullLoginDriver = constructLoader(input.confirm, events: mergedEvents)
+        let fullLoginDriver = constructLoader(input.confirm.asObservable(), events: mergedEvents)
         
         let successDriver = fullLoginDriver
             .filter { $0.loginSuccessful() }
-            .map { _ in return }
+            .mapToVoid()
         
         let failureDriver = fullLoginDriver
             .map { $0.getErrorMessage() }
@@ -108,7 +110,7 @@ class LoginVM: ViewModelType {
         
         let loadingDriver = fullLoginDriver
             .filter { $0.isLoading() }
-            .map { _ in return }
+            .mapToVoid()
         
         return Output(success: successDriver, failure: failureDriver, loading: loadingDriver)
     }

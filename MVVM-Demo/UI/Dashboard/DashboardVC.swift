@@ -9,7 +9,7 @@
 import UIKit
 
 class DashboardVC: BaseVC<DashboardVM>, BindableType {
- 
+    
     // Outlets
     @IBOutlet weak var btnArticles: UIButton!
     @IBOutlet weak var btnLogout: UIButton!
@@ -21,17 +21,8 @@ class DashboardVC: BaseVC<DashboardVM>, BindableType {
     }
     
     func generateInputs() -> DashboardVM.Input {
-        let inputs = DashboardVM.Input()
-        
-        btnArticles.rx.tap
-            .bind(to: inputs.articles)
-            .disposed(by: disposeBag)
-        
-        btnLogout.rx.tap
-            .bind(to: inputs.logout)
-            .disposed(by: disposeBag)
-        
-        return inputs
+        return DashboardVM.Input(articles: btnArticles.rx.tap.asDriver(),
+                                 logout: btnLogout.rx.tap.asDriver())
     }
     
     func onGenerateOutputs(outputs: DashboardVM.Output) {

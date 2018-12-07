@@ -8,9 +8,8 @@
 
 import Foundation
 
-struct ArticleResponse: Decodable {
-    let id: Int32
-    let name: String
-    let price: Int32?
-    let description: String?
+class ArticleResponse: BaseApiResource {
+    var name: String = ""
+    var price: Int32?
+    var description: String?
 }
