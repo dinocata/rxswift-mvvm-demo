@@ -71,7 +71,7 @@ class BaseRepositoryImpl<ModelType: Identifiable>: BaseRepository {
             objectList.append(initFromResponse(data))
         }
         return Observable.zip(objectList)
-            .do(onNext: { [unowned self] _ in
+            .do(onCompleted: { [unowned self] in
                 self.saveRepository()
             })
     }

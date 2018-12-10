@@ -14,26 +14,25 @@ protocol CoreDataHelper {
     init(coreDataStack: CoreDataStack)
     
     func saveContext()
-    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T?>
-    func create<T: NSManagedObject>(_ type: T.Type) -> T
-    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T>
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate?) -> Observable<T?>
-    func getObjects<T: NSManagedObject>(_ type: T.Type,
-                                        sortDescriptors: [NSSortDescriptor]?,
+    func getObjectById<T: Persistable>(_ type: T.Type, id: Int32) -> Observable<T?>
+    func create<T: Persistable>(_ type: T.Type) -> T
+    func getExistingOrNew<T: Persistable>(_ type: T.Type, id: Int32) -> Observable<T>
+    func getObjectBy<T: Persistable>(_ type: T.Type, predicate: NSPredicate?) -> Observable<T?>
+    func getObjects<T: Persistable>(_ type: T.Type,
+                                        sortDescriptors: [NSSortDescriptor],
                                         predicate: NSPredicate?) -> Observable<[T]>
-    func delete<T: NSManagedObject>(_ object: T)
+    func delete<T: Persistable>(_ object: T)
     func deleteAllData()
-    func deleteAllEntities<T: NSManagedObject>(_ entity: T.Type)
+    func deleteAllEntities<T: Persistable>(_ entity: T.Type)
 }
-
 
 // Default implementation
 extension CoreDataHelper {
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
+    func getObjectBy<T: Persistable>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
         return getObjectBy(type, predicate: predicate)
     }
-    func getObjects<T: NSManagedObject>(_ type: T.Type,
-                                        sortDescriptors: [NSSortDescriptor]? = nil,
+    func getObjects<T: Persistable>(_ type: T.Type,
+                                        sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.defaultSortProperty, ascending: true)],
                                         predicate: NSPredicate? = nil) -> Observable<[T]> {
         return getObjects(type, sortDescriptors: sortDescriptors, predicate: predicate)
     }
@@ -58,7 +57,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - id: id of the object
     /// - Returns: Core data object
-    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T?> {
+    func getObjectById<T: Persistable>(_ type: T.Type, id: Int32) -> Observable<T?> {
         let predicate = NSPredicate(format: "id = %d", id)
         return getObjects(type, predicate: predicate).map { $0.first }
     }
@@ -67,7 +66,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///
     /// - Parameter type: Class type of object to be returned
     /// - Returns: New instance of core data object
-    func create<T: NSManagedObject>(_ type: T.Type) -> T {
+    func create<T: Persistable>(_ type: T.Type) -> T {
         let context = coreDataStack.context
         let entity = NSEntityDescription.entity(forEntityName: String(describing: type), in: context)!
         return type.init(entity: entity, insertInto: context)
@@ -82,7 +81,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - id: id of an existing object (if it does not exist, returns a new object)
     /// - Returns: New (or existing) core data object
-    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T> {
+    func getExistingOrNew<T: Persistable>(_ type: T.Type, id: Int32) -> Observable<T> {
         let result = getObjectById(type, id: id)
         let existingResult = result
             .filter { $0 != nil }
@@ -94,7 +93,6 @@ class CoreDataHelperImpl: CoreDataHelper {
             .flatMap { [unowned self] object -> Observable<T?> in
                 let newObject = self.create(type)
                 newObject.setValue(id, forKey: "id")
-                self.saveContext()
                 return self.getObjectById(type, id: id)
             }
             .map { $0! }
@@ -108,8 +106,8 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - predicate: Predicate to be matched by
     /// - Returns: Core data object
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
-        return getObjects(type, sortDescriptors: nil, predicate: predicate).map { $0.first }
+    func getObjectBy<T: Persistable>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
+        return getObjects(type, predicate: predicate).map { $0.first }
     }
     
     /// Returns a list of objects matching specified class type, sorting order and predicate
@@ -119,19 +117,19 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - sortDescriptors: Sorting rules
     ///   - predicate: Filtering rules
     /// - Returns: List of core data objects
-    func getObjects<T: NSManagedObject>(_ type: T.Type,
-                                        sortDescriptors: [NSSortDescriptor]? = nil,
+    func getObjects<T: Persistable>(_ type: T.Type,
+                                        sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.defaultSortProperty, ascending: true)],
                                         predicate: NSPredicate? = nil) -> Observable<[T]> {
         let fetchRequest = NSFetchRequest<T>(entityName: String(describing: type))
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        return coreDataStack.context.rx.entities(fetchRequest: fetchRequest)
+        return coreDataStack.context.rx.entities(fetchRequest: fetchRequest).distinctUntilChanged()
     }
     
     /// Delete an object from Core Data
     ///
     /// - Parameter object: Object to be deleted
-    func delete<T: NSManagedObject>(_ object: T) {
+    func delete<T: Persistable>(_ object: T) {
         coreDataStack.context.delete(object)
     }
     
@@ -144,7 +142,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     /// Deletes all core data objects of specified model class
     ///
     /// - Parameter entity: Class type of object to be deleted
-    func deleteAllEntities<T: NSManagedObject>(_ entity: T.Type) {
+    func deleteAllEntities<T: Persistable>(_ entity: T.Type) {
         let fetch = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
         let request = NSBatchDeleteRequest(fetchRequest: fetch)
         do {

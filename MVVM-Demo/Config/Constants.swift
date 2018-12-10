@@ -13,7 +13,7 @@ final class Constants {
     static let appleId = "12345"
     
     class Config {
-        static let persistentContainerName = "mvvm_demo"
+        static let persistentContainerName = "MVVM_Demo"
         // Whether to log network requests and responses in the console. Used for debugging.
         static let networkActivityLogging = false
     }

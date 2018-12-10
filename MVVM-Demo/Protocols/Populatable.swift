@@ -8,7 +8,11 @@
 
 import CoreData
 
-protocol Populatable where Self:NSManagedObject {
+protocol Persistable where Self:NSManagedObject {
+    static var defaultSortProperty: String { get }
+}
+
+protocol Populatable: Persistable {
     associatedtype DataType: BaseApiResource
     
     func populate(with data: DataType, coreDataHelper: CoreDataHelper) -> Self

@@ -9,6 +9,11 @@
 import CoreData
 
 extension Article: Identifiable {
+    
+    static var defaultSortProperty: String {
+        return "name"
+    }
+    
     typealias DataType = ArticleResponse
     
     func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
