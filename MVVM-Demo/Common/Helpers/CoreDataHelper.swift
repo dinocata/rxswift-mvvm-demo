@@ -7,32 +7,34 @@
 //
 
 import CoreData
+import RxSwift
 
 /// Provides helper methods for managing Core Data
 protocol CoreDataHelper {
     init(coreDataStack: CoreDataStack)
     
     func saveContext()
-    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> T?
+    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T?>
     func create<T: NSManagedObject>(_ type: T.Type) -> T
-    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> T
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate?) -> T?
+    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T>
+    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate?) -> Observable<T?>
     func getObjects<T: NSManagedObject>(_ type: T.Type,
                                         sortDescriptors: [NSSortDescriptor]?,
-                                        predicate: NSPredicate?) -> [T]
+                                        predicate: NSPredicate?) -> Observable<[T]>
     func delete<T: NSManagedObject>(_ object: T)
     func deleteAllData()
     func deleteAllEntities<T: NSManagedObject>(_ entity: T.Type)
 }
 
+
 // Default implementation
 extension CoreDataHelper {
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate? = nil) -> T? {
+    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
         return getObjectBy(type, predicate: predicate)
     }
     func getObjects<T: NSManagedObject>(_ type: T.Type,
                                         sortDescriptors: [NSSortDescriptor]? = nil,
-                                        predicate: NSPredicate? = nil) -> [T] {
+                                        predicate: NSPredicate? = nil) -> Observable<[T]> {
         return getObjects(type, sortDescriptors: sortDescriptors, predicate: predicate)
     }
 }
@@ -56,21 +58,9 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - id: id of the object
     /// - Returns: Core data object
-    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> T? {
+    func getObjectById<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T?> {
         let predicate = NSPredicate(format: "id = %d", id)
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: String(describing: type))
-        fetchRequest.predicate = predicate
-        
-        do {
-            let results = try coreDataStack.context.fetch(fetchRequest) as? [T]
-            if results!.count > 0 {
-                return results![0]
-            }
-            return nil
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return nil
-        }
+        return getObjects(type, predicate: predicate).map { $0.first }
     }
     
     /// Returns a new NSManagedObject instance of the specified class type contained within the context.
@@ -92,13 +82,24 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - id: id of an existing object (if it does not exist, returns a new object)
     /// - Returns: New (or existing) core data object
-    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> T {
-        var object = getObjectById(type, id: id)
-        if object == nil {
-            object = create(type)
-            object?.setValue(id, forKey: "id")
-        }
-        return object!
+    func getExistingOrNew<T: NSManagedObject>(_ type: T.Type, id: Int32) -> Observable<T> {
+        let result = getObjectById(type, id: id)
+        let existingResult = result
+            .filter { $0 != nil }
+            .map { $0! }
+        
+        let newResult = result
+            .filter { $0 == nil}
+            .mapToVoid()
+            .flatMap { [unowned self] object -> Observable<T?> in
+                let newObject = self.create(type)
+                newObject.setValue(id, forKey: "id")
+                self.saveContext()
+                return self.getObjectById(type, id: id)
+            }
+            .map { $0! }
+        
+        return existingResult.amb(newResult)
     }
     
     /// Returns a single object matching specified predicate.
@@ -107,13 +108,8 @@ class CoreDataHelperImpl: CoreDataHelper {
     ///   - type: Class type of object to be returned
     ///   - predicate: Predicate to be matched by
     /// - Returns: Core data object
-    func getObjectBy<T: NSManagedObject>(_ type: T.Type,
-                                         predicate: NSPredicate? = nil) -> T? {
-        let results = getObjects(type, sortDescriptors: nil, predicate: predicate)
-        if results.count > 0 {
-            return results[0]
-        }
-        return nil
+    func getObjectBy<T: NSManagedObject>(_ type: T.Type, predicate: NSPredicate? = nil) -> Observable<T?> {
+        return getObjects(type, sortDescriptors: nil, predicate: predicate).map { $0.first }
     }
     
     /// Returns a list of objects matching specified class type, sorting order and predicate
@@ -125,21 +121,11 @@ class CoreDataHelperImpl: CoreDataHelper {
     /// - Returns: List of core data objects
     func getObjects<T: NSManagedObject>(_ type: T.Type,
                                         sortDescriptors: [NSSortDescriptor]? = nil,
-                                        predicate: NSPredicate? = nil) -> [T] {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: String(describing: type))
+                                        predicate: NSPredicate? = nil) -> Observable<[T]> {
+        let fetchRequest = NSFetchRequest<T>(entityName: String(describing: type))
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        
-        do {
-            let result = try coreDataStack.context.fetch(fetchRequest)
-            if let objects = result as? [T] {
-                return objects
-            }
-            return [T]()
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-            return [T]()
-        }
+        return coreDataStack.context.rx.entities(fetchRequest: fetchRequest)
     }
     
     /// Delete an object from Core Data

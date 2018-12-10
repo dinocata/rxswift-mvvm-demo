@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import RxSwift
 
 protocol BaseRepository {
     associatedtype ModelType: Identifiable
@@ -17,59 +18,71 @@ protocol BaseRepository {
     ///
     /// - Parameter id: Object ID
     /// - Returns: Core data object
-    func getById(id: Int32) -> ModelType?
+    func getById(id: Int32) -> Observable<ModelType?>
+    
+    /// Returns all objects of this repository's type.
+    ///
+    /// - Returns: List of Core data objects
+    func getAll() -> Observable<[ModelType]>
     
     /// Saves a single instance of core data object populated with the specified data.
     ///
     /// - Parameter apiResponseData: Data to prefill the object with
     /// - Returns: Core data object
-    func saveSingle(_ apiResponseData: ModelType.DataType) -> ModelType
+    func saveSingle(_ apiResponseData: ModelType.DataType) -> Observable<ModelType>
     
     /// Saves an array core data objects populated with the specified data.
     ///
     /// - Parameter apiResponseData: Data to prefill the objects with
     /// - Returns: Array of Core data objects
-    func saveList(_ apiResponseData: [ModelType.DataType]) -> [ModelType]
+    func saveList(_ apiResponseData: [ModelType.DataType]) -> Observable<[ModelType]>
     
     /// Saves the Core data context associated with this repository.
     func saveRepository()
 }
 
 class BaseRepositoryImpl<ModelType: Identifiable>: BaseRepository {
-  
+    
     internal var coreDataHelper: CoreDataHelper
     
     required init(coreDataHelper: CoreDataHelper) {
         self.coreDataHelper = coreDataHelper
     }
     
-    func getById(id: Int32) -> ModelType? {
+    func getById(id: Int32) -> Observable<ModelType?> {
         return coreDataHelper.getObjectById(ModelType.self, id: id)
     }
     
-    func saveSingle(_ apiResponseData: ModelType.DataType) -> ModelType {
-        let coreObject = initFromResponse(apiResponseData)
-        saveRepository()
-        return coreObject
+    func getAll() -> Observable<[ModelType]> {
+        return coreDataHelper.getObjects(ModelType.self)
     }
     
-    func saveList(_ apiResponseData: [ModelType.DataType]) -> [ModelType] {
-        var objectList = [ModelType]()
+    func saveSingle(_ apiResponseData: ModelType.DataType) -> Observable<ModelType> {
+        return initFromResponse(apiResponseData)
+            .do(onNext: { [unowned self] _ in
+                self.saveRepository()
+            })
+    }
+    
+    func saveList(_ apiResponseData: [ModelType.DataType]) -> Observable<[ModelType]> {
+        var objectList = [Observable<ModelType>]()
         objectList.reserveCapacity(apiResponseData.count)
         for data in apiResponseData {
             objectList.append(initFromResponse(data))
         }
-        saveRepository()
-        return objectList
+        return Observable.zip(objectList)
+            .do(onNext: { [unowned self] _ in
+                self.saveRepository()
+            })
     }
     
     func saveRepository() {
         coreDataHelper.saveContext()
     }
     
-    private func initFromResponse(_ apiResponseData: ModelType.DataType)  -> ModelType {
-        let coreObject = coreDataHelper.getExistingOrNew(ModelType.self, id: apiResponseData.id)
-        return coreObject.populate(with: apiResponseData, coreDataHelper: coreDataHelper)
+    private func initFromResponse(_ apiResponseData: ModelType.DataType) -> Observable<ModelType> {
+        return coreDataHelper.getExistingOrNew(ModelType.self, id: apiResponseData.id)
+            .map { [unowned self] in $0.populate(with: apiResponseData, coreDataHelper: self.coreDataHelper) }
     }
     
 }
