@@ -6,8 +6,9 @@ target 'MVVM-Demo' do
   use_frameworks!
 
   # Pods for MVVM-Demo
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift',    '~> 4.3.1'
+  pod 'RxCocoa',    '~> 4.3.1'
+  pod 'RxCoreData', '~> 0.5.1'
   pod 'Moya/RxSwift', '~> 12.0'
   pod 'KeychainAccess'
   pod 'Swinject'

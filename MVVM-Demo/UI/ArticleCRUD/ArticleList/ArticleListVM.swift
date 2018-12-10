@@ -9,6 +9,12 @@
 import Foundation
 
 class ArticleListVM: ViewModelType {
+    
+    private let articleRepository: ArticleRepository
+    
+    init(articleRepository: ArticleRepository) {
+        self.articleRepository = articleRepository
+    }
    
     struct Input {
         

@@ -65,7 +65,9 @@ final class AppContainer: ContainerProtocol {
     
     /// Repository dependency injections
     private static func registerRepositories() {
-        // TODO
+        instance.register(ArticleRepository.self) { r in
+            ArticleRepository(coreDataHelper: r.resolve(CoreDataHelper.self)!)
+        }
     }
     
     /// Service dependency injections

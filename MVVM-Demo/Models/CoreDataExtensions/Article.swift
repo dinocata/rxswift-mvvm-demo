@@ -8,10 +8,9 @@
 
 import CoreData
 
-extension Article: Populatable {
+extension Article: Identifiable {
     typealias DataType = ArticleResponse
     
-
     func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
         id = data.id
         name = data.name
@@ -19,4 +18,5 @@ extension Article: Populatable {
         articleDescription = data.description
         return self
     }
+    
 }

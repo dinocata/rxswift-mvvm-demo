@@ -9,7 +9,11 @@
 import CoreData
 
 protocol Populatable where Self:NSManagedObject {
-    associatedtype DataType: Decodable
+    associatedtype DataType: BaseApiResource
     
     func populate(with data: DataType, coreDataHelper: CoreDataHelper) -> Self
+}
+
+protocol Identifiable: Populatable {
+    var id: Int32 { get set }
 }
