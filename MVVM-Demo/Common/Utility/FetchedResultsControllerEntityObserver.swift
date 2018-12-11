@@ -51,6 +51,7 @@ final class FetchedResultsControllerEntityObserver<T: NSFetchRequestResult> : NS
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         sendNextElement()
     }
+    
 }
 
 extension FetchedResultsControllerEntityObserver : Disposable {

@@ -30,8 +30,9 @@ class BaseTextField: UITextField {
                     self.resetState()
                     
                 case .failure:
-                    self.becomeFirstResponder()
+                    self.becomeFirstResponder() // Focuses the text field if the validation fails
                     self.setInvalidState()
+                    // Do any extra behaviour here, for instance showing an error label on the text field.
                 }
             })
             .disposed(by: disposeBag)
@@ -41,6 +42,7 @@ class BaseTextField: UITextField {
         self.layer.borderWidth = 0
     }
     
+    /// Adds a red border around the text field to indicate it is not valid.
     func setInvalidState() {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 5

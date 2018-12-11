@@ -18,23 +18,27 @@ class ArticleListVM: ViewModelType {
     }
     
     struct TableItem {
-        let name: String
-        let description: String
+        let id: Int32
+        let name: String?
+        let description: String?
         let price: String?
         
         init(article: Article) {
-            self.name = article.name!
-            self.description = article.description
+            self.id = article.identifier
+            self.name = article.name
+            self.description = article.articleDescription
             self.price = article.price?.stringValue
         }
     }
     
     struct Input {
         let load = PublishSubject<Void>()
+        let generateEvent: Driver<Void>
     }
     
     struct Output {
         let data: Driver<[TableItem]>
+        let generateResult: Driver<Void>
     }
     
     func transform(input: ArticleListVM.Input) -> ArticleListVM.Output {
@@ -44,7 +48,22 @@ class ArticleListVM: ViewModelType {
             .map { $0.map { TableItem(article: $0) } }
             .asDriver(onErrorJustReturn: [])
         
-        return Output(data: loadEventDriver)
+        let generateResult = input.generateEvent
+            .asObservable()
+            .flatMap { [unowned self] in self.generateRandomArticle() }
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        
+        return Output(data: loadEventDriver, generateResult: generateResult)
+    }
+    
+    private func generateRandomArticle() -> Observable<Article> {
+        let articleData = ArticleResponse()
+        articleData.id = Int32.random(in: 0..<1000)
+        articleData.name = String.randomString(length: 5)
+        articleData.description = String.randomString(length: 10)
+        articleData.price = Int32.random(in: 0..<100)
+        return articleRepository.saveSingle(articleData)
     }
     
 }

@@ -12,9 +12,12 @@ import RxCocoa
 class DashboardVM: ViewModelType {
     
     private let userDefaults: UserDefaultsHelper
+    private let coreDataHelper: CoreDataHelper
     
-    init(userDefaults: UserDefaultsHelper) {
+    init(userDefaults: UserDefaultsHelper,
+         coreDataHelper: CoreDataHelper) {
         self.userDefaults = userDefaults
+        self.coreDataHelper = coreDataHelper
     }
     
     struct Input {
@@ -29,7 +32,10 @@ class DashboardVM: ViewModelType {
     
     func transform(input: DashboardVM.Input) -> DashboardVM.Output {
         let logoutEventDriver = input.logout
-            .map { [unowned self] in self.userDefaults.clearUserData() }
+            .do(onNext: { [unowned self] in
+                self.userDefaults.clearUserData()
+                self.coreDataHelper.deleteAllData()
+            })
         
         return Output(articles: input.articles.asDriver(onErrorJustReturn: ()),
                       logout: logoutEventDriver.asDriver(onErrorJustReturn: ()))

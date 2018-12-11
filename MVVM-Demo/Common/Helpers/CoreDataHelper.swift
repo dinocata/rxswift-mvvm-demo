@@ -80,7 +80,7 @@ extension CoreDataHelper {
         return getObjectBy(type, predicate: predicate)
     }
     func getObjects<T: Persistable>(_ type: T.Type,
-                                        sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.defaultSortProperty, ascending: true)],
+                                        sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.identifierName, ascending: true)],
                                         predicate: NSPredicate? = nil) -> Observable<[T]> {
         return getObjects(type, sortDescriptors: sortDescriptors, predicate: predicate)
     }

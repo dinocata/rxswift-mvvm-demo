@@ -12,7 +12,7 @@ import KeychainAccess
 final class KeychainAccessHelperImpl: KeychainAccessHelper {
     
     var keychain: Keychain {
-        return Keychain(service: Constants.KeychainAccessServices.githubToken)
+        return Keychain(service: Constants.KeychainAccessServices.apiToken)
     }
     
     func getUserToken() -> String? {

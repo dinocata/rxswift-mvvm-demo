@@ -14,6 +14,8 @@
 		8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A021BFA26500871478 /* CoreDataHelperImpl.swift */; };
 		8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */; };
 		8D0A12A521BFA83A00871478 /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */; };
+		8D0A12A921BFD16A00871478 /* ArticleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A721BFD16A00871478 /* ArticleListCell.swift */; };
+		8D0A12AA21BFD16A00871478 /* ArticleListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A12A821BFD16A00871478 /* ArticleListCell.xib */; };
 		8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D409EDE21B80BE700F32497 /* BaseTextField.swift */; };
 		8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */; };
 		8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */; };
@@ -98,6 +100,8 @@
 		8D0A12A021BFA26500871478 /* CoreDataHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
+		8D0A12A721BFD16A00871478 /* ArticleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListCell.swift; sourceTree = "<group>"; };
+		8D0A12A821BFD16A00871478 /* ArticleListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListCell.xib; sourceTree = "<group>"; };
 		8D409EDE21B80BE700F32497 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldVM.swift; sourceTree = "<group>"; };
 		8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
@@ -209,6 +213,15 @@
 				8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */,
 			);
 			path = Impl;
+			sourceTree = "<group>";
+		};
+		8D0A12A621BFD15300871478 /* ArticleListCell */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A12A721BFD16A00871478 /* ArticleListCell.swift */,
+				8D0A12A821BFD16A00871478 /* ArticleListCell.xib */,
+			);
+			path = ArticleListCell;
 			sourceTree = "<group>";
 		};
 		8D409EDD21B80BBF00F32497 /* Views */ = {
@@ -394,6 +407,7 @@
 		8D690A3521BA69FB001E4BB2 /* ArticleList */ = {
 			isa = PBXGroup;
 			children = (
+				8D0A12A621BFD15300871478 /* ArticleListCell */,
 				8D690A3621BA6A10001E4BB2 /* ArticleListVC.swift */,
 				8D690A3721BA6A10001E4BB2 /* ArticleListVC.xib */,
 				8D690A3A21BA6A18001E4BB2 /* ArticleListVM.swift */,
@@ -600,6 +614,7 @@
 				8D9D63F821B5231300979814 /* Localizable.strings in Resources */,
 				8DBA296321B931E7009311A9 /* DashboardVC.xib in Resources */,
 				8D617CB921B46988009D2113 /* LoginVC.xib in Resources */,
+				8D0A12AA21BFD16A00871478 /* ArticleListCell.xib in Resources */,
 				8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */,
 				8D617C6821B40902009D2113 /* LaunchScreen.storyboard in Resources */,
 				8D617C6521B40902009D2113 /* Assets.xcassets in Resources */,
@@ -787,6 +802,7 @@
 				8D617C9821B44568009D2113 /* SceneTransition.swift in Sources */,
 				8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */,
 				8DF5AAE421BE54BC00782119 /* ArticleRepository.swift in Sources */,
+				8D0A12A921BFD16A00871478 /* ArticleListCell.swift in Sources */,
 				8D617C8F21B433D8009D2113 /* ViewModelType.swift in Sources */,
 				8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */,
 				8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */,

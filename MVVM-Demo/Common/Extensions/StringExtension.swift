@@ -32,6 +32,11 @@ extension String {
         return self.lowercased().range(of: substring) != nil
     }
     
+    static func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0...length-1).map{ _ in letters.randomElement()! })
+    }
+    
     var utf8Encoded: Data {
         return data(using: .utf8)!
     }

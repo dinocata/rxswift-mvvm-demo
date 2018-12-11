@@ -24,6 +24,7 @@ extension UITableViewCell: Reusable {}
 extension UIViewController: Reusable {}
 
 extension UITableView {
+    
     func dequeueReusableCell<T>(ofType cellType: T.Type = T.self, at indexPath: IndexPath) -> T where T: UITableViewCell {
         guard let cell = dequeueReusableCell(withIdentifier: cellType.reuseID,
                                              for: indexPath) as? T else {
@@ -31,5 +32,11 @@ extension UITableView {
         }
         return cell
     }
+    
+    func registerCellNib(reuseIdentifier: String) {
+        self.register(UINib(nibName: reuseIdentifier, bundle: nil),
+                      forCellReuseIdentifier: reuseIdentifier)
+    }
+    
 }
 

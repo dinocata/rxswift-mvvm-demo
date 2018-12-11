@@ -8,19 +8,14 @@
 
 import CoreData
 
-extension Article: Identifiable {
-    
-    static var defaultSortProperty: String {
-        return "id"
-    }
+extension Article: Populatable {
     
     typealias DataType = ArticleResponse
     
     func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
-        id = data.id
         name = data.name
-        price = data.price as NSNumber?
-        articleDescription = data.description
+  //      price = data.price as NSNumber?
+    //    articleDescription = data.description
         return self
     }
     

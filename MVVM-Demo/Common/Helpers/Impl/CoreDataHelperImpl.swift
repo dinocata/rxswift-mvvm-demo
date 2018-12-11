@@ -22,7 +22,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     }
     
     func getObjectById<T: Persistable>(_ type: T.Type, id: Int32) -> Observable<T?> {
-        let predicate = NSPredicate(format: "id = %d", id)
+        let predicate = NSPredicate(format: "\(T.identifierName) = %d", id)
         return getObjects(type, predicate: predicate).map { $0.first }
     }
     
@@ -42,8 +42,8 @@ class CoreDataHelperImpl: CoreDataHelper {
             .filter { $0 == nil}
             .mapToVoid()
             .flatMap { [unowned self] object -> Observable<T?> in
-                let newObject = self.create(type)
-                newObject.setValue(id, forKey: "id")
+                var newObject = self.create(type)
+                newObject.identifier = id
                 return self.getObjectById(type, id: id)
             }
             .map { $0! }
@@ -56,12 +56,12 @@ class CoreDataHelperImpl: CoreDataHelper {
     }
     
     func getObjects<T: Persistable>(_ type: T.Type,
-                                    sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.defaultSortProperty, ascending: true)],
+                                    sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: T.identifierName, ascending: true)],
                                     predicate: NSPredicate? = nil) -> Observable<[T]> {
         let fetchRequest = NSFetchRequest<T>(entityName: String(describing: type))
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        return coreDataStack.context.rx.entities(fetchRequest: fetchRequest).distinctUntilChanged()
+        return coreDataStack.context.rx.entities(fetchRequest: fetchRequest)
     }
     
     func delete<T: Persistable>(_ object: T) {
@@ -69,8 +69,7 @@ class CoreDataHelperImpl: CoreDataHelper {
     }
     
     func deleteAllData() {
-        // Call deleteAllEntities on all your entities here
-        // E.g. deleteAllEntities(Article.self)
+        deleteAllEntities(Article.self)
     }
     
     func deleteAllEntities<T: Persistable>(_ entity: T.Type) {

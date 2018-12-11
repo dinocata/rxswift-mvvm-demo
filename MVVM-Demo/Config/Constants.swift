@@ -43,7 +43,7 @@ final class Constants {
     }
     
     class KeychainAccessServices {
-        static let githubToken = "com.example.github-token"
+        static let apiToken = "com.example.github-token"
     }
     
     class KeychainAccessKeys {

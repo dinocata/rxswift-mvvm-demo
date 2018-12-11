@@ -13,7 +13,7 @@ import RxSwift
 /// Resource models are models that conform to the Identifiable protocol.
 /// Able to save API responses directly to Core Data as well as retrieving them.
 protocol BaseRepository {
-    associatedtype ModelType: Identifiable
+    associatedtype ModelType: Populatable
     
     init(coreDataHelper: CoreDataHelper)
     
@@ -44,7 +44,7 @@ protocol BaseRepository {
     func saveRepository()
 }
 
-class BaseRepositoryImpl<ModelType: Identifiable>: BaseRepository {
+class BaseRepositoryImpl<ModelType: Populatable>: BaseRepository {
     
     internal var coreDataHelper: CoreDataHelper
     
@@ -62,9 +62,6 @@ class BaseRepositoryImpl<ModelType: Identifiable>: BaseRepository {
     
     func saveSingle(_ apiResponseData: ModelType.DataType) -> Observable<ModelType> {
         return initFromResponse(apiResponseData)
-            .do(onNext: { [unowned self] _ in
-                self.saveRepository()
-            })
     }
     
     func saveList(_ apiResponseData: [ModelType.DataType]) -> Observable<[ModelType]> {
@@ -74,9 +71,6 @@ class BaseRepositoryImpl<ModelType: Identifiable>: BaseRepository {
             objectList.append(initFromResponse(data))
         }
         return Observable.zip(objectList)
-            .do(onCompleted: { [unowned self] in
-                self.saveRepository()
-            })
     }
     
     func saveRepository() {

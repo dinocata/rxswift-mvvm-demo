@@ -8,35 +8,54 @@
 
 import UIKit
 
-class ArticleListVC: BaseVC<ArticleListVM>, BindableType {
+class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     
     // Outlets
     @IBOutlet weak var loadBtn: UIButton!
+    @IBOutlet weak var tvArticleList: UITableView!
+    
+    // Vars
+    private var inputs: ArticleListVM.Input!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Articles"
+        setupViews()
         bindViewModel()
     }
     
+    func setupViews() {
+        tvArticleList.registerCellNib(reuseIdentifier: ArticleListCell.reuseID)
+        tvArticleList.rx.setDelegate(self).disposed(by: disposeBag)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        inputs.load.onNext(())
+    }
+    
     func generateInputs() -> ArticleListVM.Input {
-        let inputs = ArticleListVM.Input()
-        
-        loadBtn.rx.tap
-            .bind(to: inputs.load)
-            .disposed(by: disposeBag)
-        
+        inputs = ArticleListVM.Input(generateEvent: loadBtn.rx.tap.asDriver())
         return inputs
     }
     
     func onGenerateOutputs(outputs: ArticleListVM.Output) {
         outputs.data
-            .drive(onNext: { items in
-                for item in items {
-                    print("Name:" + item.name)
-                }
-            })
+            .drive(tvArticleList.rx.items(cellIdentifier: ArticleListCell.reuseID,
+                                          cellType: ArticleListCell.self))
+            { tv, item, cell in
+                cell.configure(item: item)
+            }
+            .disposed(by: disposeBag)
+        
+        outputs.generateResult
+            .drive()
             .disposed(by: disposeBag)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
 }
+

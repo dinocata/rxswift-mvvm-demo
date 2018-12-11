@@ -10,9 +10,22 @@ import CoreData
 
 protocol Persistable where Self:NSManagedObject {
     
-    /// Specify the name of object field against which to perform default sort when fetching it.
-    /// Needed for using Rx Core Data.
-    static var defaultSortProperty: String { get }
+    /// Specify the name of object primary key field to use when fetching a single object.
+    /// This field is also used as a default sorting property.
+    /// Make sure this field exists in the Core Data managed object.
+    static var identifierName: String { get }
+    
+    /// Primary key.
+    /// Feel free to modify this into a different type (for instance a String), depending on your needs.
+    var identifier: Int32 { get set }
+}
+
+extension Persistable where Self:NSManagedObject {
+    
+    static var identifierName: String {
+        return "identifier"
+    }
+    
 }
 
 protocol Populatable: Persistable {
@@ -29,8 +42,3 @@ protocol Populatable: Persistable {
     func populate(with data: DataType, coreDataHelper: CoreDataHelper) -> Self
 }
 
-protocol Identifiable: Populatable {
-    
-    /// Feel free to modify this into a different type (for instance a String), depending on your needs.
-    var id: Int32 { get set }
-}

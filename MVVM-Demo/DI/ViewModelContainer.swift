@@ -23,7 +23,8 @@ class ViewModelContainer: ChildContainerProtocol {
         }
         
         instance.register(DashboardVM.self) { r in
-            DashboardVM(userDefaults: r.resolve(UserDefaultsHelper.self)!)
+            DashboardVM(userDefaults: r.resolve(UserDefaultsHelper.self)!,
+                        coreDataHelper: r.resolve(CoreDataHelper.self)!)
         }
         
         instance.register(SynchronizationVM.self) { r in
