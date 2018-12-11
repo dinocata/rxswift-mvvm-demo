@@ -12,27 +12,15 @@ import KeychainAccess
 protocol KeychainAccessHelper {
     var keychain: Keychain { get }
     
+    /// Returns Auth token assigned to the User stored in the keychain.
+    ///
+    /// - Returns: Auth token
     func getUserToken() -> String?
     func setUserToken(_ token: String)
+    
+    /// Removes Auth token from the keychain. Called on logout.
+    ///
+    /// - Throws: If token does not exist in the keychain
     func resetUserToken() throws
 }
 
-final class KeychainAccessHelperImpl: KeychainAccessHelper {
-    
-    var keychain: Keychain {
-        return Keychain(service: Constants.KeychainAccessServices.githubToken)
-    }
-    
-    func getUserToken() -> String? {
-        return keychain[Constants.KeychainAccessKeys.userToken]
-    }
-    
-    func setUserToken(_ token: String) {
-        keychain[string: Constants.KeychainAccessKeys.userToken] = token
-    }
-    
-    func resetUserToken() throws {
-        try keychain.remove(Constants.KeychainAccessKeys.userToken)
-    }
-    
-}

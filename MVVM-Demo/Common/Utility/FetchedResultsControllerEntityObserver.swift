@@ -10,6 +10,7 @@
 import CoreData
 import RxSwift
 
+/// Wraps Core Data context change delegate in a Rx Observable
 final class FetchedResultsControllerEntityObserver<T: NSFetchRequestResult> : NSObject, NSFetchedResultsControllerDelegate {
     
     typealias Observer = AnyObserver<[T]>

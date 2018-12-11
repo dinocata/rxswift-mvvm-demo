@@ -32,7 +32,17 @@ struct NetworkError: Error {
     
 }
 
+/// Wrapper for Moya requests, which wraps the responses in a NetworkResult observable.
+/// Feel free to extend this to your custom behaviour (for instance, preventing requests if App is incompatible, handling special status codes etc.)
+/// TODO: missing method for performing a progress-type request.
 protocol NetworkProtocol {
+    
+    /// Performs API request.
+    ///
+    /// - Parameters:
+    ///   - target: Target API endpoint
+    ///   - responseType: Type of data to parse the response to
+    /// - Returns: Response result wrapped in a observable
     func request<T: Decodable>(_ target: ApiService, responseType: T.Type) -> Single<NetworkResult<T>>
 }
 

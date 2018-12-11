@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2F5863BD91794531BA62F40D /* Pods_MVVM_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */; };
+		8D0A129B21BF9FCD00871478 /* UserDefaultsHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */; };
+		8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */; };
+		8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */; };
+		8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A021BFA26500871478 /* CoreDataHelperImpl.swift */; };
+		8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */; };
+		8D0A12A521BFA83A00871478 /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */; };
 		8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D409EDE21B80BE700F32497 /* BaseTextField.swift */; };
 		8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */; };
 		8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */; };
@@ -55,7 +61,6 @@
 		8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63F021B5141D00979814 /* SynchronizationVC.xib */; };
 		8D9D63F521B51D1500979814 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63F421B51D1500979814 /* ApiService.swift */; };
 		8D9D63F821B5231300979814 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63FA21B5231300979814 /* Localizable.strings */; };
-		8D9D63FC21B524BD00979814 /* ApiServiceTargets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63FB21B524BD00979814 /* ApiServiceTargets.swift */; };
 		8D9D63FE21B5259900979814 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63FD21B5259900979814 /* Network.swift */; };
 		8D9D640121B525FA00979814 /* ResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640021B525FA00979814 /* ResponseStatus.swift */; };
 		8D9D640321B53F5500979814 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D640221B53F5500979814 /* Result.swift */; };
@@ -87,6 +92,12 @@
 		10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelperImpl.swift; sourceTree = "<group>"; };
+		8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessHelperImpl.swift; sourceTree = "<group>"; };
+		8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackImpl.swift; sourceTree = "<group>"; };
+		8D0A12A021BFA26500871478 /* CoreDataHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelperImpl.swift; sourceTree = "<group>"; };
+		8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelperImpl.swift; sourceTree = "<group>"; };
+		8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
 		8D409EDE21B80BE700F32497 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldVM.swift; sourceTree = "<group>"; };
 		8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
@@ -138,7 +149,6 @@
 		8D9D63F021B5141D00979814 /* SynchronizationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynchronizationVC.xib; sourceTree = "<group>"; };
 		8D9D63F421B51D1500979814 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		8D9D63F921B5231300979814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		8D9D63FB21B524BD00979814 /* ApiServiceTargets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTargets.swift; sourceTree = "<group>"; };
 		8D9D63FD21B5259900979814 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8D9D640021B525FA00979814 /* ResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStatus.swift; sourceTree = "<group>"; };
 		8D9D640221B53F5500979814 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -187,6 +197,18 @@
 				902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D0A129921BF9FB900871478 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */,
+				8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */,
+				8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */,
+				8D0A12A021BFA26500871478 /* CoreDataHelperImpl.swift */,
+				8D0A12A221BFA30800871478 /* ValidationHelperImpl.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		8D409EDD21B80BBF00F32497 /* Views */ = {
@@ -254,8 +276,8 @@
 			children = (
 				8D617C7E21B41262009D2113 /* Scene.swift */,
 				8D617C9721B44568009D2113 /* SceneTransition.swift */,
-				8D617C9921B447A6009D2113 /* SceneCoordinator.swift */,
 				8D617C9B21B447EC009D2113 /* SceneControllers.swift */,
+				8D617C9921B447A6009D2113 /* SceneCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -309,6 +331,7 @@
 		8D617CA121B45531009D2113 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8D0A129921BF9FB900871478 /* Impl */,
 				8D617CA221B4553A009D2113 /* UserDefaultsHelper.swift */,
 				8D617CA521B45637009D2113 /* KeychainAccessHelper.swift */,
 				8D9D640421B5458A00979814 /* CoreDataStack.swift */,
@@ -399,10 +422,10 @@
 		8D9D63F321B51CF200979814 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				8D9D640821B549C900979814 /* ApiServices */,
+				8D9D640821B549C900979814 /* Impl */,
 				8D9D63F421B51D1500979814 /* ApiService.swift */,
-				8D9D63FB21B524BD00979814 /* ApiServiceTargets.swift */,
 				8D9D63FD21B5259900979814 /* Network.swift */,
+				8D9D640921B54A6900979814 /* UserService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -416,12 +439,12 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		8D9D640821B549C900979814 /* ApiServices */ = {
+		8D9D640821B549C900979814 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
-				8D9D640921B54A6900979814 /* UserService.swift */,
+				8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */,
 			);
-			path = ApiServices;
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		8D9D640B21B54A8500979814 /* Models */ = {
@@ -722,13 +745,13 @@
 				8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */,
 				8D9D640121B525FA00979814 /* ResponseStatus.swift in Sources */,
 				8D617C6321B40901009D2113 /* MVVM_Demo.xcdatamodeld in Sources */,
+				8D0A12A521BFA83A00871478 /* UserServiceImpl.swift in Sources */,
 				8D9D640321B53F5500979814 /* Result.swift in Sources */,
 				8D617C9F21B448A4009D2113 /* ViewControllerExtension.swift in Sources */,
 				8D617CA621B45637009D2113 /* KeychainAccessHelper.swift in Sources */,
 				8D9D640521B5458A00979814 /* CoreDataStack.swift in Sources */,
 				8D617C8621B418D7009D2113 /* ContainerProtocol.swift in Sources */,
 				8DBA296521B934CA009311A9 /* DashboardVM.swift in Sources */,
-				8D9D63FC21B524BD00979814 /* ApiServiceTargets.swift in Sources */,
 				8D617CB321B464F2009D2113 /* StringExtension.swift in Sources */,
 				8D617C9A21B447A6009D2113 /* SceneCoordinator.swift in Sources */,
 				8D690A4121BA7754001E4BB2 /* Populatable.swift in Sources */,
@@ -737,6 +760,8 @@
 				8D690A3B21BA6A18001E4BB2 /* ArticleListVM.swift in Sources */,
 				8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */,
 				8D4A960221B687F200A6CA15 /* ValidationHelper.swift in Sources */,
+				8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */,
+				8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */,
 				8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */,
 				8D9D641221B54E3A00979814 /* BaseService.swift in Sources */,
 				8D690A4321BA77C7001E4BB2 /* ArticleRequest.swift in Sources */,
@@ -758,9 +783,12 @@
 				8D690A4621BA7B1F001E4BB2 /* BaseRepository.swift in Sources */,
 				8D617C7F21B41262009D2113 /* Scene.swift in Sources */,
 				8DF5AAE621BE7E0600782119 /* FetchedResultsControllerEntityObserver.swift in Sources */,
+				8D0A129B21BF9FCD00871478 /* UserDefaultsHelperImpl.swift in Sources */,
 				8D617C9821B44568009D2113 /* SceneTransition.swift in Sources */,
+				8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */,
 				8DF5AAE421BE54BC00782119 /* ArticleRepository.swift in Sources */,
 				8D617C8F21B433D8009D2113 /* ViewModelType.swift in Sources */,
+				8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */,
 				8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */,
 				8DF5AAE921BE80C400782119 /* RxManagedObjectContext.swift in Sources */,
 				8D9D63FE21B5259900979814 /* Network.swift in Sources */,

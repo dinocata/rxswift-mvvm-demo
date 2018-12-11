@@ -9,6 +9,9 @@
 import CoreData
 import RxSwift
 
+/// Helper class for managing resource models between API and Core Data.
+/// Resource models are models that conform to the Identifiable protocol.
+/// Able to save API responses directly to Core Data as well as retrieving them.
 protocol BaseRepository {
     associatedtype ModelType: Identifiable
     

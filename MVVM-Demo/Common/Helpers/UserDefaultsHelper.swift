@@ -9,43 +9,24 @@
 import Foundation
 
 protocol UserDefaultsHelper {
+    
+    /// Checks whether the User is currently logged in (in the App).
+    ///
+    /// - Returns: True if user is logged in
     func isUserLoggedIn() -> Bool
+    
+    /// Checks if initial data is synced (done after login, during synchronization).
+    ///
+    /// - Returns: True if initial data is synced
     func isUserDataSynced() -> Bool
+    
+    /// Returns timestamp of last time data was synced in seconds.
+    ///
+    /// - Returns: Sync timestamp
     func getSyncTime() -> Int
     func setSyncTime(timestamp: Int)
+    
+    /// Clears all user defaults data related to User. Called on logout.
     func clearUserData()
 }
 
-final class UserDefaultsHelperImpl: UserDefaultsHelper {
- 
-    private let keychainAccess: KeychainAccessHelper
-    
-    init(keychainAccess: KeychainAccessHelper) {
-        self.keychainAccess = keychainAccess
-    }
-    
-    func isUserLoggedIn() -> Bool {
-        return keychainAccess.getUserToken() != nil
-    }
-    
-    func isUserDataSynced() -> Bool {
-        return getSyncTime() > 0
-    }
-    
-    func getSyncTime() -> Int {
-        return UserDefaults.standard.integer(forKey: Constants.UserDefaultsKeys.syncTime)
-    }
-    
-    func setSyncTime(timestamp: Int) {
-        UserDefaults.standard.set(timestamp, forKey: Constants.UserDefaultsKeys.syncTime)
-    }
-    
-    func clearUserData() {
-        do {
-            try keychainAccess.resetUserToken()
-        } catch {
-            print("Could not reset user token")
-        }
-        setSyncTime(timestamp: 0)
-    }
-}

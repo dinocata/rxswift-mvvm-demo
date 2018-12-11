@@ -8,7 +8,7 @@
 
 import Foundation
 
-// Standard status codes (add any that are missing and are used in app)
+/// Standard status codes (add any that are missing and are used in app)
 enum ResponseStatus: Int {
     case success = 200
     case badRequest = 400
@@ -25,7 +25,6 @@ enum ResponseStatus: Int {
     case serviceUnavailable = 503
     case unrecognized = -1
     case parseError = -2
-    //case loading = -3 // Use to indicate when the request is still processing
     
     var errorDescription: String {
         switch self {

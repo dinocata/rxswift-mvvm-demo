@@ -8,7 +8,8 @@
 
 import Foundation
 
-class Validator {
+/// Utility class for handling validations
+final class Validator {
     
     enum Result {
         case ok

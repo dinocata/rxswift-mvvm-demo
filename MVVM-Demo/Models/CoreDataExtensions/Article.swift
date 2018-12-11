@@ -11,7 +11,7 @@ import CoreData
 extension Article: Identifiable {
     
     static var defaultSortProperty: String {
-        return "name"
+        return "id"
     }
     
     typealias DataType = ArticleResponse

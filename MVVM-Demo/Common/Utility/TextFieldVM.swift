@@ -9,6 +9,7 @@
 import RxSwift
 import RxCocoa
 
+/// Wraps a text field UI control in a bindable View Model (used for validating text fields).
 class TextFieldVM {
     let value = BehaviorRelay(value: "")
     var label: String = ""
