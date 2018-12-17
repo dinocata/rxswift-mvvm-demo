@@ -9,7 +9,8 @@
 import Foundation
 
 class ArticleResponse: BaseApiResource {
+    var id: Int32 = 0
     var name: String = ""
     var price: Int32?
-    var description: String?
+    var articleDescription: String?
 }

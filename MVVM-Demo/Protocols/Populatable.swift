@@ -17,13 +17,13 @@ protocol Persistable where Self:NSManagedObject {
     
     /// Primary key.
     /// Feel free to modify this into a different type (for instance a String), depending on your needs.
-    var identifier: Int32 { get set }
+    var id: Int32 { get set }
 }
 
 extension Persistable where Self:NSManagedObject {
     
     static var identifierName: String {
-        return "identifier"
+        return "id"
     }
     
 }

@@ -24,7 +24,7 @@ class ArticleListVM: ViewModelType {
         let price: String?
         
         init(article: Article) {
-            self.id = article.identifier
+            self.id = article.id
             self.name = article.name
             self.description = article.articleDescription
             self.price = article.price?.stringValue
@@ -34,11 +34,13 @@ class ArticleListVM: ViewModelType {
     struct Input {
         let load = PublishSubject<Void>()
         let generateEvent: Driver<Void>
+        let saveEvent: Driver<Void>
     }
     
     struct Output {
         let data: Driver<[TableItem]>
         let generateResult: Driver<Void>
+        let saveResult: Driver<Void>
     }
     
     func transform(input: ArticleListVM.Input) -> ArticleListVM.Output {
@@ -50,18 +52,24 @@ class ArticleListVM: ViewModelType {
         
         let generateResult = input.generateEvent
             .asObservable()
-            .flatMap { [unowned self] in self.generateRandomArticle() }
+            .flatMapLatest { [unowned self] in self.generateRandomArticle() }
             .mapToVoid()
             .asDriverOnErrorJustComplete()
         
-        return Output(data: loadEventDriver, generateResult: generateResult)
+        let saveResult = input.saveEvent
+            .asObservable()
+            .do(onNext: { [unowned self] in self.articleRepository.saveRepository() })
+            .mapToVoid()
+            .asDriverOnErrorJustComplete()
+        
+        return Output(data: loadEventDriver, generateResult: generateResult, saveResult: saveResult)
     }
     
     private func generateRandomArticle() -> Observable<Article> {
         let articleData = ArticleResponse()
-        articleData.id = Int32.random(in: 0..<1000)
+        articleData.id = 338 //Int32.random(in: 0..<1000)
         articleData.name = String.randomString(length: 5)
-        articleData.description = String.randomString(length: 10)
+        articleData.articleDescription = String.randomString(length: 10)
         articleData.price = Int32.random(in: 0..<100)
         return articleRepository.saveSingle(articleData)
     }

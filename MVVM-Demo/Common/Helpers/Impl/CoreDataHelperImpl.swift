@@ -41,12 +41,7 @@ class CoreDataHelperImpl: CoreDataHelper {
         let newResult = result
             .filter { $0 == nil}
             .mapToVoid()
-            .flatMap { [unowned self] object -> Observable<T?> in
-                var newObject = self.create(type)
-                newObject.identifier = id
-                return self.getObjectById(type, id: id)
-            }
-            .map { $0! }
+            .flatMap { [unowned self] in Observable.just(self.create(type))}
         
         return existingResult.amb(newResult)
     }

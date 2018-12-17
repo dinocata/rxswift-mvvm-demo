@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F5863BD91794531BA62F40D /* Pods_MVVM_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */; };
+		8D01A71821C79C60002C87E2 /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A71721C79C60002C87E2 /* CodableExtension.swift */; };
+		8D01A71A21C79CDB002C87E2 /* ManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A71921C79CDB002C87E2 /* ManagedObjectExtension.swift */; };
 		8D0A129B21BF9FCD00871478 /* UserDefaultsHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */; };
 		8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */; };
 		8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */; };
@@ -94,6 +96,8 @@
 		10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		8D01A71721C79C60002C87E2 /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
+		8D01A71921C79CDB002C87E2 /* ManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectExtension.swift; sourceTree = "<group>"; };
 		8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackImpl.swift; sourceTree = "<group>"; };
@@ -321,10 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				8DF5AAE721BE80AF00782119 /* Rx */,
+				8D01A71721C79C60002C87E2 /* CodableExtension.swift */,
 				8D617C9E21B448A4009D2113 /* ViewControllerExtension.swift */,
 				8D617CB221B464F2009D2113 /* StringExtension.swift */,
 				8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */,
 				8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */,
+				8D01A71921C79CDB002C87E2 /* ManagedObjectExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 			files = (
 				8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */,
 				8DBA296221B931E7009311A9 /* DashboardVC.swift in Sources */,
+				8D01A71A21C79CDB002C87E2 /* ManagedObjectExtension.swift in Sources */,
 				8D617C8821B41B31009D2113 /* ViewModelContainer.swift in Sources */,
 				8D9D641021B54ADC00979814 /* LoginRequest.swift in Sources */,
 				8D617CAB21B456AF009D2113 /* Colors.swift in Sources */,
@@ -768,6 +775,7 @@
 				8D617C8621B418D7009D2113 /* ContainerProtocol.swift in Sources */,
 				8DBA296521B934CA009311A9 /* DashboardVM.swift in Sources */,
 				8D617CB321B464F2009D2113 /* StringExtension.swift in Sources */,
+				8D01A71821C79C60002C87E2 /* CodableExtension.swift in Sources */,
 				8D617C9A21B447A6009D2113 /* SceneCoordinator.swift in Sources */,
 				8D690A4121BA7754001E4BB2 /* Populatable.swift in Sources */,
 				8D690A4C21BAC20D001E4BB2 /* BaseApiResource.swift in Sources */,

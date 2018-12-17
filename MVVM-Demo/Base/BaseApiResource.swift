@@ -8,6 +8,6 @@
 
 import Foundation
 
-class BaseApiResource: Decodable {
-    var id: Int32 = 0
+protocol BaseApiResource: Codable {
+    var id: Int32 { get set }
 }

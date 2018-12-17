@@ -11,7 +11,8 @@ import UIKit
 class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     
     // Outlets
-    @IBOutlet weak var loadBtn: UIButton!
+    @IBOutlet weak var createBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var tvArticleList: UITableView!
     
     // Vars
@@ -22,6 +23,13 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
         title = "Articles"
         setupViews()
         bindViewModel()
+        
+        let coreDataHelper = AppContainer.instance.resolve(CoreDataHelper.self)!
+        coreDataHelper.getObjectById(Article.self, id: 338)
+            .subscribe(onNext: { article in
+                print(article?.name ?? "nothing")
+            })
+            .disposed(by: disposeBag)
     }
     
     func setupViews() {
@@ -35,7 +43,7 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     }
     
     func generateInputs() -> ArticleListVM.Input {
-        inputs = ArticleListVM.Input(generateEvent: loadBtn.rx.tap.asDriver())
+        inputs = ArticleListVM.Input(generateEvent: createBtn.rx.tap.asDriver(), saveEvent: saveBtn.rx.tap.asDriver())
         return inputs
     }
     
@@ -49,6 +57,10 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
             .disposed(by: disposeBag)
         
         outputs.generateResult
+            .drive()
+            .disposed(by: disposeBag)
+        
+        outputs.saveResult
             .drive()
             .disposed(by: disposeBag)
     }

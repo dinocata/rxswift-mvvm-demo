@@ -13,9 +13,8 @@ extension Article: Populatable {
     typealias DataType = ArticleResponse
     
     func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
-        name = data.name
-  //      price = data.price as NSNumber?
-    //    articleDescription = data.description
+        try! quickPopulate(data: data)
+        //coreDataHelper.saveContext()
         return self
     }
     

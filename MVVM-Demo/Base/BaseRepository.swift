@@ -62,6 +62,11 @@ class BaseRepositoryImpl<ModelType: Populatable>: BaseRepository {
     
     func saveSingle(_ apiResponseData: ModelType.DataType) -> Observable<ModelType> {
         return initFromResponse(apiResponseData)
+            .do(onNext: { [unowned self] object in
+                if object.hasChanges {
+                    self.coreDataHelper.saveContext()
+                }
+            })
     }
     
     func saveList(_ apiResponseData: [ModelType.DataType]) -> Observable<[ModelType]> {
@@ -71,6 +76,11 @@ class BaseRepositoryImpl<ModelType: Populatable>: BaseRepository {
             objectList.append(initFromResponse(data))
         }
         return Observable.zip(objectList)
+            .do(onNext: {  [unowned self] objectList in
+                if objectList.first(where: { $0.hasChanges }) != nil {
+                    self.coreDataHelper.saveContext()
+                }
+            })
     }
     
     func saveRepository() {
