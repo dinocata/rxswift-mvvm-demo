@@ -20,5 +20,5 @@ enum Scene {
     
     // Article CRUD
     case articleList
-    case articleDetails
+    case articleDetails(id: Int32)
 }

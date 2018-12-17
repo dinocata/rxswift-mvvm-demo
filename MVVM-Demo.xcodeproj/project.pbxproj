@@ -10,6 +10,10 @@
 		2F5863BD91794531BA62F40D /* Pods_MVVM_DemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */; };
 		8D01A71821C79C60002C87E2 /* CodableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A71721C79C60002C87E2 /* CodableExtension.swift */; };
 		8D01A71A21C79CDB002C87E2 /* ManagedObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A71921C79CDB002C87E2 /* ManagedObjectExtension.swift */; };
+		8D01A72021C7D7F3002C87E2 /* ArticleDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A71E21C7D7F3002C87E2 /* ArticleDetailsVC.swift */; };
+		8D01A72121C7D7F3002C87E2 /* ArticleDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D01A71F21C7D7F3002C87E2 /* ArticleDetailsVC.xib */; };
+		8D01A72321C7D800002C87E2 /* ArticleDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A72221C7D800002C87E2 /* ArticleDetailsVM.swift */; };
+		8D01A72521C7EFAC002C87E2 /* ArticleListItemVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D01A72421C7EFAC002C87E2 /* ArticleListItemVM.swift */; };
 		8D0A129B21BF9FCD00871478 /* UserDefaultsHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */; };
 		8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */; };
 		8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */; };
@@ -98,6 +102,10 @@
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		8D01A71721C79C60002C87E2 /* CodableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableExtension.swift; sourceTree = "<group>"; };
 		8D01A71921C79CDB002C87E2 /* ManagedObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectExtension.swift; sourceTree = "<group>"; };
+		8D01A71E21C7D7F3002C87E2 /* ArticleDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsVC.swift; sourceTree = "<group>"; };
+		8D01A71F21C7D7F3002C87E2 /* ArticleDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleDetailsVC.xib; sourceTree = "<group>"; };
+		8D01A72221C7D800002C87E2 /* ArticleDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsVM.swift; sourceTree = "<group>"; };
+		8D01A72421C7EFAC002C87E2 /* ArticleListItemVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListItemVM.swift; sourceTree = "<group>"; };
 		8D0A129A21BF9FCD00871478 /* UserDefaultsHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A129C21BFA0BC00871478 /* KeychainAccessHelperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessHelperImpl.swift; sourceTree = "<group>"; };
 		8D0A129E21BFA14500871478 /* CoreDataStackImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStackImpl.swift; sourceTree = "<group>"; };
@@ -207,6 +215,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8D01A71B21C7D7A5002C87E2 /* ArticleDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8D01A71E21C7D7F3002C87E2 /* ArticleDetailsVC.swift */,
+				8D01A71F21C7D7F3002C87E2 /* ArticleDetailsVC.xib */,
+				8D01A72221C7D800002C87E2 /* ArticleDetailsVM.swift */,
+			);
+			path = ArticleDetails;
+			sourceTree = "<group>";
+		};
 		8D0A129921BF9FB900871478 /* Impl */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +242,7 @@
 			children = (
 				8D0A12A721BFD16A00871478 /* ArticleListCell.swift */,
 				8D0A12A821BFD16A00871478 /* ArticleListCell.xib */,
+				8D01A72421C7EFAC002C87E2 /* ArticleListItemVM.swift */,
 			);
 			path = ArticleListCell;
 			sourceTree = "<group>";
@@ -405,6 +424,7 @@
 		8D690A3421BA69E0001E4BB2 /* ArticleCRUD */ = {
 			isa = PBXGroup;
 			children = (
+				8D01A71B21C7D7A5002C87E2 /* ArticleDetails */,
 				8D690A3521BA69FB001E4BB2 /* ArticleList */,
 			);
 			path = ArticleCRUD;
@@ -623,6 +643,7 @@
 				8D0A12AA21BFD16A00871478 /* ArticleListCell.xib in Resources */,
 				8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */,
 				8D617C6821B40902009D2113 /* LaunchScreen.storyboard in Resources */,
+				8D01A72121C7D7F3002C87E2 /* ArticleDetailsVC.xib in Resources */,
 				8D617C6521B40902009D2113 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -786,6 +807,7 @@
 				8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */,
 				8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */,
 				8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */,
+				8D01A72321C7D800002C87E2 /* ArticleDetailsVM.swift in Sources */,
 				8D9D641221B54E3A00979814 /* BaseService.swift in Sources */,
 				8D690A4321BA77C7001E4BB2 /* ArticleRequest.swift in Sources */,
 				8D9D640A21B54A6900979814 /* UserService.swift in Sources */,
@@ -795,6 +817,7 @@
 				8D690A3F21BA76D6001E4BB2 /* Article.swift in Sources */,
 				8D9D63F521B51D1500979814 /* ApiService.swift in Sources */,
 				8D690A3321BA5EC5001E4BB2 /* BaseVC.swift in Sources */,
+				8D01A72021C7D7F3002C87E2 /* ArticleDetailsVC.swift in Sources */,
 				8D617C8421B41590009D2113 /* AppContainer.swift in Sources */,
 				8D617CB121B464A9009D2113 /* Validator.swift in Sources */,
 				8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */,
@@ -811,6 +834,7 @@
 				8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */,
 				8DF5AAE421BE54BC00782119 /* ArticleRepository.swift in Sources */,
 				8D0A12A921BFD16A00871478 /* ArticleListCell.swift in Sources */,
+				8D01A72521C7EFAC002C87E2 /* ArticleListItemVM.swift in Sources */,
 				8D617C8F21B433D8009D2113 /* ViewModelType.swift in Sources */,
 				8D0A129F21BFA14500871478 /* CoreDataStackImpl.swift in Sources */,
 				8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */,

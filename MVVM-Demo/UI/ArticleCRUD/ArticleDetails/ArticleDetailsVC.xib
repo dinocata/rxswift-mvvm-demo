@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleDetailsVC" customModule="MVVM_Demo" customModuleProvider="target">
+            <connections>
+                <outlet property="btnSave" destination="j3v-0u-zL3" id="1Xj-sT-8dc"/>
+                <outlet property="tfArticleDescription" destination="W6I-AS-bKP" id="V4l-Fy-fnO"/>
+                <outlet property="tfArticleId" destination="Ia3-R6-PdL" id="6L0-7G-8rL"/>
+                <outlet property="tfArticleName" destination="IME-WO-3o7" id="zak-M3-ka9"/>
+                <outlet property="tfArticlePrice" destination="c4T-2k-oit" id="4xL-jE-dzB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ia3-R6-PdL" customClass="BaseTextField" customModule="MVVM_Demo" customModuleProvider="target">
+                    <rect key="frame" x="16" y="36" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3v-0u-zL3">
+                    <rect key="frame" x="16" y="621" width="343" height="30"/>
+                    <state key="normal" title="Save"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IME-WO-3o7" customClass="BaseTextField" customModule="MVVM_Demo" customModuleProvider="target">
+                    <rect key="frame" x="16" y="82" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6I-AS-bKP" customClass="BaseTextField" customModule="MVVM_Demo" customModuleProvider="target">
+                    <rect key="frame" x="16" y="128" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4T-2k-oit" customClass="BaseTextField" customModule="MVVM_Demo" customModuleProvider="target">
+                    <rect key="frame" x="16" y="174" width="343" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="IME-WO-3o7" firstAttribute="top" secondItem="Ia3-R6-PdL" secondAttribute="bottom" constant="16" id="Apz-BK-HfX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ia3-R6-PdL" secondAttribute="trailing" constant="16" id="L0R-AB-isi"/>
+                <constraint firstItem="W6I-AS-bKP" firstAttribute="trailing" secondItem="IME-WO-3o7" secondAttribute="trailing" id="MKp-z8-15c"/>
+                <constraint firstItem="c4T-2k-oit" firstAttribute="leading" secondItem="W6I-AS-bKP" secondAttribute="leading" id="PcH-wK-Ir5"/>
+                <constraint firstItem="IME-WO-3o7" firstAttribute="trailing" secondItem="Ia3-R6-PdL" secondAttribute="trailing" id="TJ7-1G-enk"/>
+                <constraint firstItem="IME-WO-3o7" firstAttribute="leading" secondItem="Ia3-R6-PdL" secondAttribute="leading" id="TgQ-Ei-Q6V"/>
+                <constraint firstItem="c4T-2k-oit" firstAttribute="top" secondItem="W6I-AS-bKP" secondAttribute="bottom" constant="16" id="Uib-dT-CAw"/>
+                <constraint firstItem="c4T-2k-oit" firstAttribute="trailing" secondItem="W6I-AS-bKP" secondAttribute="trailing" id="bvP-cm-UJg"/>
+                <constraint firstItem="Ia3-R6-PdL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="cFg-Vq-nBC"/>
+                <constraint firstItem="W6I-AS-bKP" firstAttribute="top" secondItem="IME-WO-3o7" secondAttribute="bottom" constant="16" id="cGh-Wq-1Aa"/>
+                <constraint firstItem="Ia3-R6-PdL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="cs4-Ql-RzL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="j3v-0u-zL3" secondAttribute="trailing" constant="16" id="oFA-UY-ODU"/>
+                <constraint firstItem="W6I-AS-bKP" firstAttribute="leading" secondItem="IME-WO-3o7" secondAttribute="leading" id="qu0-gG-hHv"/>
+                <constraint firstItem="j3v-0u-zL3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="sqW-ME-0d5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j3v-0u-zL3" secondAttribute="bottom" constant="16" id="uay-Re-oHU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

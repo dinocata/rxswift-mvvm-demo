@@ -26,8 +26,8 @@ extension Scene {
         case .articleList:
             return controllerContainer.resolve(ArticleListVC.self)!
             
-        case .articleDetails:
-            return UIViewController()
+        case .articleDetails(let id):
+            return controllerContainer.resolve(ArticleDetailsVC.self, argument: id)!
         }
     }
     

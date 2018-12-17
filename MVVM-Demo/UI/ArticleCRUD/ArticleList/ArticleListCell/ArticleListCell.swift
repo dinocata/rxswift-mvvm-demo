@@ -26,7 +26,7 @@ class ArticleListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(item: ArticleListVM.TableItem) {
+    func configure(item: ArticleListItemVM) {
         self.lblName.text = "\(item.name ?? "") (\(item.id))"
         self.lblDescription.text = item.description
         self.lblPrice.text = item.price

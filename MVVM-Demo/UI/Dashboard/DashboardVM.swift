@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class DashboardVM: ViewModelType {
+class DashboardVM {
     
     private let userDefaults: UserDefaultsHelper
     private let coreDataHelper: CoreDataHelper
@@ -19,6 +19,10 @@ class DashboardVM: ViewModelType {
         self.userDefaults = userDefaults
         self.coreDataHelper = coreDataHelper
     }
+    
+}
+
+extension DashboardVM: ViewModelType {
     
     struct Input {
         let articles: Driver<Void>

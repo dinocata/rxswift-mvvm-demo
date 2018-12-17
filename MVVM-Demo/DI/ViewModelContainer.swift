@@ -15,7 +15,7 @@ class ViewModelContainer: ChildContainerProtocol {
     static var instance: Container!
     
     static func build(parentContainer: Container) -> Container {
-        instance = Container(parent: parentContainer)
+        instance = Container(parent: parentContainer, defaultObjectScope: .transient)
         
         instance.register(LoginVM.self) { r in
             LoginVM(userService: r.resolve(UserService.self)!,
@@ -33,6 +33,11 @@ class ViewModelContainer: ChildContainerProtocol {
         
         instance.register(ArticleListVM.self) { r in
             ArticleListVM(articleRepository: r.resolve(ArticleRepository.self)!)
+        }
+        
+        instance.register(ArticleDetailsVM.self) { r, articleId in
+            ArticleDetailsVM(articleId: articleId,
+                             articleRepository: r.resolve(ArticleRepository.self)!)
         }
         
         return instance

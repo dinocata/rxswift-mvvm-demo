@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class ArticleListVM: ViewModelType {
+class ArticleListVM {
     
     private let articleRepository: ArticleRepository
     
@@ -17,61 +17,32 @@ class ArticleListVM: ViewModelType {
         self.articleRepository = articleRepository
     }
     
-    struct TableItem {
-        let id: Int32
-        let name: String?
-        let description: String?
-        let price: String?
-        
-        init(article: Article) {
-            self.id = article.id
-            self.name = article.name
-            self.description = article.articleDescription
-            self.price = article.price?.stringValue
-        }
-    }
+}
+
+extension ArticleListVM: ViewModelType {
     
     struct Input {
-        let load = PublishSubject<Void>()
-        let generateEvent: Driver<Void>
-        let saveEvent: Driver<Void>
+        let data = PublishSubject<Void>()
+        let selection: Driver<IndexPath>
     }
     
     struct Output {
-        let data: Driver<[TableItem]>
-        let generateResult: Driver<Void>
-        let saveResult: Driver<Void>
+        let data: Driver<[ArticleListItemVM]>
+        let details: Driver<Int32>
     }
     
     func transform(input: ArticleListVM.Input) -> ArticleListVM.Output {
-        let loadEventDriver = input.load
+        let loadEventDriver = input.data
             .asObservable()
             .flatMapLatest { [unowned self] in self.articleRepository.getAll() }
-            .map { $0.map { TableItem(article: $0) } }
+            .map { $0.map { ArticleListItemVM(article: $0) } }
             .asDriver(onErrorJustReturn: [])
         
-        let generateResult = input.generateEvent
-            .asObservable()
-            .flatMapLatest { [unowned self] in self.generateRandomArticle() }
-            .mapToVoid()
-            .asDriverOnErrorJustComplete()
+        let selectionEventDriver = input.selection
+            .withLatestFrom(loadEventDriver) { $1[$0.row].id }
+            .asDriver(onErrorJustReturn: 0)
         
-        let saveResult = input.saveEvent
-            .asObservable()
-            .do(onNext: { [unowned self] in self.articleRepository.saveRepository() })
-            .mapToVoid()
-            .asDriverOnErrorJustComplete()
-        
-        return Output(data: loadEventDriver, generateResult: generateResult, saveResult: saveResult)
-    }
-    
-    private func generateRandomArticle() -> Observable<Article> {
-        let articleData = ArticleResponse()
-        articleData.id = 338 //Int32.random(in: 0..<1000)
-        articleData.name = String.randomString(length: 5)
-        articleData.articleDescription = String.randomString(length: 10)
-        articleData.price = Int32.random(in: 0..<100)
-        return articleRepository.saveSingle(articleData)
+        return Output(data: loadEventDriver, details: selectionEventDriver)
     }
     
 }

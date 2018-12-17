@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-class LoginVM: ViewModelType {
+class LoginVM {
     
     private let userService: UserService
     private let validationHelper: ValidationHelper
@@ -17,18 +17,6 @@ class LoginVM: ViewModelType {
     init(userService: UserService, validationHelper: ValidationHelper) {
         self.userService = userService
         self.validationHelper = validationHelper
-    }
-    
-    struct Input {
-        var emailInput: TextFieldVM
-        var passwordInput: TextFieldVM
-        let confirm: Driver<Void>
-    }
-    
-    struct Output {
-        let success: Driver<Void>
-        let failure: Driver<String>
-        let loading: Driver<Void>
     }
     
     enum LoginEvent {
@@ -74,6 +62,22 @@ class LoginVM: ViewModelType {
         // Show loader as soon as button is pressed
         let loading = eventSource.map { LoginEvent.loading }
         return Observable.merge(loading, events).asDriver(onErrorJustReturn: .unknownError())
+    }
+    
+}
+
+extension LoginVM: ViewModelType {
+    
+    struct Input {
+        var emailInput: TextFieldVM
+        var passwordInput: TextFieldVM
+        let confirm: Driver<Void>
+    }
+    
+    struct Output {
+        let success: Driver<Void>
+        let failure: Driver<String>
+        let loading: Driver<Void>
     }
     
     func transform(input: Input) -> Output {

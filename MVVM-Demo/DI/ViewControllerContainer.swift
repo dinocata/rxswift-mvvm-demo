@@ -22,6 +22,7 @@ class ViewControllerContainer: ChildContainerProtocol {
         registerVC(SynchronizationVC.self)
         registerVC(DashboardVC.self)
         registerVC(ArticleListVC.self)
+        registerItemVC(ArticleDetailsVC.self)
         
         return instance
     }
@@ -32,18 +33,20 @@ class ViewControllerContainer: ChildContainerProtocol {
     /// - Parameter type: Controller type
     private static func registerVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type) {
         instance.register(type) { resolver in
-            return initVC(type, resolver: resolver)
+            return T.init(viewModel: resolver.resolve(H.self)!,
+                          coordinator: resolver.resolve(SceneCoordinatorType.self)!)
         }
     }
     
-    /// Instantiates a Controller injected with its view model and coordinator instance.
+    /// Registers a Controller that accepts an extra id parameter of a resource the controller is presented for.
+    /// E.g. for Details view of a CRUD item.
     ///
     /// - Parameters:
     ///   - type: View Controller type to instantiate
-    ///   - resolver: Container resolver
-    private static func initVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type, resolver: Resolver) -> T {
-        return T.init(viewModel: resolver.resolve(H.self)!,
-                      coordinator: resolver.resolve(SceneCoordinatorType.self)!)
+    private static func registerItemVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type) {
+        instance.register(type) { (resolver, itemId: Int32) in
+            return T.init(viewModel: resolver.resolve(H.self, argument: itemId)!,
+                          coordinator: resolver.resolve(SceneCoordinatorType.self)!)
+        }
     }
-    
 }

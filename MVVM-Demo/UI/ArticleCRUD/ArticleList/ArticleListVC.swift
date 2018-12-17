@@ -11,8 +11,6 @@ import UIKit
 class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     
     // Outlets
-    @IBOutlet weak var createBtn: UIButton!
-    @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var tvArticleList: UITableView!
     
     // Vars
@@ -23,13 +21,6 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
         title = "Articles"
         setupViews()
         bindViewModel()
-        
-        let coreDataHelper = AppContainer.instance.resolve(CoreDataHelper.self)!
-        coreDataHelper.getObjectById(Article.self, id: 338)
-            .subscribe(onNext: { article in
-                print(article?.name ?? "nothing")
-            })
-            .disposed(by: disposeBag)
     }
     
     func setupViews() {
@@ -39,11 +30,11 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        inputs.load.onNext(())
+        inputs.data.onNext(())
     }
     
     func generateInputs() -> ArticleListVM.Input {
-        inputs = ArticleListVM.Input(generateEvent: createBtn.rx.tap.asDriver(), saveEvent: saveBtn.rx.tap.asDriver())
+        inputs = ArticleListVM.Input(selection: tvArticleList.rx.itemSelected.asDriver())
         return inputs
     }
     
@@ -56,12 +47,8 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
             }
             .disposed(by: disposeBag)
         
-        outputs.generateResult
-            .drive()
-            .disposed(by: disposeBag)
-        
-        outputs.saveResult
-            .drive()
+        outputs.details
+            .drive(onNext: { [unowned self] in self.coordinator.transition(to: .articleDetails(id: $0)) })
             .disposed(by: disposeBag)
     }
     

@@ -8,8 +8,12 @@
 
 import Foundation
 
-class SynchronizationVM: ViewModelType {
- 
+class SynchronizationVM {
+    
+}
+
+extension SynchronizationVM: ViewModelType {
+    
     struct Input {
         
     }
