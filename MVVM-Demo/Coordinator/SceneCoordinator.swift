@@ -95,7 +95,8 @@ final class SceneCoordinator: SceneCoordinatorType {
     func pop(animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         
-        if let navigationController = currentViewController.navigationController {
+        if let navigationController = currentViewController.navigationController,
+            navigationController.viewControllers.count > 1 {
             // navigate up the stack
             navigationController.popViewController(animated: animated) {
                 subject.onCompleted()

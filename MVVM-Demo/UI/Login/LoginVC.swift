@@ -50,6 +50,10 @@ class LoginVC: BaseVC<LoginVM>, BindableType {
             .drive(onNext: { [unowned self] _ in
                 self.hideProgress()
                 self.coordinator.transition(to: .synchronization)
+                    .subscribe(onCompleted: { [unowned self] in
+                        self.tfPassword.text = nil
+                    })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }
