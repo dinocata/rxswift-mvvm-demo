@@ -15,6 +15,12 @@ class BaseTextField: UITextField {
     
     private var disposeBag = DisposeBag()
     
+    override open var text: String? {
+        didSet {
+            self.sendActions(for: .valueChanged)
+        }
+    }
+    
     func bindViewModel(_ viewModel: TextFieldVM) {
         self.fieldModel = viewModel
         

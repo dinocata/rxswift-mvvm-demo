@@ -12,8 +12,6 @@ extension Encodable {
     
     func asDictionary() throws -> [String: Any] {
         let data = try JSONEncoder().encode(self)
-        let convertedString = String(data: data, encoding: .utf8) // the data will be converted to the string
-        print(convertedString!)
         guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw NSError()
         }

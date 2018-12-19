@@ -75,7 +75,7 @@ final class SceneCoordinator: SceneCoordinatorType {
             var controllers = navigationController.viewControllers
             stack.forEach { controllers.append($0.viewController) }
             navigationController.setViewControllers(controllers, animated: false)
-
+            
             if window.rootViewController != nil {
                 currentViewController.present(navigationController, animated: animated) {
                     subject.onCompleted()
@@ -95,21 +95,22 @@ final class SceneCoordinator: SceneCoordinatorType {
     func pop(animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         
-        if let presenter = currentViewController.presentingViewController {
-            // dismiss a modal controller
-            currentViewController.dismiss(animated: animated) {
-                subject.onCompleted()
-            }
-            self.currentViewController = presenter.actualViewController()
-        } else if let navigationController = currentViewController.navigationController {
+        if let navigationController = currentViewController.navigationController {
             // navigate up the stack
             navigationController.popViewController(animated: animated) {
                 subject.onCompleted()
             }
             self.currentViewController = navigationController.viewControllers.last!
+        } else if let presenter = currentViewController.presentingViewController {
+            // dismiss a modal controller
+            currentViewController.dismiss(animated: animated) {
+                subject.onCompleted()
+            }
+            self.currentViewController = presenter.actualViewController()
         } else {
             fatalError("Not a modal, no navigation controller: can't navigate back from \(currentViewController!)")
         }
+        
         return subject.ignoreElements()
     }
     
@@ -150,7 +151,7 @@ final class SceneCoordinator: SceneCoordinatorType {
             transition(to: .login, type: transitionType)
             return
         }
-    
+        
         if !userDefaults.isUserDataSynced() {
             transition(to: .login, type: .presentSceneNavigation(sceneStack: [.synchronization], animated: true))
             return
@@ -158,6 +159,6 @@ final class SceneCoordinator: SceneCoordinatorType {
         
         transition(to: .dashboard, type: transitionType)
     }
-
+    
 }
 

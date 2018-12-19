@@ -34,7 +34,11 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     }
     
     func generateInputs() -> ArticleListVM.Input {
-        inputs = ArticleListVM.Input(selection: tvArticleList.rx.itemSelected.asDriver())
+        let addArticleBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = addArticleBtn
+        
+        inputs = ArticleListVM.Input(create: addArticleBtn.rx.tap.asDriver(),
+                                     selection: tvArticleList.rx.itemSelected.asDriver())
         return inputs
     }
     

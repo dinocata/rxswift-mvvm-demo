@@ -65,6 +65,7 @@
 		8D690A4821BA7EBC001E4BB2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4721BA7EBC001E4BB2 /* Reusable.swift */; };
 		8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */; };
 		8D690A4C21BAC20D001E4BB2 /* BaseApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */; };
+		8D79C1E221C9346500765886 /* FormEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79C1E121C9346500765886 /* FormEvent.swift */; };
 		8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */; };
 		8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63F021B5141D00979814 /* SynchronizationVC.xib */; };
 		8D9D63F521B51D1500979814 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63F421B51D1500979814 /* ApiService.swift */; };
@@ -161,6 +162,7 @@
 		8D690A4721BA7EBC001E4BB2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtension.swift; sourceTree = "<group>"; };
 		8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiResource.swift; sourceTree = "<group>"; };
+		8D79C1E121C9346500765886 /* FormEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEvent.swift; sourceTree = "<group>"; };
 		8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationVC.swift; sourceTree = "<group>"; };
 		8D9D63F021B5141D00979814 /* SynchronizationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynchronizationVC.xib; sourceTree = "<group>"; };
 		8D9D63F421B51D1500979814 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			children = (
 				8D9D640021B525FA00979814 /* ResponseStatus.swift */,
 				8D9D640221B53F5500979814 /* Result.swift */,
+				8D79C1E121C9346500765886 /* FormEvent.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */,
 				8D4A960221B687F200A6CA15 /* ValidationHelper.swift in Sources */,
 				8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */,
+				8D79C1E221C9346500765886 /* FormEvent.swift in Sources */,
 				8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */,
 				8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */,
 				8D01A72321C7D800002C87E2 /* ArticleDetailsVM.swift in Sources */,

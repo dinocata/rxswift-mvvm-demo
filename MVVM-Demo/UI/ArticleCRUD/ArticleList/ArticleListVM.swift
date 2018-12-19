@@ -22,6 +22,7 @@ class ArticleListVM {
 extension ArticleListVM: ViewModelType {
     
     struct Input {
+        let create: Driver<Void>
         let data = PublishSubject<Void>()
         let selection: Driver<IndexPath>
     }
@@ -38,11 +39,18 @@ extension ArticleListVM: ViewModelType {
             .map { $0.map { ArticleListItemVM(article: $0) } }
             .asDriver(onErrorJustReturn: [])
         
+        let createEventDriver = input.create
+            .asObservable()
+            .flatMapLatest { Observable<Int32>.just(0)}
+        
         let selectionEventDriver = input.selection
+            .asObservable()
             .withLatestFrom(loadEventDriver) { $1[$0.row].id }
+        
+        let actionEventDriver = Observable<Int32>.merge(createEventDriver, selectionEventDriver)
             .asDriver(onErrorJustReturn: 0)
         
-        return Output(data: loadEventDriver, details: selectionEventDriver)
+        return Output(data: loadEventDriver, details: actionEventDriver)
     }
     
 }

@@ -35,7 +35,7 @@ final class Validator {
         }
     }
     
-    // Predefined regex formats. Add any extra cases you may need.
+    /// Predefined regex formats. Add any extra cases you may need.
     enum InputFormat: String {
         case alphanumeric = "^[A-Za-z0-9- ]+$"
         case email = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -53,14 +53,14 @@ final class Validator {
     var disallovedValues: [String]?
     var customCondition: ((String?) -> Result)?
     
-    // If this condition is met, the validation will always pass
+    /// If this condition is met, the validation will always pass.
     var successCondition: ((String?) -> Bool)?
     
-    // Returns string representation of the input
+    /// Returns string representation of the input. Should only be called after succesful validation.
     private(set) var stringValue = ""
-    // Returns integer representation of the input
+    /// Returns integer representation of the input. Should only be called after succesful validation.
     private(set) var intValue: Int?
-    // Returns float representation of the input
+    /// Returns float representation of the input. Should only be called after succesful validation.
     private(set) var floatValue: Float?
     
     /// Performs validation on the provided text string

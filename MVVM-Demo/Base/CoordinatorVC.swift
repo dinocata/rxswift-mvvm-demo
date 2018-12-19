@@ -12,13 +12,14 @@ import MBProgressHUD
 
 class CoordinatorVC: UIViewController {
     var coordinator: SceneCoordinatorType
-    var disposeBag = DisposeBag()
+    var disposeBag: DisposeBag!
     
     private var progressHud: MBProgressHUD?
     
     init(coordinator: SceneCoordinatorType) {
         self.coordinator = coordinator
         self.coordinator.sceneCount += 1
+        self.disposeBag = DisposeBag()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -47,6 +48,12 @@ class CoordinatorVC: UIViewController {
             progressHud?.hide(animated: true)
             progressHud = nil
         }
+    }
+    
+    /// Explicitly disposes all subscriptions in the dispose bag.
+    /// Should only be called when the controller is about to be dismissed.
+    func disposeBindings() {
+        disposeBag = nil
     }
     
     deinit {

@@ -19,48 +19,9 @@ class LoginVM {
         self.validationHelper = validationHelper
     }
     
-    enum LoginEvent {
-        case validationSuccess
-        case loginSuccess
-        case failure(String)
-        case loading
-        
-        static func unknownError() -> LoginEvent {
-            return .failure("Unknown error")
-        }
-        
-        func validationSuccessful() -> Bool {
-            if case .validationSuccess = self {
-                return true
-            }
-            return false
-        }
-        
-        func loginSuccessful() -> Bool {
-            if case .loginSuccess = self {
-                return true
-            }
-            return false
-        }
-        
-        func getErrorMessage() -> String? {
-            if case .failure(let errorMessage) = self {
-                return errorMessage
-            }
-            return nil
-        }
-        
-        func isLoading() -> Bool {
-            if case .loading = self {
-                return true
-            }
-            return false
-        }
-    }
-    
-    func constructLoader(_ eventSource: Observable<Void>, events: Observable<LoginEvent>) -> Driver<LoginEvent> {
+    func constructLoader(_ eventSource: Observable<Void>, events: Observable<FormEvent>) -> Driver<FormEvent> {
         // Show loader as soon as button is pressed
-        let loading = eventSource.map { LoginEvent.loading }
+        let loading = eventSource.map { FormEvent.loading }
         return Observable.merge(loading, events).asDriver(onErrorJustReturn: .unknownError())
     }
     
@@ -104,7 +65,7 @@ extension LoginVM: ViewModelType {
         let fullLoginDriver = constructLoader(input.confirm.asObservable(), events: mergedEvents)
         
         let successDriver = fullLoginDriver
-            .filter { $0.loginSuccessful() }
+            .filter { $0.isSuccessful() }
             .mapToVoid()
         
         let failureDriver = fullLoginDriver
@@ -140,7 +101,7 @@ extension LoginVM {
                             password: input.passwordInput.value.value)
     }
     
-    func mapValidationResult(_ result: ValidationResult) -> LoginEvent {
+    func mapValidationResult(_ result: ValidationResult) -> FormEvent {
         switch result {
         case .success:
             return .validationSuccess
@@ -149,10 +110,10 @@ extension LoginVM {
         }
     }
     
-    func mapResponseStatus(_ status: ResponseStatus) -> LoginEvent {
+    func mapResponseStatus(_ status: ResponseStatus) -> FormEvent {
         switch status {
         case .success:
-            return .loginSuccess
+            return .success
         case .unauthorized:
             return .failure("Wrong password")
         case .notFound:

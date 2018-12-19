@@ -42,10 +42,24 @@ class ArticleDetailsVC: BaseVC<ArticleDetailsVM>, BindableType {
         
         outputs.wrapper
             .drive(onNext: { [unowned self] item in
+                self.tfArticleId.isHidden = true
                 self.tfArticleId.text = item.id
                 self.tfArticleName.text = item.name
                 self.tfArticleDescription.text = item.description
                 self.tfArticlePrice.text = item.price
+            })
+            .disposed(by: disposeBag)
+        
+        outputs.error
+            .drive(onNext: { [unowned self] errorMessage in
+                self.showAlert(title: "Failure", message: errorMessage)
+            })
+            .disposed(by: disposeBag)
+        
+        outputs.confirm
+            .drive(onNext: { [unowned self] _ in
+                self.disposeBindings()
+                self.coordinator.pop(animated: true)
             })
             .disposed(by: disposeBag)
     }

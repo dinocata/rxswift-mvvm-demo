@@ -37,7 +37,8 @@ class ViewModelContainer: ChildContainerProtocol {
         
         instance.register(ArticleDetailsVM.self) { r, articleId in
             ArticleDetailsVM(articleId: articleId,
-                             articleRepository: r.resolve(ArticleRepository.self)!)
+                             articleRepository: r.resolve(ArticleRepository.self)!,
+                             validationHelper: r.resolve(ValidationHelper.self)!)
         }
         
         return instance

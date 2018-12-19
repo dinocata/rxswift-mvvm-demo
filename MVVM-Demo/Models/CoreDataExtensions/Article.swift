@@ -14,7 +14,6 @@ extension Article: Populatable {
     
     func populate(with data: ArticleResponse, coreDataHelper: CoreDataHelper) -> Self {
         try! quickPopulate(data: data)
-        //coreDataHelper.saveContext()
         return self
     }
     
