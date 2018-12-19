@@ -61,4 +61,3 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
     }
     
 }
-

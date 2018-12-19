@@ -42,6 +42,8 @@ extension LoginVM: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
+        setupValidators(input: input)
+        
         // Handles local validation
         let validationEventDriver = input.confirm
             .asObservable()
@@ -84,7 +86,7 @@ extension LoginVM: ViewModelType {
 
 extension LoginVM {
     
-    func validate(input: Input) -> Single<ValidationResult> {
+    func setupValidators(input: Input) {
         let emailValidator = Validator()
         emailValidator.format = .email
         input.emailInput.validator = emailValidator
@@ -92,7 +94,9 @@ extension LoginVM {
         
         input.passwordInput.validator = Validator()
         input.passwordInput.label = "Password"
-        
+    }
+    
+    func validate(input: Input) -> Single<ValidationResult> {
         return validationHelper.validateInputs([input.emailInput, input.passwordInput])
     }
     
