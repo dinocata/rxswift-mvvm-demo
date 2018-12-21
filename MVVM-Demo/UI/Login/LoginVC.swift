@@ -23,7 +23,7 @@ class LoginVC: BaseVC<LoginVM>, BindableType {
         bindViewModel()
     }
     
-    func generateInputs() -> LoginVM.Input {
+    func createInput() -> LoginVM.Input {
         tfEmail.bindViewModel(TextFieldVM())
         tfPassword.bindViewModel(TextFieldVM())
         
@@ -32,21 +32,19 @@ class LoginVC: BaseVC<LoginVM>, BindableType {
                              confirm: btnConfirm.rx.tap.asDriver())
     }
     
-    func onGenerateOutputs(outputs: LoginVM.Output) {
-        outputs.loading
+    func onCreateOutput(output: LoginVM.Output) {
+        output.loading
+            .drive(onNext: { [unowned self] in self.showProgress() })
+            .disposed(by: disposeBag)
+        
+        output.failure
             .drive(onNext: { [unowned self] in
-                self.showProgress()
-            })
-            .disposed(by: disposeBag)
-        
-        outputs.failure
-            .drive(onNext: { [unowned self] errorMessage in
                 self.hideProgress()
-                self.showAlert(title: "Login Failed", message: errorMessage)
+                self.showAlert(title: "Login Failed", message: $0)
             })
             .disposed(by: disposeBag)
         
-        outputs.success
+        output.success
             .drive(onNext: { [unowned self] _ in
                 self.hideProgress()
                 self.coordinator.transition(to: .synchronization)

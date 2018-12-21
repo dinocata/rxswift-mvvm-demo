@@ -32,9 +32,9 @@ class ViewControllerContainer: ChildContainerProtocol {
     ///
     /// - Parameter type: Controller type
     private static func registerVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type) {
-        instance.register(type) { resolver in
-            return T.init(viewModel: resolver.resolve(H.self)!,
-                          coordinator: resolver.resolve(SceneCoordinatorType.self)!)
+        instance.register(type) {
+            T.init(viewModel: $0.resolve(H.self)!,
+                   coordinator: $0.resolve(SceneCoordinatorType.self)!)
         }
     }
     
@@ -45,8 +45,8 @@ class ViewControllerContainer: ChildContainerProtocol {
     ///   - type: View Controller type to instantiate
     private static func registerItemVC<H: ViewModelType, T: BaseVC<H>>(_ type: T.Type) {
         instance.register(type) { (resolver, itemId: Int32) in
-            return T.init(viewModel: resolver.resolve(H.self, argument: itemId)!,
-                          coordinator: resolver.resolve(SceneCoordinatorType.self)!)
+            T.init(viewModel: resolver.resolve(H.self, argument: itemId)!,
+                   coordinator: resolver.resolve(SceneCoordinatorType.self)!)
         }
     }
 }

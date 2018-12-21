@@ -16,29 +16,29 @@ class ViewModelContainer: ChildContainerProtocol {
     
     static func build(parentContainer: Container) -> Container {
         instance = Container(parent: parentContainer, defaultObjectScope: .transient)
-        
-        instance.register(LoginVM.self) { r in
-            LoginVM(userService: r.resolve(UserService.self)!,
-                    validationHelper: r.resolve(ValidationHelper.self)!)
+       
+        instance.register(LoginVM.self) {
+            LoginVM(userService: $0.resolve(UserService.self)!,
+                    validationHelper: $0.resolve(ValidationHelper.self)!)
         }
         
-        instance.register(DashboardVM.self) { r in
-            DashboardVM(userDefaults: r.resolve(UserDefaultsHelper.self)!,
-                        coreDataHelper: r.resolve(CoreDataHelper.self)!)
+        instance.register(DashboardVM.self) {
+            DashboardVM(userDefaults: $0.resolve(UserDefaultsHelper.self)!,
+                        coreDataHelper: $0.resolve(CoreDataHelper.self)!)
         }
         
-        instance.register(SynchronizationVM.self) { r in
+        instance.register(SynchronizationVM.self) { _ in
             SynchronizationVM()
         }
         
-        instance.register(ArticleListVM.self) { r in
-            ArticleListVM(articleRepository: r.resolve(ArticleRepository.self)!)
+        instance.register(ArticleListVM.self) {
+            ArticleListVM(articleRepository: $0.resolve(ArticleRepository.self)!)
         }
         
-        instance.register(ArticleDetailsVM.self) { r, articleId in
-            ArticleDetailsVM(articleId: articleId,
-                             articleRepository: r.resolve(ArticleRepository.self)!,
-                             validationHelper: r.resolve(ValidationHelper.self)!)
+        instance.register(ArticleDetailsVM.self) {
+            ArticleDetailsVM(articleId: $1,
+                             articleRepository: $0.resolve(ArticleRepository.self)!,
+                             validationHelper: $0.resolve(ValidationHelper.self)!)
         }
         
         return instance

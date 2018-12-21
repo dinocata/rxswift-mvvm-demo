@@ -24,14 +24,14 @@ final class AppContainer: ContainerProtocol {
         }
         
         // User Defaults
-        instance.register(UserDefaultsHelper.self) { r in
-            UserDefaultsHelperImpl(keychainAccess: r.resolve(KeychainAccessHelper.self)!)
+        instance.register(UserDefaultsHelper.self) {
+            UserDefaultsHelperImpl(keychainAccess: $0.resolve(KeychainAccessHelper.self)!)
         }
         
         // Scene Coordinator
-        instance.register(SceneCoordinatorType.self) { r in
+        instance.register(SceneCoordinatorType.self) {
             SceneCoordinator(window: AppDelegate.getInstance().window!,
-                             userDefaults: r.resolve(UserDefaultsHelper.self)!)
+                             userDefaults: $0.resolve(UserDefaultsHelper.self)!)
         }
         
         // Core Data Stack
@@ -40,20 +40,20 @@ final class AppContainer: ContainerProtocol {
         }
         
         // Core Data Helper
-        instance.register(CoreDataHelper.self) { r in
-            CoreDataHelperImpl(coreDataStack: r.resolve(CoreDataStack.self)!)
+        instance.register(CoreDataHelper.self) {
+            CoreDataHelperImpl(coreDataStack: $0.resolve(CoreDataStack.self)!)
         }
         
         // Moya Provider
-        instance.register(MoyaProvider<ApiService>.self) { r in
-            let keychainAccess = r.resolve(KeychainAccessHelper.self)
+        instance.register(MoyaProvider<ApiService>.self) {
+            let keychainAccess = $0.resolve(KeychainAccessHelper.self)
             let authPlugin = AccessTokenPlugin(tokenClosure: { keychainAccess?.getUserToken() ?? "" })
             return MoyaProvider<ApiService>(plugins: [authPlugin])
         }
         
         // Network
-        instance.register(NetworkProtocol.self) { r in
-            ApiNetwork(provider: r.resolve(MoyaProvider<ApiService>.self)!)
+        instance.register(NetworkProtocol.self) {
+            ApiNetwork(provider: $0.resolve(MoyaProvider<ApiService>.self)!)
         }
         
         // Validation Helper
@@ -65,16 +65,16 @@ final class AppContainer: ContainerProtocol {
     
     /// Repository dependency injections
     private static func registerRepositories() {
-        instance.register(ArticleRepository.self) { r in
-            ArticleRepository(coreDataHelper: r.resolve(CoreDataHelper.self)!)
+        instance.register(ArticleRepository.self) {
+            ArticleRepositoryImpl(coreDataHelper: $0.resolve(CoreDataHelper.self)!)
         }
     }
     
     /// Service dependency injections
     private static func registerServices() {
-        instance.register(UserService.self) { r in
-            UserServiceImpl(keychainAccess: r.resolve(KeychainAccessHelper.self)!,
-                            network: r.resolve(NetworkProtocol.self)!)
+        instance.register(UserService.self) {
+            UserServiceImpl(keychainAccess: $0.resolve(KeychainAccessHelper.self)!,
+                            network: $0.resolve(NetworkProtocol.self)!)
         }
     }
     

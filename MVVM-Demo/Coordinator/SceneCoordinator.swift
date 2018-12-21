@@ -119,7 +119,8 @@ final class SceneCoordinator: SceneCoordinatorType {
     func popToRoot(animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
         
-        if let navigationController = currentViewController.navigationController {
+        if let navigationController = currentViewController.navigationController,
+            navigationController.viewControllers.count > 1{
             // navigate up the stack
             navigationController.popToRootViewController(animated: animated) {
                 subject.onCompleted()
@@ -144,21 +145,22 @@ final class SceneCoordinator: SceneCoordinatorType {
         return subject.ignoreElements()
     }
     
-    func onboardingTransition() {
-        let transitionType: SceneTransition = window.rootViewController != nil
-            ? .present(animated: true) : .root
-        
+    func onboardingTransition() -> Completable {
         if !userDefaults.isUserLoggedIn() {
-            transition(to: .login, type: transitionType)
-            return
+            return transition(to: .login, type: .root)
         }
         
         if !userDefaults.isUserDataSynced() {
-            transition(to: .login, type: .presentSceneNavigation(sceneStack: [.synchronization], animated: true))
-            return
+            return transition(to: .login,
+                              type: .presentSceneNavigation(sceneStack: [.synchronization], animated: true))
         }
         
-        transition(to: .dashboard, type: transitionType)
+        // Login scene is always the root controller. This means we can safely navigate
+        // back to it from the dashboard screen whenever we log out of it (prevents controller leaking).
+        // You should never have to explicitly navigate to Login screen.
+        // In other words, no controller should ever present or push a Login controller.
+        transition(to: .login, type: .root)
+        return transition(to: .dashboard, type: .present(animated: false))
     }
     
 }

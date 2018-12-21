@@ -13,16 +13,16 @@ class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Synchronization"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-            self?.coordinator.transition(to: .dashboard)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
+            self.coordinator.transition(to: .dashboard)
         }
     }
     
-    func generateInputs() -> SynchronizationVM.Input {
+    func createInput() -> SynchronizationVM.Input {
         return SynchronizationVM.Input()
     }
     
-    func onGenerateOutputs(outputs: SynchronizationVM.Output) {
+    func onCreateOutput(output: SynchronizationVM.Output) {
         // TODO
     }
     

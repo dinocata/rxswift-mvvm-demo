@@ -13,14 +13,14 @@ protocol BindableType {
     
     var viewModel: VMType { get set }
     
-    func generateInputs() -> VMType.Input
-    func onGenerateOutputs(outputs: VMType.Output)
+    func createInput() -> VMType.Input
+    func onCreateOutput(output: VMType.Output)
 }
 
 extension BindableType where Self: UIViewController {
     
     func bindViewModel() {
-        onGenerateOutputs(outputs: viewModel.transform(input: generateInputs()))
+        onCreateOutput(output: viewModel.transform(input: createInput()))
     }
     
 }

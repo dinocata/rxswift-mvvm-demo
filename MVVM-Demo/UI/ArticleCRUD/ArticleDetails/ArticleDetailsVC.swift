@@ -22,7 +22,7 @@ class ArticleDetailsVC: BaseVC<ArticleDetailsVM>, BindableType {
         bindViewModel()
     }
     
-    func generateInputs() -> ArticleDetailsVM.Input {
+    func createInput() -> ArticleDetailsVM.Input {
         tfArticleId.bindViewModel(TextFieldVM())
         tfArticleName.bindViewModel(TextFieldVM())
         tfArticleDescription.bindViewModel(TextFieldVM())
@@ -35,12 +35,12 @@ class ArticleDetailsVC: BaseVC<ArticleDetailsVM>, BindableType {
                                       confirm: btnSave.rx.tap.asDriver())
     }
     
-    func onGenerateOutputs(outputs: ArticleDetailsVM.Output) {
-        outputs.title
+    func onCreateOutput(output: ArticleDetailsVM.Output) {
+        output.title
             .drive(self.rx.title)
             .disposed(by: disposeBag)
         
-        outputs.wrapper
+        output.wrapper
             .drive(onNext: { [unowned self] item in
                 self.tfArticleId.isHidden = true
                 self.tfArticleId.text = item.id
@@ -50,13 +50,11 @@ class ArticleDetailsVC: BaseVC<ArticleDetailsVM>, BindableType {
             })
             .disposed(by: disposeBag)
         
-        outputs.error
-            .drive(onNext: { [unowned self] errorMessage in
-                self.showAlert(title: "Failure", message: errorMessage)
-            })
+        output.error
+            .drive(onNext: { [unowned self] in self.showAlert(title: "Failure", message: $0) })
             .disposed(by: disposeBag)
         
-        outputs.confirm
+        output.confirm
             .drive(onNext: { [unowned self] _ in
                 self.disposeBindings()
                 self.coordinator.pop(animated: true)

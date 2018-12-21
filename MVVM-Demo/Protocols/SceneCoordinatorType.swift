@@ -53,8 +53,8 @@ protocol SceneCoordinatorType {
     func popToVC(_ viewController: UIViewController, animated: Bool) -> Completable
     
     /// Called on App start in order to navigate based on current App state.
-    /// If you're not sure which controller you should navigate to next, use this method.
-    func onboardingTransition()
+    @discardableResult
+    func onboardingTransition() -> Completable
     
 }
 

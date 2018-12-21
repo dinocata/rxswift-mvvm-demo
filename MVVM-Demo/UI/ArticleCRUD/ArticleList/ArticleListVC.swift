@@ -33,7 +33,7 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
         inputs.data.onNext(())
     }
     
-    func generateInputs() -> ArticleListVM.Input {
+    func createInput() -> ArticleListVM.Input {
         let addArticleBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil)
         self.navigationItem.rightBarButtonItem = addArticleBtn
         
@@ -42,8 +42,8 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
         return inputs
     }
     
-    func onGenerateOutputs(outputs: ArticleListVM.Output) {
-        outputs.data
+    func onCreateOutput(output: ArticleListVM.Output) {
+        output.data
             .drive(tvArticleList.rx.items(cellIdentifier: ArticleListCell.reuseID,
                                           cellType: ArticleListCell.self))
             { tv, item, cell in
@@ -51,7 +51,7 @@ class ArticleListVC: BaseVC<ArticleListVM>, BindableType, UITableViewDelegate {
             }
             .disposed(by: disposeBag)
         
-        outputs.details
+        output.details
             .drive(onNext: { [unowned self] in self.coordinator.transition(to: .articleDetails(id: $0)) })
             .disposed(by: disposeBag)
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class DashboardVC: BaseVC<DashboardVM>, BindableType {
     
@@ -20,25 +21,24 @@ class DashboardVC: BaseVC<DashboardVM>, BindableType {
         bindViewModel()
     }
     
-    func generateInputs() -> DashboardVM.Input {
+    func createInput() -> DashboardVM.Input {
         return DashboardVM.Input(articles: btnArticles.rx.tap.asDriver(),
                                  logout: btnLogout.rx.tap.asDriver())
     }
     
-    func onGenerateOutputs(outputs: DashboardVM.Output) {
-        outputs.articles
-            .drive(onNext: { [weak self] in
-                self?.coordinator.transition(to: .articleList)
-            })
+    func onCreateOutput(output: DashboardVM.Output) {
+        output.articles
+            .drive(onNext: { [unowned self] in self.coordinator.transition(to: .articleList) })
             .disposed(by: disposeBag)
         
-        outputs.logout
-            .drive(onNext: { [weak self] in
+        output.logout
+            .drive(onNext: { [unowned self] in
                 // Completable is always disposed on completion, so we don't need to add it to the dispose bag
-                _ = self?.coordinator.pop(animated: false)
-                    .subscribe(onCompleted: {
-                        self?.coordinator.popToRoot(animated: true)
+                self.coordinator.pop(animated: false)
+                    .subscribe(onCompleted: { [unowned self] in
+                        self.coordinator.popToRoot(animated: true)
                     })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }

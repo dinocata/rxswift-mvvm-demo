@@ -22,6 +22,7 @@
 		8D0A12A521BFA83A00871478 /* UserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */; };
 		8D0A12A921BFD16A00871478 /* ArticleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A12A721BFD16A00871478 /* ArticleListCell.swift */; };
 		8D0A12AA21BFD16A00871478 /* ArticleListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A12A821BFD16A00871478 /* ArticleListCell.xib */; };
+		8D2C81DB21CCEC1600740F26 /* ArticleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C81DA21CCEC1600740F26 /* ArticleRepository.swift */; };
 		8D409EDF21B80BE700F32497 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D409EDE21B80BE700F32497 /* BaseTextField.swift */; };
 		8D4A95FE21B66CEF00A6CA15 /* TextFieldVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */; };
 		8D4A960021B67F7000A6CA15 /* FloatExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */; };
@@ -81,7 +82,7 @@
 		8DBA296221B931E7009311A9 /* DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA296021B931E7009311A9 /* DashboardVC.swift */; };
 		8DBA296321B931E7009311A9 /* DashboardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DBA296121B931E7009311A9 /* DashboardVC.xib */; };
 		8DBA296521B934CA009311A9 /* DashboardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBA296421B934CA009311A9 /* DashboardVM.swift */; };
-		8DF5AAE421BE54BC00782119 /* ArticleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5AAE321BE54BC00782119 /* ArticleRepository.swift */; };
+		8DF5AAE421BE54BC00782119 /* ArticleRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5AAE321BE54BC00782119 /* ArticleRepositoryImpl.swift */; };
 		8DF5AAE621BE7E0600782119 /* FetchedResultsControllerEntityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5AAE521BE7E0600782119 /* FetchedResultsControllerEntityObserver.swift */; };
 		8DF5AAE921BE80C400782119 /* RxManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5AAE821BE80C400782119 /* RxManagedObjectContext.swift */; };
 		E89E49FEB8B3A9F801E5C8F1 /* Pods_MVVM_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */; };
@@ -115,6 +116,7 @@
 		8D0A12A421BFA83A00871478 /* UserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImpl.swift; sourceTree = "<group>"; };
 		8D0A12A721BFD16A00871478 /* ArticleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListCell.swift; sourceTree = "<group>"; };
 		8D0A12A821BFD16A00871478 /* ArticleListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleListCell.xib; sourceTree = "<group>"; };
+		8D2C81DA21CCEC1600740F26 /* ArticleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepository.swift; sourceTree = "<group>"; };
 		8D409EDE21B80BE700F32497 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		8D4A95FD21B66CEF00A6CA15 /* TextFieldVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldVM.swift; sourceTree = "<group>"; };
 		8D4A95FF21B67F7000A6CA15 /* FloatExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatExtension.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 		8DBA296021B931E7009311A9 /* DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVC.swift; sourceTree = "<group>"; };
 		8DBA296121B931E7009311A9 /* DashboardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardVC.xib; sourceTree = "<group>"; };
 		8DBA296421B934CA009311A9 /* DashboardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardVM.swift; sourceTree = "<group>"; };
-		8DF5AAE321BE54BC00782119 /* ArticleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepository.swift; sourceTree = "<group>"; };
+		8DF5AAE321BE54BC00782119 /* ArticleRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRepositoryImpl.swift; sourceTree = "<group>"; };
 		8DF5AAE521BE7E0600782119 /* FetchedResultsControllerEntityObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerEntityObserver.swift; sourceTree = "<group>"; };
 		8DF5AAE821BE80C400782119 /* RxManagedObjectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxManagedObjectContext.swift; sourceTree = "<group>"; };
 		902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +249,14 @@
 				8D01A72421C7EFAC002C87E2 /* ArticleListItemVM.swift */,
 			);
 			path = ArticleListCell;
+			sourceTree = "<group>";
+		};
+		8D2C81D921CCEBFF00740F26 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5AAE321BE54BC00782119 /* ArticleRepositoryImpl.swift */,
+			);
+			path = Impl;
 			sourceTree = "<group>";
 		};
 		8D409EDD21B80BBF00F32497 /* Views */ = {
@@ -446,7 +456,8 @@
 		8D690A4421BA7B06001E4BB2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				8DF5AAE321BE54BC00782119 /* ArticleRepository.swift */,
+				8D2C81D921CCEBFF00740F26 /* Impl */,
+				8D2C81DA21CCEC1600740F26 /* ArticleRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -810,6 +821,7 @@
 				8D0A129D21BFA0BC00871478 /* KeychainAccessHelperImpl.swift in Sources */,
 				8D79C1E221C9346500765886 /* FormEvent.swift in Sources */,
 				8D0A12A121BFA26500871478 /* CoreDataHelperImpl.swift in Sources */,
+				8D2C81DB21CCEC1600740F26 /* ArticleRepository.swift in Sources */,
 				8D617CBC21B4732E009D2113 /* CoordinatorVC.swift in Sources */,
 				8D01A72321C7D800002C87E2 /* ArticleDetailsVM.swift in Sources */,
 				8D9D641221B54E3A00979814 /* BaseService.swift in Sources */,
@@ -836,7 +848,7 @@
 				8D0A129B21BF9FCD00871478 /* UserDefaultsHelperImpl.swift in Sources */,
 				8D617C9821B44568009D2113 /* SceneTransition.swift in Sources */,
 				8D0A12A321BFA30800871478 /* ValidationHelperImpl.swift in Sources */,
-				8DF5AAE421BE54BC00782119 /* ArticleRepository.swift in Sources */,
+				8DF5AAE421BE54BC00782119 /* ArticleRepositoryImpl.swift in Sources */,
 				8D0A12A921BFD16A00871478 /* ArticleListCell.swift in Sources */,
 				8D01A72521C7EFAC002C87E2 /* ArticleListItemVM.swift in Sources */,
 				8D617C8F21B433D8009D2113 /* ViewModelType.swift in Sources */,
@@ -1015,6 +1027,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D TRACE_RESOURCES";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uhp.MVVM-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
