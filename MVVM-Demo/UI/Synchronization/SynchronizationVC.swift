@@ -10,20 +10,30 @@ import UIKit
 
 class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     
+    // Vars
+    private var inputs: SynchronizationVM.Input!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Synchronization"
+        
+        bindViewModel()
+        inputs.data.onNext(())
+        /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
             self.coordinator.transition(to: .dashboard)
-        }
+        }*/
     }
     
     func createInput() -> SynchronizationVM.Input {
-        return SynchronizationVM.Input()
+        inputs = SynchronizationVM.Input()
+        return inputs
     }
     
     func onCreateOutput(output: SynchronizationVM.Output) {
-        // TODO
+        output.data
+            .drive(onNext: { $0.forEach({ print("\($0.name), \($0.articleDescription ?? "")") }) })
+            .disposed(by: disposeBag)
     }
     
 }

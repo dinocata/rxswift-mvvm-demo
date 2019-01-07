@@ -27,8 +27,8 @@ class ViewModelContainer: ChildContainerProtocol {
                         coreDataHelper: $0.resolve(CoreDataHelper.self)!)
         }
         
-        instance.register(SynchronizationVM.self) { _ in
-            SynchronizationVM()
+        instance.register(SynchronizationVM.self) {
+            SynchronizationVM(articleService: $0.resolve(ArticleService.self)!)
         }
         
         instance.register(ArticleListVM.self) {

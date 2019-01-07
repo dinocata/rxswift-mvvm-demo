@@ -15,4 +15,6 @@ struct LoginRequest: Encodable {
 
 struct LoginResponse: Decodable {
     let token: String
+    let userId: Int32
+    let email: String
 }

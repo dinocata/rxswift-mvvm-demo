@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NetworkActivityLogger.shared.level = .debug
             NetworkActivityLogger.shared.startLogging()
         }
+
         
         // Continously checks and prints total resources allocated by Rx (debugging only)
         if Constants.Config.rxLeakDetection {

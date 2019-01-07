@@ -72,9 +72,15 @@ final class AppContainer: ContainerProtocol {
     
     /// Service dependency injections
     private static func registerServices() {
+        // User service
         instance.register(UserService.self) {
             UserServiceImpl(keychainAccess: $0.resolve(KeychainAccessHelper.self)!,
                             network: $0.resolve(NetworkProtocol.self)!)
+        }
+        
+        // Article service
+        instance.register(ArticleService.self) {
+            ArticleServiceImpl(network: $0.resolve(NetworkProtocol.self)!)
         }
     }
     

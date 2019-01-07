@@ -6,24 +6,34 @@
 //  Copyright © 2018 UHP. All rights reserved.
 //
 
-import Foundation
+import RxSwift
+import RxCocoa
 
 class SynchronizationVM {
     
+    private let articleService: ArticleService
+    
+    init(articleService: ArticleService) {
+        self.articleService = articleService
+    }
 }
 
 extension SynchronizationVM: ViewModelType {
     
     struct Input {
-        
+        let data = PublishSubject<Void>()
     }
     
     struct Output {
-        
+        let data: Driver<[ArticleResponse]>
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        let dataEventDriver = input.data
+            .asObserver()
+            .flatMapLatest { [unowned self] in self.articleService.getArticles() }
+        
+        return Output(data: dataEventDriver.asDriverOnErrorJustComplete())
     }
     
 }

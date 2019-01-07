@@ -15,8 +15,8 @@ final class Constants {
     class Config {
         static let persistentContainerName = "MVVM_Demo"
         // Whether to log network requests and responses in the console. Used for debugging.
-        static let networkActivityLogging = false
-        static let rxLeakDetection = true
+        static let networkActivityLogging = true
+        static let rxLeakDetection = false
     }
     
     class Api {
@@ -32,7 +32,7 @@ final class Constants {
         static func getBaseUrl() -> String {
             switch selectedEnvironment {
             case .development:
-                return "http://localhost:3000/"
+                return "http://192.168.1.55/app_dev.php/api/"
             case .testing:
                 return "TESTING URL"
             case .staging:

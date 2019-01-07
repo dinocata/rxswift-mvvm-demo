@@ -11,6 +11,7 @@ import Moya
 enum ApiService {
     case login(_ requestBody: LoginRequest)
     case getArticles
+    case getUsers
 }
 
 extension ApiService: TargetType, AccessTokenAuthorizable {
@@ -20,17 +21,20 @@ extension ApiService: TargetType, AccessTokenAuthorizable {
     var path: String {
         switch self {
         case .login:
-            return "login"
+            return "auth/login"
         case .getArticles:
-            return "articles"
+            return "user/registered"
+        case .getUsers:
+            return "user/all-registered"
         }
     }
     
     var method: Method {
         switch self {
         case .login:
-            return .get // TODO: replace with .post after working API endpoint is implemented
-        case .getArticles:
+            return .post
+        case .getArticles,
+             .getUsers:
             return .get
         }
     }
@@ -38,8 +42,9 @@ extension ApiService: TargetType, AccessTokenAuthorizable {
     var task: Task {
         switch self {
         case .login(let requestBody):
-            return .requestPlain // TODO: replace with .requestJSONEncodable(requestBody) after working API endpoint is implemented
-        case .getArticles:
+            return .requestJSONEncodable(requestBody)
+        case .getArticles,
+             .getUsers:
             return .requestPlain
         }
     }
@@ -63,6 +68,8 @@ extension ApiService: TargetType, AccessTokenAuthorizable {
             return "login_user_response".localized.utf8Encoded
         case .getArticles:
             return "get_articles_response".localized.utf8Encoded
+        default:
+            return "test".utf8Encoded
         }
     }
     
