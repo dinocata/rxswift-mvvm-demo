@@ -24,7 +24,7 @@ class UserServiceImpl: BaseService, UserService {
                 case .success(let data):
                     self.keychainAccess.setUserToken(data.token)
                     return .success
-                case .error(let error):
+                case .failure(let error):
                     return error.status
                 }
         }

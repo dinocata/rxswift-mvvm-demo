@@ -80,7 +80,8 @@ final class AppContainer: ContainerProtocol {
         
         // Article service
         instance.register(ArticleService.self) {
-            ArticleServiceImpl(network: $0.resolve(NetworkProtocol.self)!)
+            ArticleServiceImpl(repository: $0.resolve(ArticleRepository.self)! as! BaseRepositoryImpl<Article>,
+                               network: $0.resolve(NetworkProtocol.self)!)
         }
     }
     

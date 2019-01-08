@@ -25,7 +25,7 @@ extension SynchronizationVM: ViewModelType {
     }
     
     struct Output {
-        let data: Driver<[ArticleResponse]>
+        let data: Driver<[Article]>
     }
     
     func transform(input: Input) -> Output {

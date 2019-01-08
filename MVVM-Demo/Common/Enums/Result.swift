@@ -10,5 +10,5 @@ import Foundation
 
 enum Result<T, ErrorType: Error> {
     case success(T)
-    case error(ErrorType)
+    case failure(ErrorType)
 }

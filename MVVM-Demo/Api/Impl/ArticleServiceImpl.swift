@@ -8,18 +8,10 @@
 
 import RxSwift
 
-class ArticleServiceImpl: BaseService, ArticleService {
+class ArticleServiceImpl: RepositoryService<Article>, ArticleService {
     
-    func getArticles() -> Single<[ArticleResponse]> {
-        return request(.getArticles, responseType: [ArticleResponse].self)
-            .map({
-                switch $0 {
-                case .success(let data):
-                    return data
-                default:
-                    return []
-                }
-            })
+    func getArticles() -> Observable<[Article]> {
+        return fetchApiData(.getArticles)
     }
     
 }

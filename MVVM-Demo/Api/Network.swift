@@ -58,8 +58,8 @@ class Network<ApiTarget: TargetType> {
         return provider.rx.request(target)
             .filterSuccessfulStatusCodes()
             .map(responseType)
-            .map { Result<T, NetworkError>.success($0) }
-            .catchError { Single.just(.error(NetworkError(error: $0 as? MoyaError))) }
+            .map { NetworkResult<T>.success($0) }
+            .catchError { Single.just(.failure(NetworkError(error: $0 as? MoyaError))) }
     }
 }
 

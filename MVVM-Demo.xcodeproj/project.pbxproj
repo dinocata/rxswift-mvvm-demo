@@ -66,6 +66,7 @@
 		8D690A4821BA7EBC001E4BB2 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4721BA7EBC001E4BB2 /* Reusable.swift */; };
 		8D690A4A21BA7F38001E4BB2 /* ObservableExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */; };
 		8D690A4C21BAC20D001E4BB2 /* BaseApiResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */; };
+		8D6C83EF21E4D79C002178E6 /* RepositoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6C83EE21E4D79C002178E6 /* RepositoryService.swift */; };
 		8D79C1E221C9346500765886 /* FormEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D79C1E121C9346500765886 /* FormEvent.swift */; };
 		8D9D63F121B5141D00979814 /* SynchronizationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */; };
 		8D9D63F221B5141D00979814 /* SynchronizationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63F021B5141D00979814 /* SynchronizationVC.xib */; };
@@ -166,6 +167,7 @@
 		8D690A4721BA7EBC001E4BB2 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		8D690A4921BA7F38001E4BB2 /* ObservableExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableExtension.swift; sourceTree = "<group>"; };
 		8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApiResource.swift; sourceTree = "<group>"; };
+		8D6C83EE21E4D79C002178E6 /* RepositoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryService.swift; sourceTree = "<group>"; };
 		8D79C1E121C9346500765886 /* FormEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormEvent.swift; sourceTree = "<group>"; };
 		8D9D63EF21B5141D00979814 /* SynchronizationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationVC.swift; sourceTree = "<group>"; };
 		8D9D63F021B5141D00979814 /* SynchronizationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SynchronizationVC.xib; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				8D690A4521BA7B1F001E4BB2 /* BaseRepository.swift */,
 				8D9D641121B54E3A00979814 /* BaseService.swift */,
 				8D690A4B21BAC20D001E4BB2 /* BaseApiResource.swift */,
+				8D6C83EE21E4D79C002178E6 /* RepositoryService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				8D9D640721B546E800979814 /* CoreDataHelper.swift in Sources */,
 				8D690A3F21BA76D6001E4BB2 /* Article.swift in Sources */,
 				8DC7D16E21E380AB00B89896 /* ArticleService.swift in Sources */,
+				8D6C83EF21E4D79C002178E6 /* RepositoryService.swift in Sources */,
 				8D9D63F521B51D1500979814 /* ApiService.swift in Sources */,
 				8D690A3321BA5EC5001E4BB2 /* BaseVC.swift in Sources */,
 				8D01A72021C7D7F3002C87E2 /* ArticleDetailsVC.swift in Sources */,

@@ -46,7 +46,7 @@ protocol BaseRepository {
 
 class BaseRepositoryImpl<ModelType: Populatable>: BaseRepository {
     
-    internal var coreDataHelper: CoreDataHelper
+    internal let coreDataHelper: CoreDataHelper
     
     required init(coreDataHelper: CoreDataHelper) {
         self.coreDataHelper = coreDataHelper

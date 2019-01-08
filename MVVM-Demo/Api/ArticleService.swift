@@ -9,5 +9,5 @@
 import RxSwift
 
 protocol ArticleService {
-    func getArticles() -> Single<[ArticleResponse]>
+    func getArticles() -> Observable<[Article]>
 }

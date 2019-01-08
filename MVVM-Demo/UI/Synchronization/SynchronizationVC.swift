@@ -19,10 +19,10 @@ class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
         
         bindViewModel()
         inputs.data.onNext(())
-        /*
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
-            self.coordinator.transition(to: .dashboard)
-        }*/
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+            self?.coordinator.transition(to: .dashboard)
+        }
     }
     
     func createInput() -> SynchronizationVM.Input {
@@ -32,7 +32,7 @@ class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     
     func onCreateOutput(output: SynchronizationVM.Output) {
         output.data
-            .drive(onNext: { $0.forEach({ print("\($0.name), \($0.articleDescription ?? "")") }) })
+            .drive(onNext: { $0.forEach({ print("\($0.name ?? ""), \($0.articleDescription ?? "")") }) })
             .disposed(by: disposeBag)
     }
     
