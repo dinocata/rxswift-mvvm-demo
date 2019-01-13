@@ -2,6 +2,7 @@
 A simple and clean demo project written in RxSwift for MVVM and coordinator pattern, which utilizes dependency injection using <a href="https://github.com/Swinject/Swinject">Swinject</a>.
 
 <h3>TODO</h3>
+-Refactor architecture to be less dependent on specific implementation
 
 -Split project structure into following modules (subject to change):
 
