@@ -10,6 +10,9 @@ import UIKit
 
 class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     
+    // Outlets
+    @IBOutlet weak var btnCancel: UIButton!
+    
     // Vars
     private var inputs: SynchronizationVM.Input!
     
@@ -19,10 +22,6 @@ class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
         
         bindViewModel()
         inputs.data.onNext(())
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-            self?.coordinator.transition(to: .dashboard)
-        }
     }
     
     func createInput() -> SynchronizationVM.Input {
@@ -32,7 +31,10 @@ class SynchronizationVC: BaseVC<SynchronizationVM>, BindableType {
     
     func onCreateOutput(output: SynchronizationVM.Output) {
         output.data
-            .drive(onNext: { $0.forEach({ print("\($0.name ?? ""), \($0.articleDescription ?? "")") }) })
+            .drive(onNext: { [weak self] in
+                $0.forEach({ print("\($0.name ?? ""), \($0.articleDescription ?? "")") })
+                self?.coordinator.transition(to: .dashboard)
+            })
             .disposed(by: disposeBag)
     }
     

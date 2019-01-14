@@ -15,7 +15,7 @@ final class Constants {
     class Config {
         static let persistentContainerName = "MVVM_Demo"
         // Whether to log network requests and responses in the console. Used for debugging.
-        static let networkActivityLogging = true
+        static let networkActivityLogging = false
         static let rxLeakDetection = false
     }
     

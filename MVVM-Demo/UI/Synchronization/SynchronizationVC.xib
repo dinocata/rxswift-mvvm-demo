@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SynchronizationVC" customModule="MVVM_Demo" customModuleProvider="target">
             <connections>
+                <outlet property="btnCancel" destination="x6Z-Zr-7Rf" id="jmm-cr-uFt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
