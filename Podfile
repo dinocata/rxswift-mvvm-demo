@@ -56,3 +56,12 @@ target 'PersistencePlatform' do
     rx_swift
     rx_cocoa
 end
+
+target 'PresentationPlatform' do
+    # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+    use_frameworks!
+    
+    rx_swift
+    rx_cocoa
+end
+

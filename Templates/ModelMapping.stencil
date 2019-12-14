@@ -1,14 +1,6 @@
 import CoreData
 import PersistencePlatform
 
-{% for type in types.based.BaseModel %}
-extension {{ type.name }} {
-    func getCDObject(using coreDataManager: CoreDataManager, context: NSManagedObjectContext) -> CD{{ type.name }} {
-        return coreDataManager.getExistingOrNew(entity: self, context: context)
-    }
-}
-{% endfor %}
-
 extension CoreDataManagerImpl {
 
     func deleteAllData(context: NSManagedObjectContext) {

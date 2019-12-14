@@ -1,4 +1,5 @@
 import UIKit
+import PresentationPlatform
 
 {% for enum in types.enums where enum|annotated:"scenes" %}
 extension {{ enum.name }} {
