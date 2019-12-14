@@ -1,0 +1,83 @@
+import Swinject
+
+final class AutoInstanceRegistration {
+
+// TODO
+/*
+    static func build() {
+        let singletonContainer = SingletonContainer.instance
+        let factoryContainer = FactoryContainer.instance
+
+        {% for item in types.protocols where item|annotated:"register" %}
+        // {{ item.name }}
+        quickRegister(container: {% if item|annotated:"singleton" %}singletonContainer{% else %}factoryContainer{% endif %}, {{ item.annotations.register }}.self) { instance, resolver in
+            // Extra Injections kite
+            {% for var in types.classes where var|annotated:item.annotations.register %}
+            {% for var in var.allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            {% endfor %}
+            {% for var in type[item.annotations.register].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+        }
+
+        {% endfor %}
+        {% for item in types.classes where item|annotated:"register" %}
+        // {{ item.name }}
+        quickRegister(container: {% if item|annotated:"singleton" %}singletonContainer{% else %}factoryContainer{% endif %}, {{ item.annotations.register }}.self) { instance, resolver in
+            // Extra Injections
+            {% for var in type[item.annotations.register].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+        }
+
+        {% endfor %}
+    }
+
+    // Storage registration
+    private static func quickRegister<T: Storage<R>, R>(container: Container, _ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(coreDataManager: $0.resolve(CoreDataManager.self)!, coreDataStack: $0.resolve(CoreDataStack.self)!, notificationManager: $0.resolve(NotificationManager.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+
+    // Service register
+    private static func quickRegister<T: NetworkStorage<R>, R>(container: Container, _ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(storage: $0.resolve(R.self)!, userDefaults: $0.resolve(UserDefaultsManager.self)!, network: $0.resolve(NetworkProtocol.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+
+    // Repository registration
+    private static func quickRegister<T: Repository<R, S>, R, S>(container: Container, _ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(storage: $0.resolve(R.self)!, service: $0.resolve(S.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+
+    // View Controller registration
+    private static func quickRegister<T: MVVMController<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(viewModel: $0.resolve(M.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+
+    // Coordinator View Controller registration
+    private static func quickRegister<T: CoordinatorVC<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(coordinator : $0.resolve(SceneCoordinatorType.self)!, notificationManager: $0.resolve(NotificationManager.self)!, viewModel: $0.resolve(M.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+    */
+}

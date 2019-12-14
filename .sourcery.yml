@@ -1,0 +1,10 @@
+sources:
+    - MVVM-Demo
+    - PersistencePlatform
+templates:
+    - Templates
+output:
+  Generated
+
+args:
+  app: MVVM-Demo

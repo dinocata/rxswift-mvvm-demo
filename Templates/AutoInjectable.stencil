@@ -1,0 +1,73 @@
+import Swinject
+import Moya
+import PersistencePlatform
+
+final class SingletonContainer {
+
+    static let instance: Container = {
+        let container = Container(defaultObjectScope: .container)
+        return SingletonContainer.build(container: container)
+    }()
+
+    static func build(container: Container) -> Container {
+        {% for item in types.protocols where item|annotated:"factory" and item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            let instance = {{ item.annotations.factory }}()
+            {% for var in type[item.annotations.factory].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+        {% for item in types.classes where item|annotated:"factory" and item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            let instance = {{ item.annotations.factory }}()
+            {% for var in type[item.annotations.factory].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+
+        return container
+    }
+
+}
+
+final class FactoryContainer {
+
+    static let instance: Container = {
+        let container = Container(parent: SingletonContainer.instance, defaultObjectScope: .transient)
+        return FactoryContainer.build(container: container)
+    }()
+
+    static func build(container: Container) -> Container {
+        {% for item in types.protocols where item|annotated:"factory" and not item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            let instance = {{ item.annotations.factory }}()
+            {% for var in type[item.annotations.factory].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+        {% for item in types.classes where item|annotated:"factory" and not item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            let instance = {{ item.annotations.factory }}()
+            {% for var in type[item.annotations.factory].allVariables where var.type|annotated:"factory" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+        return container
+    }
+}

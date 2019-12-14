@@ -1,0 +1,23 @@
+import CoreData
+import PersistencePlatform
+
+{% for type in types.based.BaseModel %}
+extension {{ type.name }} {
+    func getCDObject(using coreDataManager: CoreDataManager, context: NSManagedObjectContext) -> CD{{ type.name }} {
+        return coreDataManager.getExistingOrNew(entity: self, context: context)
+    }
+}
+{% endfor %}
+
+extension CoreDataManagerImpl {
+
+    func deleteAllData(context: NSManagedObjectContext) {
+        let entities: [NSManagedObject.Type] = [
+        {% for type in types.based.BaseModel %}
+            CD{{ type.name }}.self{% if not forloop.last %},{% endif %}
+        {% endfor %}
+        ]
+
+        entities.forEach { deleteAllEntities(entity: $0, context: context) }
+    }
+}

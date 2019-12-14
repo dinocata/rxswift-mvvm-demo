@@ -1,0 +1,47 @@
+import UIKit
+
+{% for enum in types.enums where enum|annotated:"scenes" %}
+extension {{ enum.name }} {
+
+    var viewController: UIViewController {
+        switch self {
+        {% for case in enum.cases where case|annotated:"controller" %}
+        // {{ case.name|uppercase }}
+        case .{{ case.name }}{% if case.hasAssociatedValue %}({% for value in case.associatedValues %}let {{ value.localName }}{% if not forloop.last %}, {% endif %}{% endfor %}){% endif %}:
+            let controller = FactoryContainer.instance.resolve({{ case.annotations.controller }}.self)!
+            {% for value in case.associatedValues %}
+            controller.{{ value.localName }} = {{ value.localName }}
+            {% endfor %}
+            {% if case|annotated:"navigation" %}
+            let result = UINavigationController(rootViewController: controller)
+            {% else %}
+            let result = controller
+            {% endif %}
+            {% if case.annotations.transition == "modal" %}
+            result.configureModal()
+            {% elif case.annotations.transition == "present" %}
+            result.modalPresentationStyle = .fullScreen
+            {% endif %}
+            return result
+
+        {% endfor %}
+        {% for case in enum.cases where not case|annotated:"controller" %}
+        // {{ case.name|uppercase }}
+        case .{{ case.name }}:
+            fatalError("{{ case.name|uppercase }} IS NOT IMPLEMENTED")
+        {% endfor %}
+        }
+    }
+
+    func defaultTransition(animated: Bool) -> SceneTransition {
+        switch self {
+        {% for case in enum.cases where case|annotated:"transition" %}
+        case .{{ case.name }}:
+            return .{{ case.annotations.transition }}(animated: animated)
+        {% endfor %}
+        default:
+            return .push(animated: true)
+        }
+    }
+}
+{% endfor %}
