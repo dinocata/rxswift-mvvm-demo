@@ -6,12 +6,16 @@ target 'MVVM-Demo' do
   use_frameworks!
 
   # Pods for MVVM-Demo
-  pod 'RxSwift',    '~> 4.4.0'
-  pod 'RxCocoa',    '~> 4.4.0'
-  pod 'Moya/RxSwift', '~> 12.0'
-  pod 'KeychainAccess'
+  pod 'SwiftLint'
+  pod 'Sourcery'
   pod 'Swinject'
+  pod 'RxSwift', '~> 5', :inhibit_warnings => true
+  pod 'RxCocoa', '~> 5', :inhibit_warnings => true
+  pod 'Moya/RxSwift', '~> 13.0', :inhibit_warnings => true
+  pod 'RxDataSources', '~> 4.0', :inhibit_warnings => true
+  pod 'KeychainAccess'
   pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'TPKeyboardAvoiding'
   pod 'AlamofireNetworkActivityLogger', '~> 2.3'
 
   target 'MVVM-DemoTests' do
