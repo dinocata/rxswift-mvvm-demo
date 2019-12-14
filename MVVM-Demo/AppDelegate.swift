@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MVVM-Demo
 //
-//  Created by UHP Mac 3 on 02/12/2018.
-//  Copyright © 2018 UHP. All rights reserved.
+//  Created by Dino Catalinac on 14/12/2019.
+//  Copyright © 2019 DinoCata. All rights reserved.
 //
 
 import UIKit
@@ -19,4 +19,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

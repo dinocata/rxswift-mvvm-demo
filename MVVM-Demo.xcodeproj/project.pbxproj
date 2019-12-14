@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,28 @@
 		8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C5A21B40901009D2113 /* AppDelegate.swift */; };
 		8D617C6521B40902009D2113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6421B40902009D2113 /* Assets.xcassets */; };
 		8D617C6821B40902009D2113 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6621B40902009D2113 /* LaunchScreen.storyboard */; };
-		8D617C7321B40902009D2113 /* MVVM_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C7221B40902009D2113 /* MVVM_DemoTests.swift */; };
 		8D9D63F821B5231300979814 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63FA21B5231300979814 /* Localizable.strings */; };
+		B1B759BA1405FE0225392DF0 /* Pods_PersistencePlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2674A7E2EBE6A25F3518023B /* Pods_PersistencePlatform.framework */; };
+		CB55245523A5086B00C9C3AA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55245423A5086B00C9C3AA /* Storage.swift */; };
+		CB55245823A508FE00C9C3AA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55245723A508FE00C9C3AA /* CoreDataStack.swift */; };
+		CB55246223A50C9500C9C3AA /* DomainPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = CB55246023A50C9500C9C3AA /* DomainPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB55246523A50C9500C9C3AA /* DomainPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB55245E23A50C9500C9C3AA /* DomainPlatform.framework */; };
+		CB55246623A50C9500C9C3AA /* DomainPlatform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CB55245E23A50C9500C9C3AA /* DomainPlatform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB55247023A50DF700C9C3AA /* Persistable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55246F23A50DF700C9C3AA /* Persistable.swift */; };
+		CB55247223A50E0A00C9C3AA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55247123A50E0A00C9C3AA /* CoreDataManager.swift */; };
+		CB55247523A5104400C9C3AA /* PersistencePlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC47647123A4FCE000830AFD /* PersistencePlatform.framework */; };
+		CB55247623A5104400C9C3AA /* PersistencePlatform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC47647123A4FCE000830AFD /* PersistencePlatform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CB55247B23A510BE00C9C3AA /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55247A23A510BE00C9C3AA /* BaseModel.swift */; };
+		CB55248023A516F400C9C3AA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55247F23A516F400C9C3AA /* NotificationManager.swift */; };
+		CB55248B23A5218800C9C3AA /* ModelMapping.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248523A5218800C9C3AA /* ModelMapping.generated.swift */; };
+		CB55248C23A5218800C9C3AA /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248623A5218800C9C3AA /* AutoMockable.generated.swift */; };
+		CB55248D23A5218800C9C3AA /* SceneControllers.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248723A5218800C9C3AA /* SceneControllers.generated.swift */; };
+		CB55248E23A5218800C9C3AA /* MockableStorage.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248823A5218800C9C3AA /* MockableStorage.generated.swift */; };
+		CB55248F23A5218800C9C3AA /* InstanceRegistration.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248923A5218800C9C3AA /* InstanceRegistration.generated.swift */; };
+		CB55249023A5218800C9C3AA /* AutoInjectable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB55248A23A5218800C9C3AA /* AutoInjectable.generated.swift */; };
 		DC47647523A4FCE000830AFD /* PersistencePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = DC47647323A4FCE000830AFD /* PersistencePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC47647823A4FCE000830AFD /* PersistencePlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC47647123A4FCE000830AFD /* PersistencePlatform.framework */; };
 		DC47647923A4FCE000830AFD /* PersistencePlatform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC47647123A4FCE000830AFD /* PersistencePlatform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DC47648123A4FDB100830AFD /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC47648023A4FDB100830AFD /* Storage.swift */; };
 		E89E49FEB8B3A9F801E5C8F1 /* Pods_MVVM_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +44,20 @@
 			remoteGlobalIDString = 8D617C5621B40901009D2113;
 			remoteInfo = "MVVM-Demo";
 		};
+		CB55246323A50C9500C9C3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D617C4F21B40901009D2113 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CB55245D23A50C9500C9C3AA;
+			remoteInfo = DomainPlatform;
+		};
+		CB55247723A5104400C9C3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8D617C4F21B40901009D2113 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DC47647023A4FCE000830AFD;
+			remoteInfo = PersistencePlatform;
+		};
 		DC47647623A4FCE000830AFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8D617C4F21B40901009D2113 /* Project object */;
@@ -38,6 +68,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		CB55247923A5104400C9C3AA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CB55247623A5104400C9C3AA /* PersistencePlatform.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC47647D23A4FCE000830AFD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,6 +86,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				DC47647923A4FCE000830AFD /* PersistencePlatform.framework in Embed Frameworks */,
+				CB55246623A50C9500C9C3AA /* DomainPlatform.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,24 +95,40 @@
 
 /* Begin PBXFileReference section */
 		10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2674A7E2EBE6A25F3518023B /* Pods_PersistencePlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersistencePlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_DemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		836673DE0FF9FFABF49B4D6D /* Pods-PersistencePlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersistencePlatform.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersistencePlatform/Pods-PersistencePlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		8D617C5721B40901009D2113 /* MVVM-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D617C5A21B40901009D2113 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D617C6421B40902009D2113 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D617C6721B40902009D2113 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D617C6921B40902009D2113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D617C6E21B40902009D2113 /* MVVM-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MVVM-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D617C7221B40902009D2113 /* MVVM_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVVM_DemoTests.swift; sourceTree = "<group>"; };
 		8D617C7421B40902009D2113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D9D63F921B5231300979814 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6EFCA11D39FF92FBCB6F240 /* Pods-MVVM-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		CAF03F00BB4C4D0564BF4B3A /* Pods-MVVM-DemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-DemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CB55245423A5086B00C9C3AA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CB55245723A508FE00C9C3AA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		CB55245E23A50C9500C9C3AA /* DomainPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DomainPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB55246023A50C9500C9C3AA /* DomainPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DomainPlatform.h; sourceTree = "<group>"; };
+		CB55246123A50C9500C9C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB55246F23A50DF700C9C3AA /* Persistable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistable.swift; sourceTree = "<group>"; };
+		CB55247123A50E0A00C9C3AA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CB55247A23A510BE00C9C3AA /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
+		CB55247F23A516F400C9C3AA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		CB55248523A5218800C9C3AA /* ModelMapping.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelMapping.generated.swift; sourceTree = "<group>"; };
+		CB55248623A5218800C9C3AA /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		CB55248723A5218800C9C3AA /* SceneControllers.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneControllers.generated.swift; sourceTree = "<group>"; };
+		CB55248823A5218800C9C3AA /* MockableStorage.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockableStorage.generated.swift; sourceTree = "<group>"; };
+		CB55248923A5218800C9C3AA /* InstanceRegistration.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceRegistration.generated.swift; sourceTree = "<group>"; };
+		CB55248A23A5218800C9C3AA /* AutoInjectable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoInjectable.generated.swift; sourceTree = "<group>"; };
 		DC47647123A4FCE000830AFD /* PersistencePlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PersistencePlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC47647323A4FCE000830AFD /* PersistencePlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersistencePlatform.h; sourceTree = "<group>"; };
 		DC47647423A4FCE000830AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC47648023A4FDB100830AFD /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		FCE5AC80D9661A773C9A5FCD /* Pods-PersistencePlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersistencePlatform.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersistencePlatform/Pods-PersistencePlatform.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB55246523A50C9500C9C3AA /* DomainPlatform.framework in Frameworks */,
 				E89E49FEB8B3A9F801E5C8F1 /* Pods_MVVM_Demo.framework in Frameworks */,
 				DC47647823A4FCE000830AFD /* PersistencePlatform.framework in Frameworks */,
 			);
@@ -91,10 +150,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB55245B23A50C9500C9C3AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB55247523A5104400C9C3AA /* PersistencePlatform.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC47646E23A4FCE000830AFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1B759BA1405FE0225392DF0 /* Pods_PersistencePlatform.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +176,8 @@
 				73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */,
 				CAF03F00BB4C4D0564BF4B3A /* Pods-MVVM-DemoTests.debug.xcconfig */,
 				902B4DB8FA87F9C99FAE9E99 /* Pods-MVVM-DemoTests.release.xcconfig */,
+				836673DE0FF9FFABF49B4D6D /* Pods-PersistencePlatform.debug.xcconfig */,
+				FCE5AC80D9661A773C9A5FCD /* Pods-PersistencePlatform.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -118,9 +188,11 @@
 				8D617C5921B40901009D2113 /* MVVM-Demo */,
 				8D617C7121B40902009D2113 /* MVVM-DemoTests */,
 				DC47647223A4FCE000830AFD /* PersistencePlatform */,
-				8D617C5821B40901009D2113 /* Products */,
-				18534B7FFCA5372517363B45 /* Pods */,
+				CB55245F23A50C9500C9C3AA /* DomainPlatform */,
 				B49D5A82BB684C084D6A9390 /* Frameworks */,
+				18534B7FFCA5372517363B45 /* Pods */,
+				8D617C5821B40901009D2113 /* Products */,
+				CB55248423A5218800C9C3AA /* Generated */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +202,7 @@
 				8D617C5721B40901009D2113 /* MVVM-Demo.app */,
 				8D617C6E21B40902009D2113 /* MVVM-DemoTests.xctest */,
 				DC47647123A4FCE000830AFD /* PersistencePlatform.framework */,
+				CB55245E23A50C9500C9C3AA /* DomainPlatform.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -139,8 +212,8 @@
 			children = (
 				8D617C5A21B40901009D2113 /* AppDelegate.swift */,
 				8D617C6421B40902009D2113 /* Assets.xcassets */,
-				8D617C6621B40902009D2113 /* LaunchScreen.storyboard */,
 				8D617C6921B40902009D2113 /* Info.plist */,
+				8D617C6621B40902009D2113 /* LaunchScreen.storyboard */,
 				8D9D63FA21B5231300979814 /* Localizable.strings */,
 			);
 			path = "MVVM-Demo";
@@ -149,7 +222,6 @@
 		8D617C7121B40902009D2113 /* MVVM-DemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D617C7221B40902009D2113 /* MVVM_DemoTests.swift */,
 				8D617C7421B40902009D2113 /* Info.plist */,
 			);
 			path = "MVVM-DemoTests";
@@ -160,39 +232,67 @@
 			children = (
 				10DC7FE49EC7DBD670402C80 /* Pods_MVVM_Demo.framework */,
 				27C05A36BDCDE589C7B1BB1D /* Pods_MVVM_DemoTests.framework */,
+				2674A7E2EBE6A25F3518023B /* Pods_PersistencePlatform.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB55245623A5088F00C9C3AA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CB55247123A50E0A00C9C3AA /* CoreDataManager.swift */,
+				CB55245723A508FE00C9C3AA /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		CB55245F23A50C9500C9C3AA /* DomainPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				CB55246023A50C9500C9C3AA /* DomainPlatform.h */,
+				CB55246123A50C9500C9C3AA /* Info.plist */,
+			);
+			path = DomainPlatform;
+			sourceTree = "<group>";
+		};
+		CB55248423A5218800C9C3AA /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				CB55248523A5218800C9C3AA /* ModelMapping.generated.swift */,
+				CB55248623A5218800C9C3AA /* AutoMockable.generated.swift */,
+				CB55248723A5218800C9C3AA /* SceneControllers.generated.swift */,
+				CB55248823A5218800C9C3AA /* MockableStorage.generated.swift */,
+				CB55248923A5218800C9C3AA /* InstanceRegistration.generated.swift */,
+				CB55248A23A5218800C9C3AA /* AutoInjectable.generated.swift */,
+			);
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		DC47647223A4FCE000830AFD /* PersistencePlatform */ = {
 			isa = PBXGroup;
 			children = (
-				DC47647E23A4FD3700830AFD /* CoreData */,
-				DC47647F23A4FD3C00830AFD /* UserDefaults */,
-				DC47648023A4FDB100830AFD /* Storage.swift */,
-				DC47647323A4FCE000830AFD /* PersistencePlatform.h */,
+				CB55245623A5088F00C9C3AA /* CoreData */,
+				CB55245423A5086B00C9C3AA /* Storage.swift */,
+				CB55246F23A50DF700C9C3AA /* Persistable.swift */,
+				CB55247A23A510BE00C9C3AA /* BaseModel.swift */,
+				CB55247F23A516F400C9C3AA /* NotificationManager.swift */,
 				DC47647423A4FCE000830AFD /* Info.plist */,
+				DC47647323A4FCE000830AFD /* PersistencePlatform.h */,
 			);
 			path = PersistencePlatform;
-			sourceTree = "<group>";
-		};
-		DC47647E23A4FD3700830AFD /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		DC47647F23A4FD3C00830AFD /* UserDefaults */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CB55245923A50C9500C9C3AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB55246223A50C9500C9C3AA /* DomainPlatform.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC47646C23A4FCE000830AFD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -209,6 +309,7 @@
 			buildConfigurationList = 8D617C7721B40902009D2113 /* Build configuration list for PBXNativeTarget "MVVM-Demo" */;
 			buildPhases = (
 				782ED0AD3758A42AB513E8A6 /* [CP] Check Pods Manifest.lock */,
+				CB55245023A504FF00C9C3AA /* ShellScript */,
 				8D617C5321B40901009D2113 /* Sources */,
 				8D617C5421B40901009D2113 /* Frameworks */,
 				8D617C5521B40901009D2113 /* Resources */,
@@ -219,6 +320,7 @@
 			);
 			dependencies = (
 				DC47647723A4FCE000830AFD /* PBXTargetDependency */,
+				CB55246423A50C9500C9C3AA /* PBXTargetDependency */,
 			);
 			name = "MVVM-Demo";
 			productName = "MVVM-Demo";
@@ -245,10 +347,31 @@
 			productReference = 8D617C6E21B40902009D2113 /* MVVM-DemoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		CB55245D23A50C9500C9C3AA /* DomainPlatform */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CB55246723A50C9500C9C3AA /* Build configuration list for PBXNativeTarget "DomainPlatform" */;
+			buildPhases = (
+				CB55245923A50C9500C9C3AA /* Headers */,
+				CB55245A23A50C9500C9C3AA /* Sources */,
+				CB55245B23A50C9500C9C3AA /* Frameworks */,
+				CB55245C23A50C9500C9C3AA /* Resources */,
+				CB55247923A5104400C9C3AA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB55247823A5104400C9C3AA /* PBXTargetDependency */,
+			);
+			name = DomainPlatform;
+			productName = DomainPlatform;
+			productReference = CB55245E23A50C9500C9C3AA /* DomainPlatform.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		DC47647023A4FCE000830AFD /* PersistencePlatform */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC47647A23A4FCE000830AFD /* Build configuration list for PBXNativeTarget "PersistencePlatform" */;
 			buildPhases = (
+				2F909F1226E6A1D79CFEEA42 /* [CP] Check Pods Manifest.lock */,
 				DC47646C23A4FCE000830AFD /* Headers */,
 				DC47646D23A4FCE000830AFD /* Sources */,
 				DC47646E23A4FCE000830AFD /* Frameworks */,
@@ -271,7 +394,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
-				ORGANIZATIONNAME = UHP;
+				ORGANIZATIONNAME = DinoCata;
 				TargetAttributes = {
 					8D617C5621B40901009D2113 = {
 						CreatedOnToolsVersion = 10.1;
@@ -279,6 +402,10 @@
 					8D617C6D21B40902009D2113 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 8D617C5621B40901009D2113;
+					};
+					CB55245D23A50C9500C9C3AA = {
+						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					DC47647023A4FCE000830AFD = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -302,6 +429,7 @@
 				8D617C5621B40901009D2113 /* MVVM-Demo */,
 				8D617C6D21B40902009D2113 /* MVVM-DemoTests */,
 				DC47647023A4FCE000830AFD /* PersistencePlatform */,
+				CB55245D23A50C9500C9C3AA /* DomainPlatform */,
 			);
 		};
 /* End PBXProject section */
@@ -324,6 +452,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CB55245C23A50C9500C9C3AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC47646F23A4FCE000830AFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,6 +469,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2F909F1226E6A1D79CFEEA42 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PersistencePlatform-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F3AF6F07EBB6634B69280CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -384,26 +541,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
-				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVM-DemoTests/Pods-MVVM-DemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A697E6BEF30FD118DCBFFB4E /* [CP] Embed Pods Frameworks */ = {
@@ -412,39 +558,33 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityLogger/AlamofireNetworkActivityLogger.framework",
-				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityLogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		CB55245023A504FF00C9C3AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -453,7 +593,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB55248F23A5218800C9C3AA /* InstanceRegistration.generated.swift in Sources */,
 				8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */,
+				CB55248B23A5218800C9C3AA /* ModelMapping.generated.swift in Sources */,
+				CB55249023A5218800C9C3AA /* AutoInjectable.generated.swift in Sources */,
+				CB55248D23A5218800C9C3AA /* SceneControllers.generated.swift in Sources */,
+				CB55248E23A5218800C9C3AA /* MockableStorage.generated.swift in Sources */,
+				CB55248C23A5218800C9C3AA /* AutoMockable.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +607,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D617C7321B40902009D2113 /* MVVM_DemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB55245A23A50C9500C9C3AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +621,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC47648123A4FDB100830AFD /* Storage.swift in Sources */,
+				CB55248023A516F400C9C3AA /* NotificationManager.swift in Sources */,
+				CB55247023A50DF700C9C3AA /* Persistable.swift in Sources */,
+				CB55245523A5086B00C9C3AA /* Storage.swift in Sources */,
+				CB55247223A50E0A00C9C3AA /* CoreDataManager.swift in Sources */,
+				CB55245823A508FE00C9C3AA /* CoreDataStack.swift in Sources */,
+				CB55247B23A510BE00C9C3AA /* BaseModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +637,16 @@
 			isa = PBXTargetDependency;
 			target = 8D617C5621B40901009D2113 /* MVVM-Demo */;
 			targetProxy = 8D617C6F21B40902009D2113 /* PBXContainerItemProxy */;
+		};
+		CB55246423A50C9500C9C3AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CB55245D23A50C9500C9C3AA /* DomainPlatform */;
+			targetProxy = CB55246323A50C9500C9C3AA /* PBXContainerItemProxy */;
+		};
+		CB55247823A5104400C9C3AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DC47647023A4FCE000830AFD /* PersistencePlatform */;
+			targetProxy = CB55247723A5104400C9C3AA /* PBXContainerItemProxy */;
 		};
 		DC47647723A4FCE000830AFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -495,6 +662,7 @@
 				8D617C6721B40902009D2113 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 		8D9D63FA21B5231300979814 /* Localizable.strings */ = {
@@ -503,6 +671,7 @@
 				8D9D63F921B5231300979814 /* en */,
 			);
 			name = Localizable.strings;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -640,7 +809,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D TRACE_RESOURCES";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dinocata.MVVM-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -660,7 +829,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dinocata.MVVM-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -681,7 +850,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uhp.MVVM-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVVM-Demo.app/MVVM-Demo";
 			};
@@ -703,14 +872,78 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.uhp.MVVM-DemoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MVVM-Demo.app/MVVM-Demo";
 			};
 			name = Release;
 		};
+		CB55246823A50C9500C9C3AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = 5ZKGU62W9D;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DomainPlatform/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinocata.DomainPlatform;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CB55246923A50C9500C9C3AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
+				DEVELOPMENT_TEAM = 5ZKGU62W9D;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DomainPlatform/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dinocata.DomainPlatform;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		DC47647B23A4FCE000830AFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 836673DE0FF9FFABF49B4D6D /* Pods-PersistencePlatform.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -722,7 +955,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PersistencePlatform/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -731,6 +964,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinocata.PersistencePlatform;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -741,6 +975,7 @@
 		};
 		DC47647C23A4FCE000830AFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCE5AC80D9661A773C9A5FCD /* Pods-PersistencePlatform.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -752,7 +987,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = PersistencePlatform/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,6 +996,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dinocata.PersistencePlatform;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -794,6 +1030,15 @@
 			buildConfigurations = (
 				8D617C7B21B40902009D2113 /* Debug */,
 				8D617C7C21B40902009D2113 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB55246723A50C9500C9C3AA /* Build configuration list for PBXNativeTarget "DomainPlatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CB55246823A50C9500C9C3AA /* Debug */,
+				CB55246923A50C9500C9C3AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
