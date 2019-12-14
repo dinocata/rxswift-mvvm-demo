@@ -584,7 +584,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\ngit update-index --assume-unchanged Generated/*.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
