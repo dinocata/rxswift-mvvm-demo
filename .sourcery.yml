@@ -1,0 +1,13 @@
+sources:
+  - Application
+  - Data
+  - Domain
+templates:
+  - Templates
+output:
+  path: Generated
+  # Comment the following lines once the files are linked to project for the first time
+  link:
+    project: MVVM-Demo.xcodeproj
+    target: Application
+    group: Generated

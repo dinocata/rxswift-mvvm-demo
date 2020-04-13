@@ -16,6 +16,8 @@ Pods/
 ## Build generated
 build/
 DerivedData/
+Generated/*
+!Generated/.gitkeep 
 
 ## Various settings
 *.pbxuser
