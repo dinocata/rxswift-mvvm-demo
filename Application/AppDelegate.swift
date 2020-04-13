@@ -8,24 +8,6 @@
 
 import UIKit
 
-// sourcery: injectable, singleton
-protocol TestSingleton {
-    
-}
-
-class TestSingletonImpl: TestSingleton {
-    
-}
-
-// sourcery: injectable = Watafak
-protocol Kita {
-    
-}
-
-class Watafak: Kita {
-    var depend: TestSingleton!
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -33,6 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        ManualRegistration.build(appDelegate: self)
+        
+        AppContainer.instance.resolve(SceneCoordinatorType.self)?.onboardingTransition()
         
         return true
     }

@@ -6,25 +6,28 @@
 //  Copyright © 2020 github.com/dinocata. All rights reserved.
 //
 
-import Foundation
+import RxCocoa
+import Domain
 
-// Initialization
+// sourcery: injectable
 class LoginViewModel {
-  // Dependencies
+    var useCase: LoginUseCase!
 }
 
-// Binding
 extension LoginViewModel: ViewModelType {
-  struct Input {
-    // TODO: Add implementation
-  }
-
-  struct Output {
-    // TODO: Add implementation
-  }
-
-  func transform(input: Input) -> Output {
-    // TODO: Add implementation
-    return Output()
-  }
+    struct Input {
+        let closeButtonPressed: Driver<Void>
+    }
+    
+    struct Output {
+        let close: Driver<Void>
+    }
+    
+    func transform(input: Input) -> Output {
+        let close = Driver.merge(
+            input.closeButtonPressed
+        )
+        
+        return Output(close: close)
+    }
 }

@@ -19,6 +19,7 @@ target 'Application' do
   pod 'Swinject'
   
   pod 'RxCocoa', '~> 5'
+  pod 'SnapKit', '~> 5.0.0'
 end
 
 target 'Data' do

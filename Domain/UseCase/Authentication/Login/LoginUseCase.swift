@@ -6,9 +6,9 @@
 //  Copyright © 2020 UHP. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
-// sourcery: AutoMockable
+// sourcery: injectable
 public protocol LoginUseCase {
-    func login(username: String, password: String)
+    func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>>
 }

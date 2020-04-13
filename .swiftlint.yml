@@ -360,10 +360,6 @@ opt_in_rules: # some rules are only opt-in
   # https://github.com/realm/SwiftLint/blob/master/Rules.md#implicit-getter
   - implicit_getter
 
-  # Rationale: Prevents coder error, doesn't crash, makes coder be explicit about their assumptions
-  # https://github.com/realm/SwiftLint/blob/master/Rules.md#implicitly-unwrapped-optional
-  - implicitly_unwrapped_optional
-
   # Rationale: Encourages using the right API to solve a problem
   # https://github.com/realm/SwiftLint/blob/master/Rules.md#is-disjoint
   - is_disjoint

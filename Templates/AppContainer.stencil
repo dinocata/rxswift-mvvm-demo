@@ -1,9 +1,12 @@
 import Swinject
 import Moya
 import Data
+import Domain
 
 /// Provides Singletons
 final class AppContainer {
+
+    private init() {}
 
     static let instance: Container = {
         let container = Container(defaultObjectScope: .container)
@@ -16,7 +19,7 @@ final class AppContainer {
             {% else %}
             let instance = {{ item.name }}Impl()
             {% endif %}
-            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            {% for var in item.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
             {% endfor %}
             return instance
@@ -26,12 +29,8 @@ final class AppContainer {
         {% for item in types.classes where item|annotated:"injectable" and item|annotated:"singleton" %}
         // {{ item.name }} registration
         container.register({{ item.name }}.self) { resolver in
-            {% if item.annotations.injectable != 1 %}
-            let instance = {{ item.annotations.injectable }}()
-            {% else %}
-            let instance = {{ item.name }}Impl()
-            {% endif %}
-            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            let instance = {{ item.name }}()
+            {% for var in item.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
             {% endfor %}
             return instance

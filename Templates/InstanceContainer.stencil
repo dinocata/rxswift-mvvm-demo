@@ -1,9 +1,12 @@
 import Swinject
 import Moya
 import Data
+import Domain
 
 /// Provides new instances
 final class InstanceContainer {
+
+    private init() {}
 
     static let instance: Container = {
         let container = Container(parent: AppContainer.instance, defaultObjectScope: .transient)
@@ -13,12 +16,19 @@ final class InstanceContainer {
         container.register({{ item.name }}.self) { resolver in
             {% if item.annotations.injectable != 1 %}
             let instance = {{ item.annotations.injectable }}()
-            {% else %}
-            let instance = {{ item.name }}Impl()
-            {% endif %}
             {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
             {% endfor %}
+
+            {% else %}
+
+            {% for impl in types.implementing[item.name] %}
+            let instance = {{ impl.name }}()
+            {% for var in impl.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
             return instance
         }
 
@@ -26,12 +36,8 @@ final class InstanceContainer {
         {% for item in types.classes where item|annotated:"injectable" and not item|annotated:"singleton" %}
         // {{ item.name }} registration
         container.register({{ item.name }}.self) { resolver in
-            {% if item.annotations.injectable != 1 %}
-            let instance = {{ item.annotations.injectable }}()
-            {% else %}
-            let instance = {{ item.name }}Impl()
-            {% endif %}
-            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            let instance = {{ item.name }}()
+            {% for var in item.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
             {% endfor %}
             return instance

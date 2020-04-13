@@ -1,7 +1,10 @@
 import Swinject
 import Data
+import Domain
 
 final class ViewControllerContainer {
+
+    private init() {}
 
     static let instance: Container = {
         let container = Container(parent: InstanceContainer.instance, defaultObjectScope: .transient)
@@ -28,13 +31,12 @@ final class ViewControllerContainer {
         }
     }
 
-/*
     // Coordinator View Controller registration
     private static func quickRegister<T: CoordinatorVC<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
         container.register(type) {
-            let instance = T.init(coordinator : $0.resolve(SceneCoordinatorType.self)!, notificationManager: $0.resolve(NotificationManager.self)!, viewModel: $0.resolve(M.self)!)
+            let instance = T.init(viewModel: $0.resolve(M.self)!, coordinator : $0.resolve(SceneCoordinatorType.self)!)
             resolverCallback(instance, $0)
             return instance
         }
-    }*/
+    }
 }

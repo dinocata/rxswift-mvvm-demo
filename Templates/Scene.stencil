@@ -1,9 +1,11 @@
 import Swinject
+import RxCocoa
 import Data
+import Domain
 
 enum Scene {
 {% for item in types.classes where item|annotated:"scene" %}
-    case {{ item.annotations.scene }}
+    case {{ item.annotations.scene }}{% for parameter in item.allVariables where parameter|annotated:"parameter" %}{% if forloop.first%}({% endif %}{{ parameter.name }}: {{ parameter.unwrappedTypeName }}{% if not forloop.last%}, {% else %}){% endif %}{% endfor %}
 {% endfor %}
 }
 
@@ -12,10 +14,32 @@ extension Scene {
     var viewController: UIViewController {
         switch self {
         {% for item in types.classes where item|annotated:"scene" %}
-        case .{{ item.annotations.scene }}:
+        case .{{ item.annotations.scene }}{% for parameter in item.allVariables where parameter|annotated:"parameter" %}{% if forloop.first%}({% endif %}let {{ parameter.name }}{% if not forloop.last%}, {% else %}){% endif %}{% endfor %}:
             let controller = ViewControllerContainer.instance.resolve({{ item.name }}.self)!
-            return controller
+            {% for parameter in item.allVariables where parameter|annotated:"parameter" %}
+            controller.{{ parameter.name }} = {{ parameter.name }}
+            {% endfor %}
+            {% if item.annotations.navigation %}
+            let result = UINavigationController(rootViewController: controller)
+            {% else %}
+            let result = controller
+            {% endif %}
+            {% if item.annotations.transition == "present" %}
+            result.modalPresentationStyle = .fullScreen
+            {% endif %}
+            return result
         {% endfor %}
+        }
+    }
+
+    func defaultTransition(animated: Bool) -> SceneTransition {
+        switch self {
+        {% for item in types.classes where item|annotated:"scene" and item|annotated:"transition" %}
+        case .{{ item.annotations.scene }}:
+            return .{{ item.annotations.transition }}(animated: animated)
+        {% endfor %}
+        default:
+            return .push(animated: true)
         }
     }
 }

@@ -6,10 +6,20 @@
 //  Copyright © 2020 UHP. All rights reserved.
 //
 
-import Foundation
+import RxSwift
 
 public class LoginUseCaseImpl: LoginUseCase {
-    public func login(username: String, password: String) {
-        print("TEST: \(username)-\(password)")
+
+    public var authRepository: AuthRepository!
+    
+    public init() {}
+    
+    public func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>> {
+        let credentials = LoginRequestData(
+            email: email,
+            password: password
+        )
+        
+        return authRepository.login(using: credentials)
     }
 }
