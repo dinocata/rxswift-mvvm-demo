@@ -10,10 +10,13 @@ import UIKit
 import RxCocoa
 
 // sourcery: scene = dashboard
-class DashboardViewController: MVVMController<DashboardViewModel> {
+class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     
     // MARK: View definition
     // TODO: Define views here
+    
+    // MARK: Input subjects
+    private let loadingSubject = PublishRelay<Void>()
     
     // MARK: Setup
     override func setupView() {
@@ -21,14 +24,32 @@ class DashboardViewController: MVVMController<DashboardViewModel> {
         
         self.view.backgroundColor = .lightGray
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadingSubject.accept(())
+    }
     
     // MARK: View Model Binding
     override func bindInput() -> DashboardViewModel.Input {
-        // TODO: Add implementation
-        return DashboardViewModel.Input()
+        return DashboardViewModel.Input(
+            loadPosts: loadingSubject.asDriver(onErrorJustReturn: ())
+        )
     }
     
     override func bindOutput(_ output: DashboardViewModel.Output) {
-        // TODO: Add implementation
+        output.postData
+            .drive(onNext: { data in
+                print(data)
+            })
+            .disposed(by: disposeBag)
+        
+        output.failure
+            .drive(showAlert)
+            .disposed(by: disposeBag)
+        
+        output.loading
+            .drive(loading)
+            .disposed(by: disposeBag)
     }
 }

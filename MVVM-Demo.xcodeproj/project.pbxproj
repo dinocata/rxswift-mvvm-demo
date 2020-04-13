@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,7 +17,6 @@
 		6E173CD62444617500BEAB68 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E173CB82444608300BEAB68 /* Domain.framework */; };
 		6E173CD72444617500BEAB68 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E173CB82444608300BEAB68 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E81AF28244472110067DA7E /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81AF27244472110067DA7E /* LoginUseCase.swift */; };
-		6E81AF2A244472870067DA7E /* LoginUseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E81AF29244472870067DA7E /* LoginUseCaseImpl.swift */; };
 		6EBAFF79244482D10077C927 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF78244482D10077C927 /* ViewModelType.swift */; };
 		6EBAFF7B244482E80077C927 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF7A244482E80077C927 /* Configurable.swift */; };
 		6EBAFF7F244483880077C927 /* Mapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF7E244483880077C927 /* Mapper.swift */; };
@@ -40,6 +39,17 @@
 		6EBAFFB82444C9DC0077C927 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFB62444C9DC0077C927 /* DashboardViewController.swift */; };
 		6EBAFFB92444C9DC0077C927 /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFB72444C9DC0077C927 /* DashboardViewModel.swift */; };
 		6EBAFFBB2444CDB80077C927 /* LoginEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFBA2444CDB80077C927 /* LoginEvent.swift */; };
+		6EBAFFC02444D8940077C927 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFBF2444D8940077C927 /* ApiService.swift */; };
+		6EBAFFC22444D8AA0077C927 /* ApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFC12444D8AA0077C927 /* ApiConfig.swift */; };
+		6EBAFFC42444DBE10077C927 /* ApiNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFC32444DBE10077C927 /* ApiNetwork.swift */; };
+		6EBAFFC62444E4E30077C927 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFC52444E4E30077C927 /* Post.swift */; };
+		6EBAFFC82444E5350077C927 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFC72444E5350077C927 /* PostService.swift */; };
+		6EBAFFCD2444E68D0077C927 /* PostRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFCC2444E68D0077C927 /* PostRepository.swift */; };
+		6EBAFFCF2444E6C80077C927 /* PostRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFCE2444E6C80077C927 /* PostRepositoryImpl.swift */; };
+		6EBAFFD42444E7500077C927 /* PostListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFD32444E7500077C927 /* PostListUseCase.swift */; };
+		6EBAFFD72444E8CC0077C927 /* PostViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFD62444E8CC0077C927 /* PostViewData.swift */; };
+		6EBAFFDA2444E90A0077C927 /* DashboardViewDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFD92444E90A0077C927 /* DashboardViewDataMapper.swift */; };
+		6EBAFFDC2444ECA90077C927 /* ResultExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFDB2444ECA90077C927 /* ResultExt.swift */; };
 		83FA7D4E22A21D405F4F993D /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA422CC581228C396FA86C78 /* Pods_Data.framework */; };
 		8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C5A21B40901009D2113 /* AppDelegate.swift */; };
 		8D617C6521B40902009D2113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6421B40902009D2113 /* Assets.xcassets */; };
@@ -116,7 +126,6 @@
 		6E173CCC244460C800BEAB68 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		6E173CCD244460C800BEAB68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E81AF27244472110067DA7E /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
-		6E81AF29244472870067DA7E /* LoginUseCaseImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCaseImpl.swift; sourceTree = "<group>"; };
 		6EBAFF78244482D10077C927 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		6EBAFF7A244482E80077C927 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		6EBAFF7E244483880077C927 /* Mapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapper.swift; sourceTree = "<group>"; };
@@ -139,6 +148,17 @@
 		6EBAFFB62444C9DC0077C927 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		6EBAFFB72444C9DC0077C927 /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
 		6EBAFFBA2444CDB80077C927 /* LoginEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEvent.swift; sourceTree = "<group>"; };
+		6EBAFFBF2444D8940077C927 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		6EBAFFC12444D8AA0077C927 /* ApiConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConfig.swift; sourceTree = "<group>"; };
+		6EBAFFC32444DBE10077C927 /* ApiNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiNetwork.swift; sourceTree = "<group>"; };
+		6EBAFFC52444E4E30077C927 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		6EBAFFC72444E5350077C927 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		6EBAFFCC2444E68D0077C927 /* PostRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepository.swift; sourceTree = "<group>"; };
+		6EBAFFCE2444E6C80077C927 /* PostRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRepositoryImpl.swift; sourceTree = "<group>"; };
+		6EBAFFD32444E7500077C927 /* PostListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListUseCase.swift; sourceTree = "<group>"; };
+		6EBAFFD62444E8CC0077C927 /* PostViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewData.swift; sourceTree = "<group>"; };
+		6EBAFFD92444E90A0077C927 /* DashboardViewDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewDataMapper.swift; sourceTree = "<group>"; };
+		6EBAFFDB2444ECA90077C927 /* ResultExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExt.swift; sourceTree = "<group>"; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		7C55407E6D899D92C7853DF0 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		8D617C5721B40901009D2113 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +265,7 @@
 		6E173CDC244462B900BEAB68 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				6EBAFFD02444E7280077C927 /* Dashboard */,
 				6E81AF25244471F30067DA7E /* Authentication */,
 			);
 			path = UseCase;
@@ -273,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				6EBAFFA52444A69E0077C927 /* AuthRepository.swift */,
+				6EBAFFCC2444E68D0077C927 /* PostRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -281,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				6EBAFFA72444A6FB0077C927 /* AuthRepositoryImpl.swift */,
+				6EBAFFCE2444E6C80077C927 /* PostRepositoryImpl.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -324,7 +347,6 @@
 			children = (
 				6EBAFF992444A33D0077C927 /* Model */,
 				6E81AF27244472110067DA7E /* LoginUseCase.swift */,
-				6E81AF29244472870067DA7E /* LoginUseCaseImpl.swift */,
 				6EBAFFBA2444CDB80077C927 /* LoginEvent.swift */,
 			);
 			path = Login;
@@ -373,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				6EBAFF9024449D150077C927 /* UIKitExtensions */,
+				6EBAFFDB2444ECA90077C927 /* ResultExt.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -456,6 +479,7 @@
 		6EBAFFA02444A55C0077C927 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6EBAFFC52444E4E30077C927 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -471,6 +495,9 @@
 		6EBAFFAA2444A9EC0077C927 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				6EBAFFBF2444D8940077C927 /* ApiService.swift */,
+				6EBAFFC12444D8AA0077C927 /* ApiConfig.swift */,
+				6EBAFFC32444DBE10077C927 /* ApiNetwork.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -478,6 +505,7 @@
 		6EBAFFAB2444A9F10077C927 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				6EBAFFC72444E5350077C927 /* PostService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -501,10 +529,52 @@
 		6EBAFFB52444C9CD0077C927 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				6EBAFFD82444E8F70077C927 /* Mapper */,
+				6EBAFFD52444E8BC0077C927 /* Model */,
 				6EBAFFB62444C9DC0077C927 /* DashboardViewController.swift */,
 				6EBAFFB72444C9DC0077C927 /* DashboardViewModel.swift */,
 			);
 			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		6EBAFFD02444E7280077C927 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				6EBAFFD12444E72E0077C927 /* PostList */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		6EBAFFD12444E72E0077C927 /* PostList */ = {
+			isa = PBXGroup;
+			children = (
+				6EBAFFD22444E73A0077C927 /* PostDetails */,
+				6EBAFFD32444E7500077C927 /* PostListUseCase.swift */,
+			);
+			path = PostList;
+			sourceTree = "<group>";
+		};
+		6EBAFFD22444E73A0077C927 /* PostDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PostDetails;
+			sourceTree = "<group>";
+		};
+		6EBAFFD52444E8BC0077C927 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6EBAFFD62444E8CC0077C927 /* PostViewData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6EBAFFD82444E8F70077C927 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				6EBAFFD92444E90A0077C927 /* DashboardViewDataMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		8D617C4E21B40901009D2113 = {
@@ -718,12 +788,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Application/Pods-Application-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			inputPaths = (
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Application/Pods-Application-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -807,9 +875,11 @@
 				6EBAFF9D2444A36C0077C927 /* LoginResponseData.swift in Sources */,
 				6EBAFF9B2444A3630077C927 /* LoginRequestData.swift in Sources */,
 				6E81AF28244472110067DA7E /* LoginUseCase.swift in Sources */,
+				6EBAFFD42444E7500077C927 /* PostListUseCase.swift in Sources */,
+				6EBAFFC62444E4E30077C927 /* Post.swift in Sources */,
 				6EBAFFA62444A69E0077C927 /* AuthRepository.swift in Sources */,
 				6EBAFFBB2444CDB80077C927 /* LoginEvent.swift in Sources */,
-				6E81AF2A244472870067DA7E /* LoginUseCaseImpl.swift in Sources */,
+				6EBAFFCD2444E68D0077C927 /* PostRepository.swift in Sources */,
 				6EBAFFA32444A56B0077C927 /* NetworkError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,7 +888,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EBAFFC82444E5350077C927 /* PostService.swift in Sources */,
+				6EBAFFC02444D8940077C927 /* ApiService.swift in Sources */,
 				6EBAFFA82444A6FB0077C927 /* AuthRepositoryImpl.swift in Sources */,
+				6EBAFFCF2444E6C80077C927 /* PostRepositoryImpl.swift in Sources */,
+				6EBAFFC22444D8AA0077C927 /* ApiConfig.swift in Sources */,
+				6EBAFFC42444DBE10077C927 /* ApiNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +901,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EBAFFD72444E8CC0077C927 /* PostViewData.swift in Sources */,
 				6EBAFF86244485220077C927 /* LoginViewController.swift in Sources */,
 				6EBAFFB82444C9DC0077C927 /* DashboardViewController.swift in Sources */,
 				6EBAFF8B2444981E0077C927 /* SceneCoordinatorType.swift in Sources */,
@@ -836,6 +912,7 @@
 				6EBAFF87244485220077C927 /* LoginViewModel.swift in Sources */,
 				6EBAFF8D244499650077C927 /* SceneCoordinator.swift in Sources */,
 				6EBAFF79244482D10077C927 /* ViewModelType.swift in Sources */,
+				6EBAFFDC2444ECA90077C927 /* ResultExt.swift in Sources */,
 				6EBAFF89244497120077C927 /* SceneTransition.swift in Sources */,
 				6EBAFF7F244483880077C927 /* Mapper.swift in Sources */,
 				6EBAFF9524449FCB0077C927 /* ManualRegistration.swift in Sources */,
@@ -843,6 +920,7 @@
 				6EBAFF812444844B0077C927 /* MVVMController.swift in Sources */,
 				6EBAFFB92444C9DC0077C927 /* DashboardViewModel.swift in Sources */,
 				6EBAFF8F24449BE20077C927 /* CoordinatorVC.swift in Sources */,
+				6EBAFFDA2444E90A0077C927 /* DashboardViewDataMapper.swift in Sources */,
 				6EBAFFB02444BDD00077C927 /* StartScreenViewController.swift in Sources */,
 				BF_645593615768 /* AppContainer.generated.swift in Sources */,
 				BF_554413153523 /* InstanceContainer.generated.swift in Sources */,

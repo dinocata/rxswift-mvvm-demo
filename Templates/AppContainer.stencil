@@ -16,12 +16,18 @@ final class AppContainer {
         container.register({{ item.name }}.self) { resolver in
             {% if item.annotations.injectable != 1 %}
             let instance = {{ item.annotations.injectable }}()
-            {% else %}
-            let instance = {{ item.name }}Impl()
-            {% endif %}
-            {% for var in item.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
             {% endfor %}
+            {% else %}
+            {% for impl in types.implementing[item.name] %}
+            let instance = {{ impl.name }}()
+            {% for var in impl.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+
             return instance
         }
 

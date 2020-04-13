@@ -12,3 +12,19 @@ import RxSwift
 public protocol LoginUseCase {
     func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>>
 }
+
+public class LoginUseCaseImpl: LoginUseCase {
+
+    public var authRepository: AuthRepository!
+    
+    public init() {}
+    
+    public func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>> {
+        let credentials = LoginRequestData(
+            email: email,
+            password: password
+        )
+        
+        return authRepository.login(using: credentials)
+    }
+}

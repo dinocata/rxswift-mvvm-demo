@@ -8,6 +8,7 @@
 
 import UIKit
 import RxCocoa
+import MBProgressHUD
 
 class CoordinatorVC<ViewModel: ViewModelType>: MVVMController<ViewModel> {
     
@@ -24,6 +25,24 @@ class CoordinatorVC<ViewModel: ViewModelType>: MVVMController<ViewModel> {
             viewController.coordinator.pop(animated: true, completion: nil)
         }
     }
+    
+    var loading: Binder<Bool> {
+        return Binder(self) { viewController, isLoading in
+            if isLoading {
+                viewController.showProgress()
+            } else {
+                viewController.hideProgress()
+            }
+        }
+    }
+    
+    var showAlert: Binder<String> {
+        return Binder(self) { viewController, message in
+            viewController.showAlert(title: message)
+        }
+    }
+    
+    private var progressHud: MBProgressHUD?
     
     required init(viewModel: ViewModel, coordinator: SceneCoordinatorType) {
         self.coordinator = coordinator
@@ -49,6 +68,30 @@ class CoordinatorVC<ViewModel: ViewModelType>: MVVMController<ViewModel> {
         if let presenter = presentingViewController {
             coordinator.currentViewController = presenter.actualViewController
         }
+    }
+    
+    func showProgress(disableInteraction: Bool = true) {
+        view.isUserInteractionEnabled = !disableInteraction
+        
+        hideProgress()
+        progressHud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHud?.mode = .indeterminate
+        progressHud?.removeFromSuperViewOnHide = true
+    }
+    
+    func hideProgress() {
+        view.isUserInteractionEnabled = true
+        
+        if progressHud != nil {
+            progressHud?.hide(animated: true)
+            progressHud = nil
+        }
+    }
+    
+    func showAlert(title: String) {
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     deinit {

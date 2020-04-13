@@ -6,25 +6,52 @@
 //  Copyright © 2020 github.com/dinocata. All rights reserved.
 //
 
-import Foundation
+import RxCocoa
+import Domain
 
 // sourcery: injectable
 class DashboardViewModel {
-    // Dependencies
+    var useCase: PostListUseCase!
+    var mapper: DashboardViewDataMapper!
 }
 
 // Binding
 extension DashboardViewModel: ViewModelType {
     struct Input {
-        // TODO: Add implementation
+        let loadPosts: Driver<Void>
     }
     
     struct Output {
-        // TODO: Add implementation
+        let loading: Driver<Bool>
+        let failure: Driver<String>
+        let postData: Driver<[PostListViewData]>
     }
     
     func transform(input: Input) -> Output {
-        // TODO: Add implementation
-        return Output()
+        let postsResult = input.loadPosts
+            .asObservable()
+            .flatMapLatest(useCase.getPosts)
+            .share()
+        
+        let success = postsResult
+            .compactMap { $0.value }
+            .map { $0.map(self.mapper.map) }
+            .asDriver(onErrorJustReturn: [])
+        
+        let failure = postsResult
+            .compactMap { $0.error }
+            .map { "Error \($0.rawValue)" }
+            .asDriver(onErrorJustReturn: "Unknown error")
+        
+        let loading = Driver.merge(
+            input.loadPosts.map { _ in true },
+            postsResult.map { _ in false }.asDriver(onErrorJustReturn: false)
+        )
+        
+        return Output(
+            loading: loading,
+            failure: failure,
+            postData: success
+        )
     }
 }

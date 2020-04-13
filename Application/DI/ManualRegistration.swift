@@ -19,6 +19,13 @@ final class ManualRegistration {
     static func build(appDelegate: AppDelegate) {
         
         let container = AppContainer.instance
+        
+        // Moya Provider
+        container.register(MoyaProvider<ApiService>.self) { _ in
+            MoyaProvider<ApiService>()
+        }
+        
+        // Scene Coordinator
         container.register(SceneCoordinatorType.self) { _ in
             SceneCoordinator(window: appDelegate.window!)
         }

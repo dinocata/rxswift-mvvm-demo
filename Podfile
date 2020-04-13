@@ -20,6 +20,8 @@ target 'Application' do
   
   pod 'RxCocoa', '~> 5'
   pod 'SnapKit', '~> 5.0.0'
+  
+  pod 'MBProgressHUD', '~> 1.2.0'
 end
 
 target 'Data' do

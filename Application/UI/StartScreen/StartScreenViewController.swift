@@ -28,7 +28,7 @@ class StartScreenViewController: CoordinatorVC<StartScreenViewModel> {
         return button
     }()
     
-    // Input subjects
+    // MARK: Input subjects
     private let loginResultNotifier = PublishRelay<LoginEvent>()
     
     // MARK: Setup
