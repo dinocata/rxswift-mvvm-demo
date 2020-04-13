@@ -16,6 +16,8 @@ target 'Application' do
   
   default_pods
   
+  pod 'Swinject'
+  
   pod 'RxCocoa', '~> 5'
 end
 
@@ -24,6 +26,8 @@ target 'Data' do
   use_frameworks!
   
   default_pods
+  
+  pod 'Moya/RxSwift', '~> 14.0'
 end
 
 target 'Domain' do

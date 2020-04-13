@@ -1,0 +1,44 @@
+import Swinject
+import Moya
+import Data
+
+/// Provides new instances
+final class InstanceContainer {
+
+    static let instance: Container = {
+        let container = Container(parent: AppContainer.instance, defaultObjectScope: .transient)
+
+        {% for item in types.protocols where item|annotated:"injectable" and not item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            {% if item.annotations.injectable != 1 %}
+            let instance = {{ item.annotations.injectable }}()
+            {% else %}
+            let instance = {{ item.name }}Impl()
+            {% endif %}
+            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+        {% for item in types.classes where item|annotated:"injectable" and not item|annotated:"singleton" %}
+        // {{ item.name }} registration
+        container.register({{ item.name }}.self) { resolver in
+            {% if item.annotations.injectable != 1 %}
+            let instance = {{ item.annotations.injectable }}()
+            {% else %}
+            let instance = {{ item.name }}Impl()
+            {% endif %}
+            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+            return instance
+        }
+
+        {% endfor %}
+
+        return container
+    }()
+}

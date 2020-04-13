@@ -1,0 +1,40 @@
+import Swinject
+import Data
+
+final class ViewControllerContainer {
+
+    static let instance: Container = {
+        let container = Container(parent: InstanceContainer.instance, defaultObjectScope: .transient)
+
+        {% for item in types.classes where item|annotated:"scene" %}
+        // {{ item.name }}
+        quickRegister(container: container, {{ item.name }}.self) { instance, resolver in
+            // Extra Injections
+            {% for var in item.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% endfor %}
+        }
+
+        {% endfor %}
+        return container
+    }()
+
+    // View Controller registration
+    private static func quickRegister<T: MVVMController<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(viewModel: $0.resolve(M.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }
+
+/*
+    // Coordinator View Controller registration
+    private static func quickRegister<T: CoordinatorVC<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+        container.register(type) {
+            let instance = T.init(coordinator : $0.resolve(SceneCoordinatorType.self)!, notificationManager: $0.resolve(NotificationManager.self)!, viewModel: $0.resolve(M.self)!)
+            resolverCallback(instance, $0)
+            return instance
+        }
+    }*/
+}

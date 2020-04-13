@@ -1,0 +1,21 @@
+import Swinject
+import Data
+
+enum Scene {
+{% for item in types.classes where item|annotated:"scene" %}
+    case {{ item.annotations.scene }}
+{% endfor %}
+}
+
+extension Scene {
+
+    var viewController: UIViewController {
+        switch self {
+        {% for item in types.classes where item|annotated:"scene" %}
+        case .{{ item.annotations.scene }}:
+            let controller = ViewControllerContainer.instance.resolve({{ item.name }}.self)!
+            return controller
+        {% endfor %}
+        }
+    }
+}
