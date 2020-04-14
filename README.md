@@ -35,7 +35,7 @@ class ServiceImpl: Service {
 ```
 The above code will register <code>Service</code> into a global instance container through Swinject and resolve it as <code>ServiceImpl</code>, provided you have a defined implementation class. If a class is annotated, the class itself will be resolved.
 
-Now comes the magic. After a type is annotated with <code>injectable</code>, it can now be used as a automatically injected dependency in any other <code>injectable</code> type. 
+Now comes the magic part. After a type is annotated with <code>injectable</code>, it can now be used as a automatically injected dependency in any other <code>injectable</code> type. 
 
 For example, the following code will inject <code>ServiceImpl</code> into <code>RepositoryImpl</code>:
 ```swift
@@ -49,7 +49,7 @@ class RepositoryImpl: Repository {
 ```
 Important note: All dependencies should be defined as force-unwrapped variables, because Sourcery is injecting the dependencies AFTER the instance is initialized.
 
-You can also explicitly define a implementation class with annotation parameter:
+You can also define a implementation class explicitly with annotation parameter:
 ```swift
 // sourcery: injectable = Dog
 protocol Animal {}
@@ -61,11 +61,26 @@ class Dog: Animal {
 // sourcery: injectable = Owner
 protocol Person {}
 
+// Owner will have a pet Dog
 class Owner: Person {
   var pet: Animal!
 }
 ```
-You can always manually resolve an instance, same as Sourcery does it under-the-hood. For example, <code>InstanceContainer.instance.resolve(Person.self)!</code> for the above example will return an instance of <code>Owner</code>, who has a pet <code>Dog</code>. But you should rarely, if ever need to do this.
+
+You can even explicitly choose which implementation to inject with, if you have multiple types conforming to the same protocol, for example:
+```swift
+// sourcery: injectable
+class Dog: Animal {}
+
+// sourcery: injectable
+class Cat: Animal {}
+
+class Owner: Person {
+  // sourcery: inject = Cat
+  var pet: Animal!
+}
+```
+You can always manually resolve an instance, same as Sourcery does it under-the-hood. For example, <code>InstanceContainer.instance.resolve(Person.self)!</code> for the above example will return an instance of <code>Owner</code>, who has a pet <code>Cat</code>. But you should rarely, if ever need to do this.
 
 
 
