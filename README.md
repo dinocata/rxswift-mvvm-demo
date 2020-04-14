@@ -1,36 +1,15 @@
-# mvvm-demo
-A simple and clean demo project written in RxSwift for MVVM and coordinator pattern, which utilizes dependency injection using <a href="https://github.com/Swinject/Swinject">Swinject</a>.
+# RxSwift Clean Architecture demo
+This project is based on https://github.com/sergdort/CleanArchitectureRxSwift with some significant differences:
 
-<h3>TODO</h3>
--Refactor architecture to be less dependent on specific implementation
+- Project is split into 3 main modules: <b>Application</b>, <b>Data</b> and <b>Domain</b>
+- Application contains UI-specific implementation and dependency containers
+- Data contains platform-specific data providers (networking and local persistence) and repository implementations
+- Domain contains entities, use cases, use case implementations and repository definitions
 
--Split project structure into following modules (subject to change):
+It utilizes automatic dependency injection through <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> annotations and <a href="https://github.com/Swinject/Swinject">Swinject</a>.
 
-<b>Application</b><br>
--app delegate<br>
--DI<br>
--config (constants)<br>
+Routing is handled globally through a Coordinator, while view controllers are abstracted into Scenes.
 
-<b>Presentation</b><br>
--UI<br>
--routing<br>
+This is an ongoing project, so some things (like test examples) are on the TODO list.
 
-<b>Common</b><br>
--helpers<br>
--extensions (including custom Rx exts)<br>
--protocols<br>
--enums<br>
--base classes<br>
--custom views<br>
-
-<b>Domain</b><br>
--API (network, endpoint definition, models)<br>
--api services<br>
--repositories<br>
-
-<b>Persistence</b><br>
--Core Data (model extensions, core data stack, core data manager, migrations)<br>
--User Defaults & Keychain access<br>
-<br>
-<br>
--Add unit test examples
+Documentation will be updated with more details in the future.
