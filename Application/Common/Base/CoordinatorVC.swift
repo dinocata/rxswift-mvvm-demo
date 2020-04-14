@@ -16,12 +16,14 @@ class CoordinatorVC<ViewModel: ViewModelType>: MVVMController<ViewModel> {
     
     var transition: Binder<Scene> {
         return Binder(self) { viewController, scene in
+            viewController.coordinator.currentViewController = viewController
             viewController.coordinator.transition(to: scene)
         }
     }
     
     var dismiss: Binder<Void> {
         return Binder(self) { viewController, _ in
+            viewController.coordinator.currentViewController = viewController
             viewController.coordinator.pop(animated: true, completion: nil)
         }
     }

@@ -68,11 +68,23 @@ extension DashboardViewModel: ViewModelType {
             .map { _ in }
             .asDriver(onErrorJustReturn: ())
         
-        let postSelection = Driver.combineLatest(success, input.postSelected)
+        let postDetailsCheck = input.postSelected
+            .asObservable()
+            .withLatestFrom(loginUseCase.isUserLoggedIn())
+            .asDriverOnErrorJustComplete()
+        
+        let postDetails = postDetailsCheck
+            .filter { $0 }
+            .withLatestFrom(Driver.combineLatest(success, input.postSelected))
             .map { Scene.postDetails(postId: $0[$1].id ) }
         
+        let loginRedirect = postDetailsCheck
+            .filter { !$0 }
+            .map { _ in Scene.login }
+        
         let transition: Driver<Scene> = .merge(
-            postSelection,
+            postDetails,
+            loginRedirect,
             input.loginButtonPressed.map { .login }
         )
         
