@@ -86,6 +86,7 @@ class RepositoryImpl: Repository {
 Defines a Scene for the annotated view controller.
 
 All view controllers are mapped into an abstract Scene enum, which is code-generated. Scenes are used to perform coordinator transitions. You can always resolve a new view controller instance mapped to a Scene with <code>Scene.someScene.viewController</code> if you need to do something specific with a view controller other than navigating. For example, adding it as a child view controller to a tab view controller.
+
 Important note: All view controllers should subclass either a MVVMController or CoordinatorVC in order for this annotation to work.
 
 Example usage:
