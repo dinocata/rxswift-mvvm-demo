@@ -55,8 +55,13 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     
     // MARK: View Model Binding
     override func bindInput() -> DashboardViewModel.Input {
+        let postSelection = tableView.rx.itemSelected
+            .map { $0.row }
+            .asDriverOnErrorJustComplete()
+        
         return DashboardViewModel.Input(
             loadPosts: loadingSubject.asDriver(onErrorJustReturn: ()),
+            postSelected: postSelection,
             loginButtonPressed: loginButton.rx.tap.asDriver(),
             logoutButtonPressed: logoutButton.rx.tap.asDriver()
         )

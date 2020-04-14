@@ -12,6 +12,7 @@ import Domain
 // sourcery: injectable, singleton
 public protocol PostService {
     func getPosts() -> Single<NetworkResult<[Post]>>
+    func getPost(id: Int) -> Single<NetworkResult<Post>>
 }
 
 public class PostServiceImpl: PostService {
@@ -22,5 +23,9 @@ public class PostServiceImpl: PostService {
     
     public func getPosts() -> Single<NetworkResult<[Post]>> {
         return network.request(.posts)
+    }
+    
+    public func getPost(id: Int) -> Single<NetworkResult<Post>> {
+        return network.request(.post(id: id))
     }
 }

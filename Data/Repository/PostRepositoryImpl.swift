@@ -18,4 +18,8 @@ public class PostRepositoryImpl: PostRepository {
     public func getPosts() -> Single<NetworkResult<[Post]>> {
         return service.getPosts()
     }
+    
+    public func getPost(id: Int) -> Single<NetworkResult<Post>> {
+        return service.getPost(id: id)
+    }
 }

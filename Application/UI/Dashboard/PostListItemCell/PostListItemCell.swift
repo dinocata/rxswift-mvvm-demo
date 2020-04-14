@@ -57,6 +57,7 @@ class PostListItemCell: UITableViewCell {
 extension PostListItemCell: Configurable {
     
     struct Data {
+        let id: Int
         let title: String
         let author: String
     }

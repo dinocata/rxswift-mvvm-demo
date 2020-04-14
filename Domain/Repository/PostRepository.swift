@@ -11,4 +11,5 @@ import RxSwift
 // sourcery: injectable
 public protocol PostRepository {
     func getPosts() -> Single<NetworkResult<[Post]>>
+    func getPost(id: Int) -> Single<NetworkResult<Post>>
 }

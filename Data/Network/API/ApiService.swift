@@ -11,6 +11,7 @@ import Moya
 public enum ApiService {
     case login(request: Encodable)
     case posts
+    case post(id: Int)
 }
 
 extension ApiService: TargetType {
@@ -33,6 +34,9 @@ extension ApiService: TargetType {
             
         case .posts:
             return "posts"
+            
+        case .post(let id):
+            return "posts/\(id)"
         }
     }
     
@@ -41,7 +45,8 @@ extension ApiService: TargetType {
         case .login:
             return .post
             
-        case .posts:
+        case .posts,
+             .post:
             return .get
         }
     }
@@ -51,7 +56,8 @@ extension ApiService: TargetType {
         case .login(let request):
             return .requestJSONEncodable(request)
             
-        case .posts:
+        case .posts,
+             .post:
             return .requestPlain
         }
     }

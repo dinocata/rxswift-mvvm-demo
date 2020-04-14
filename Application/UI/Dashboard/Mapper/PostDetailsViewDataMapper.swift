@@ -1,25 +1,25 @@
 //
-//  DashboardViewDataMapper.swift
+//  PostDetailsViewDataMapper.swift
 //  Application
 //
-//  Created by Dino Catalinac on 13/04/2020.
+//  Created by Dino Catalinac on 14/04/2020.
 //  Copyright © 2020 github.com/dinocata. All rights reserved.
 //
 
 import Domain
 
 // sourcery: injectable
-protocol DashboardViewDataMapper {
-    func mapPostData(from resource: Post) -> PostListItemCell.Data
+protocol PostDetailsViewDataMapper {
+    func mapPostData(from resource: Post) -> PostDetailsViewController.Data
     func mapPostError(from error: NetworkError) -> String
 }
 
-final class DashboardViewDataMapperImpl: DashboardViewDataMapper {
+class PostDetailsViewDataMapperImpl: PostDetailsViewDataMapper {
     
-    func mapPostData(from resource: Post) -> PostListItemCell.Data {
+    func mapPostData(from resource: Post) -> PostDetailsViewController.Data {
         return .init(
-            id: resource.id,
             title: resource.title,
+            body: resource.body,
             author: "By: Author \(resource.userId)"
         )
     }
@@ -36,7 +36,7 @@ final class DashboardViewDataMapperImpl: DashboardViewDataMapper {
             return "An error occurred. Please check your Internet connection."
             
         default:
-            return "Could not fetch posts."
+            return "Could not fetch Post."
         }
     }
 }

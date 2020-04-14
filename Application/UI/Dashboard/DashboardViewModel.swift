@@ -18,8 +18,11 @@ class DashboardViewModel {
 
 // Binding
 extension DashboardViewModel: ViewModelType {
+    typealias Index = Int
+    
     struct Input {
         let loadPosts: Driver<Void>
+        let postSelected: Driver<Index>
         
         let loginButtonPressed: Driver<Void>
         let logoutButtonPressed: Driver<Void>
@@ -65,7 +68,11 @@ extension DashboardViewModel: ViewModelType {
             .map { _ in }
             .asDriver(onErrorJustReturn: ())
         
+        let postSelection = Driver.combineLatest(success, input.postSelected)
+            .map { Scene.postDetails(postId: $0[$1].id ) }
+        
         let transition: Driver<Scene> = .merge(
+            postSelection,
             input.loginButtonPressed.map { .login }
         )
         
