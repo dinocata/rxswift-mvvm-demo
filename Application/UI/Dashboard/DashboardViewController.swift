@@ -20,12 +20,22 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
         return tableView
     }()
     
+    private lazy var loginButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Login", style: .plain, target: self, action: nil)
+        return button
+    }()
+    
+    private lazy var logoutButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: nil)
+        return button
+    }()
+    
     // MARK: Input subjects
     private let loadingSubject = PublishRelay<Void>()
     
     // MARK: Setup
     override func setupView() {
-        self.title = "Dashboard"
+        self.title = "Posts"
         
         self.view.backgroundColor = .white
         
@@ -46,7 +56,9 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     // MARK: View Model Binding
     override func bindInput() -> DashboardViewModel.Input {
         return DashboardViewModel.Input(
-            loadPosts: loadingSubject.asDriver(onErrorJustReturn: ())
+            loadPosts: loadingSubject.asDriver(onErrorJustReturn: ()),
+            loginButtonPressed: loginButton.rx.tap.asDriver(),
+            logoutButtonPressed: logoutButton.rx.tap.asDriver()
         )
     }
     
@@ -55,12 +67,27 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
             .drive(tableView.rx.items(cellType: PostListItemCell.self)) { $2.configure(with: $1) }
             .disposed(by: disposeBag)
         
+        output.isLoggedIn
+            .map { [weak self] in $0 ? self?.logoutButton : self?.loginButton }
+            .drive(onNext: { [weak self] in
+                self?.navigationItem.rightBarButtonItem = $0
+            })
+            .disposed(by: disposeBag)
+        
         output.failure
             .drive(showAlert)
             .disposed(by: disposeBag)
         
         output.loading
             .drive(loading)
+            .disposed(by: disposeBag)
+        
+        output.logout
+            .drive()
+            .disposed(by: disposeBag)
+        
+        output.transition
+            .drive(transition)
             .disposed(by: disposeBag)
     }
 }

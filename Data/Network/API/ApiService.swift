@@ -16,7 +16,13 @@ public enum ApiService {
 extension ApiService: TargetType {
     
     public var baseURL: URL {
-        return ApiConfig.shared.baseUrl
+        switch self {
+        case .login:
+            return URL(string: "https://reqres.in/api")!
+            
+        default:
+            return ApiConfig.shared.baseUrl
+        }
     }
     
     public var path: String {
@@ -24,7 +30,7 @@ extension ApiService: TargetType {
         case .login:
             // This path does not actually exist on the Rest API, so we will mock the response
             return "login"
-        
+            
         case .posts:
             return "posts"
         }
@@ -44,7 +50,7 @@ extension ApiService: TargetType {
         switch self {
         case .login(let request):
             return .requestJSONEncodable(request)
-        
+            
         case .posts:
             return .requestPlain
         }
@@ -55,18 +61,6 @@ extension ApiService: TargetType {
     }
     
     public var sampleData: Data {
-        switch self {
-        case .login:
-            return """
-            {
-                "token": "abc123",
-                "userId": 123,
-                "email": "test@test.com"
-            }
-            """.data(using: .utf8)!
-            
-        default:
-            return "".data(using: .utf8)!
-        }
-      }
+        return "".data(using: .utf8)!
+    }
 }

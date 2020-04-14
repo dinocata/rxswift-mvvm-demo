@@ -9,7 +9,5 @@
 import Foundation
 
 public struct LoginResponseData: Decodable {
-    let token: String
-    let userId: Int32
-    let email: String
+    public let token: String
 }

@@ -10,5 +10,7 @@ import RxSwift
 
 // sourcery: injectable
 public protocol AuthRepository {
-    func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>>
+    func login(using credentials: LoginRequestData) -> Single<NetworkResult<Void>>
+    func isUserLoggedIn() -> Observable<Bool>
+    func logout() -> Completable
 }

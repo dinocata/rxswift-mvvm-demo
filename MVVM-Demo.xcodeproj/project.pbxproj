@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -54,6 +54,12 @@
 		6EC20D8D244595B800AC8956 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D8C244595B800AC8956 /* NibLoadable.swift */; };
 		6EC20D8F244595CE00AC8956 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D8E244595CE00AC8956 /* UIViewExt.swift */; };
 		6EC20D922445A10800AC8956 /* UITableViewRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D912445A10800AC8956 /* UITableViewRx.swift */; };
+		6EC20D942445AECB00AC8956 /* KeychainAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D932445AECB00AC8956 /* KeychainAccessManager.swift */; };
+		6EC20D972445B0E300AC8956 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D962445B0E300AC8956 /* NotificationManager.swift */; };
+		6EC20D992445B2B300AC8956 /* NotificationNameExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D982445B2B300AC8956 /* NotificationNameExt.swift */; };
+		6EC20D9B2445B3DA00AC8956 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D9A2445B3D900AC8956 /* AuthService.swift */; };
+		6EC20D9E2445B7FA00AC8956 /* LoginViewDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D9D2445B7FA00AC8956 /* LoginViewDataMapper.swift */; };
+		6EC20DA02445BFA400AC8956 /* UIViewRx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC20D9F2445BFA400AC8956 /* UIViewRx.swift */; };
 		83FA7D4E22A21D405F4F993D /* Pods_Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA422CC581228C396FA86C78 /* Pods_Data.framework */; };
 		8D617C5B21B40901009D2113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D617C5A21B40901009D2113 /* AppDelegate.swift */; };
 		8D617C6521B40902009D2113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6421B40902009D2113 /* Assets.xcassets */; };
@@ -167,6 +173,12 @@
 		6EC20D8C244595B800AC8956 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		6EC20D8E244595CE00AC8956 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		6EC20D912445A10800AC8956 /* UITableViewRx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRx.swift; sourceTree = "<group>"; };
+		6EC20D932445AECB00AC8956 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
+		6EC20D962445B0E300AC8956 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		6EC20D982445B2B300AC8956 /* NotificationNameExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameExt.swift; sourceTree = "<group>"; };
+		6EC20D9A2445B3D900AC8956 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		6EC20D9D2445B7FA00AC8956 /* LoginViewDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewDataMapper.swift; sourceTree = "<group>"; };
+		6EC20D9F2445BFA400AC8956 /* UIViewRx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRx.swift; sourceTree = "<group>"; };
 		73BD1C39E1DA65DFDD4CD615 /* Pods-MVVM-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-Demo/Pods-MVVM-Demo.release.xcconfig"; sourceTree = "<group>"; };
 		7C55407E6D899D92C7853DF0 /* Pods-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Application.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Application/Pods-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		8D617C5721B40901009D2113 /* Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Application.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +264,7 @@
 		6E173CCB244460C800BEAB68 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6EC20D952445B0D600AC8956 /* Notifications */,
 				6E173CDD244462C500BEAB68 /* Network */,
 				6E173CDE244462CC00BEAB68 /* Persistence */,
 				6E173CE02444632B00BEAB68 /* Repository */,
@@ -326,6 +339,7 @@
 		6E173CE22444633D00BEAB68 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
+				6EC20D932445AECB00AC8956 /* KeychainAccessManager.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -454,6 +468,7 @@
 		6EBAFF83244485040077C927 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6EC20D9C2445B7EB00AC8956 /* Mapper */,
 				6EBAFF84244485220077C927 /* LoginViewController.swift */,
 				6EBAFF85244485220077C927 /* LoginViewModel.swift */,
 			);
@@ -517,6 +532,7 @@
 		6EBAFFAB2444A9F10077C927 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				6EC20D9A2445B3D900AC8956 /* AuthService.swift */,
 				6EBAFFC72444E5350077C927 /* PostService.swift */,
 			);
 			path = Service;
@@ -593,8 +609,26 @@
 			isa = PBXGroup;
 			children = (
 				6EC20D912445A10800AC8956 /* UITableViewRx.swift */,
+				6EC20D9F2445BFA400AC8956 /* UIViewRx.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		6EC20D952445B0D600AC8956 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				6EC20D962445B0E300AC8956 /* NotificationManager.swift */,
+				6EC20D982445B2B300AC8956 /* NotificationNameExt.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		6EC20D9C2445B7EB00AC8956 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				6EC20D9D2445B7FA00AC8956 /* LoginViewDataMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		8D617C4E21B40901009D2113 = {
@@ -808,10 +842,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Application/Pods-Application-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Application/Pods-Application-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -912,6 +948,10 @@
 				6EBAFFA82444A6FB0077C927 /* AuthRepositoryImpl.swift in Sources */,
 				6EBAFFCF2444E6C80077C927 /* PostRepositoryImpl.swift in Sources */,
 				6EBAFFC22444D8AA0077C927 /* ApiConfig.swift in Sources */,
+				6EC20D942445AECB00AC8956 /* KeychainAccessManager.swift in Sources */,
+				6EC20D992445B2B300AC8956 /* NotificationNameExt.swift in Sources */,
+				6EC20D9B2445B3DA00AC8956 /* AuthService.swift in Sources */,
+				6EC20D972445B0E300AC8956 /* NotificationManager.swift in Sources */,
 				6EBAFFC42444DBE10077C927 /* ApiNetwork.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -932,6 +972,7 @@
 				6EBAFF8D244499650077C927 /* SceneCoordinator.swift in Sources */,
 				6EBAFF79244482D10077C927 /* ViewModelType.swift in Sources */,
 				6EBAFFDC2444ECA90077C927 /* ResultExt.swift in Sources */,
+				6EC20DA02445BFA400AC8956 /* UIViewRx.swift in Sources */,
 				6EC20D8F244595CE00AC8956 /* UIViewExt.swift in Sources */,
 				6EBAFF89244497120077C927 /* SceneTransition.swift in Sources */,
 				6EBAFF9524449FCB0077C927 /* ManualRegistration.swift in Sources */,
@@ -947,6 +988,7 @@
 				6EC20D852445927100AC8956 /* PostListItemCell.swift in Sources */,
 				BF_102540522666 /* AppContainer.generated.swift in Sources */,
 				BF_771065965569 /* AutoMockable.generated.swift in Sources */,
+				6EC20D9E2445B7FA00AC8956 /* LoginViewDataMapper.swift in Sources */,
 				BF_191510074000 /* InstanceContainer.generated.swift in Sources */,
 				BF_419298012066 /* Scene.generated.swift in Sources */,
 				BF_976085770891 /* ViewControllerContainer.generated.swift in Sources */,

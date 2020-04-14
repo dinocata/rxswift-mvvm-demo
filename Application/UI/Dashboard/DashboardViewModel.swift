@@ -11,7 +11,8 @@ import Domain
 
 // sourcery: injectable
 class DashboardViewModel {
-    var useCase: PostListUseCase!
+    var postListUseCase: PostListUseCase!
+    var loginUseCase: LoginUseCase!
     var mapper: DashboardViewDataMapper!
 }
 
@@ -19,18 +20,25 @@ class DashboardViewModel {
 extension DashboardViewModel: ViewModelType {
     struct Input {
         let loadPosts: Driver<Void>
+        
+        let loginButtonPressed: Driver<Void>
+        let logoutButtonPressed: Driver<Void>
     }
     
     struct Output {
         let loading: Driver<Bool>
         let failure: Driver<String>
         let postData: Driver<[PostListItemCell.Data]>
+        
+        let isLoggedIn: Driver<Bool>
+        let logout: Driver<Void>
+        let transition: Driver<Scene>
     }
     
     func transform(input: Input) -> Output {
         let postsResult = input.loadPosts
             .asObservable()
-            .flatMapLatest(useCase.getPosts)
+            .flatMapLatest(postListUseCase.getPosts)
             .share()
         
         let success = postsResult
@@ -48,10 +56,26 @@ extension DashboardViewModel: ViewModelType {
             postsResult.map { _ in false }.asDriver(onErrorJustReturn: false)
         )
         
+        let isLoggedIn = loginUseCase.isUserLoggedIn()
+            .asDriver(onErrorJustReturn: false)
+        
+        let logout = input.logoutButtonPressed
+            .asObservable()
+            .flatMapLatest { self.loginUseCase.logout() }
+            .map { _ in }
+            .asDriver(onErrorJustReturn: ())
+        
+        let transition: Driver<Scene> = .merge(
+            input.loginButtonPressed.map { .login }
+        )
+        
         return Output(
             loading: loading,
             failure: failure,
-            postData: success
+            postData: success,
+            isLoggedIn: isLoggedIn,
+            logout: logout,
+            transition: transition
         )
     }
 }

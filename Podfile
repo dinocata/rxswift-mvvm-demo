@@ -30,7 +30,9 @@ target 'Data' do
   
   default_pods
   
+  pod 'RxCocoa', '~> 5'
   pod 'Moya/RxSwift', '~> 14.0'
+  pod 'KeychainAccess'
 end
 
 target 'Domain' do

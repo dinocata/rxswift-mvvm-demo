@@ -24,7 +24,11 @@ class StartScreenViewController: CoordinatorVC<StartScreenViewModel> {
     
     private lazy var loginButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "Login", style: .plain, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem = button
+        return button
+    }()
+    
+    private lazy var logoutButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: nil)
         return button
     }()
     
@@ -42,12 +46,24 @@ class StartScreenViewController: CoordinatorVC<StartScreenViewModel> {
     // MARK: View Model Binding
     override func bindInput() -> StartScreenViewModel.Input {
         return .init(
-            dashboardButtonPressed: self.dashboardButton.rx.tap.asDriver(),
-            loginButtonPressed: self.loginButton.rx.tap.asDriver()
+            dashboardButtonPressed: dashboardButton.rx.tap.asDriver(),
+            loginButtonPressed: loginButton.rx.tap.asDriver(),
+            logoutButtonPressed: logoutButton.rx.tap.asDriver()
         )
     }
     
     override func bindOutput(_ output: StartScreenViewModel.Output) {
+        output.isLoggedIn
+            .map { [weak self] in $0 ? self?.logoutButton : self?.loginButton }
+            .drive(onNext: { [weak self] in
+                self?.navigationItem.rightBarButtonItem = $0
+            })
+            .disposed(by: disposeBag)
+        
+        output.logout
+            .drive()
+            .disposed(by: disposeBag)
+        
         output.transition
             .drive(transition)
             .disposed(by: disposeBag)

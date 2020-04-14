@@ -10,7 +10,9 @@ import RxSwift
 
 // sourcery: injectable
 public protocol LoginUseCase {
-    func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>>
+    func login(email: String, password: String) -> Single<NetworkResult<Void>>
+    func isUserLoggedIn() -> Observable<Bool>
+    func logout() -> Completable
 }
 
 public class LoginUseCaseImpl: LoginUseCase {
@@ -19,12 +21,20 @@ public class LoginUseCaseImpl: LoginUseCase {
     
     public init() {}
     
-    public func login(email: String, password: String) -> Single<NetworkResult<LoginResponseData>> {
+    public func login(email: String, password: String) -> Single<NetworkResult<Void>> {
         let credentials = LoginRequestData(
             email: email,
             password: password
         )
         
         return authRepository.login(using: credentials)
+    }
+    
+    public func isUserLoggedIn() -> Observable<Bool> {
+        return authRepository.isUserLoggedIn()
+    }
+    
+    public func logout() -> Completable {
+        return authRepository.logout()
     }
 }

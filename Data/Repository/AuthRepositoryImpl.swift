@@ -11,10 +11,26 @@ import Domain
 
 public class AuthRepositoryImpl: AuthRepository {
     
+    public var authService: AuthService!
+    public var keychainAccess: KeychainAccessManager!
+    
     public init() {}
     
-    public func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>> {
-        // TODO: Add implementation
-        return .just(.failure(.badGateway))
+    public func login(using credentials: LoginRequestData) -> Single<NetworkResult<Void>> {
+        return authService.login(using: credentials)
+    }
+    
+    public func isUserLoggedIn() -> Observable<Bool> {
+        return keychainAccess
+            .getAuthToken()
+            .map { $0 != nil }
+    }
+    
+    public func logout() -> Completable {
+        return .create { [weak self] completable in
+            self?.keychainAccess.authToken = nil
+            completable(.completed)
+            return Disposables.create()
+        }
     }
 }

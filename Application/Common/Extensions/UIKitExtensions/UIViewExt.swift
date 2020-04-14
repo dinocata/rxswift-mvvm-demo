@@ -9,3 +9,17 @@
 import UIKit
 
 extension UIView: NibLoadable {}
+
+extension UIView {
+    
+    var enabled: Bool {
+        get {
+            self.isUserInteractionEnabled
+        }
+        
+        set {
+            self.isUserInteractionEnabled = newValue
+            self.alpha = newValue ? 1.0 : 0.6
+        }
+    }
+}
