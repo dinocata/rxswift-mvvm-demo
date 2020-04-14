@@ -10,7 +10,7 @@ It utilizes automatic dependency injection through <a href="https://github.com/k
 
 Routing is handled globally through a Coordinator, while view controllers are abstracted into Scenes.
 
-This is an ongoing project, so some things (like test examples) are on the TODO list.
+This is an ongoing project, so some things (like test, storage and local persistence examples) are on the TODO list.
 
 
 <b>HOW TO INSTALL:</b>
@@ -118,7 +118,3 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
 // When navigating:
 self.coordinator.navigate(to: .dashboard(someParam: "Hello World!", anotherParam: 5))
 ```
-
-<b>TODO:</b>
-
-Storage and local persistence implementation example is currently missing, but it will be added in the future.
