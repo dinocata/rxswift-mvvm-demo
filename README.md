@@ -21,7 +21,7 @@ This is an ongoing project, so some things (like test, storage and local persist
 
 <b>ANNOTATIONS</b>
 
-There are several Sourcery annotations which define how will your boiler plate code be generated, but you should mostly remember these 3:
+There are 3 main Sourcery annotations which define how will your boiler plate code be generated:
 - <code>// sourcery: injectable</code>
 
 Registers a protocol or class into the instance container. Example:
