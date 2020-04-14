@@ -35,7 +35,7 @@ class ServiceImpl: Service {
 ```
 The above code will register <code>Service</code> into a global instance container through Swinject and resolve it as <code>ServiceImpl</code>, provided you have a defined implementation class. If a class is annotated, the class itself will be resolved.
 
-Now comes the magic part. After a type is annotated with <code>injectable</code>, it can now be used as a automatically injected dependency in any other <code>injectable</code> type. 
+Now comes the magic part. After a type is annotated with <code>injectable</code>, it will be automatically injected in any other <code>injectable</code> type when used as a dependency.
 
 For example, the following code will inject <code>ServiceImpl</code> into <code>RepositoryImpl</code>:
 ```swift
