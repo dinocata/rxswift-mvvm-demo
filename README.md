@@ -14,7 +14,6 @@ This is an ongoing project, so some things (like test, storage and local persist
 
 
 <b>HOW TO BUILD THE PROJECT:</b>
-- Clone the project
 - Install <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> via <code>brew install sourcery</code>
 - Inside the project's root directory run the following command: <code>sourcery --config .sourceryInit.yml</code>. This will generate annotated code and link the generated files into the project. You only need to run this command once, since the code will be automatically generated each time you build the project through a build phase run script.
 
