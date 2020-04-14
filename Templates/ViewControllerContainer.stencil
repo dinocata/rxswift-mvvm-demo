@@ -23,7 +23,7 @@ final class ViewControllerContainer {
     }()
 
     // View Controller registration
-    private static func quickRegister<T: MVVMController<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+    private static func quickRegister<T: MVVMController<M>, M: ViewModelType>(container: Container, _ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
         container.register(type) {
             let instance = T.init(viewModel: $0.resolve(M.self)!)
             resolverCallback(instance, $0)
@@ -32,7 +32,7 @@ final class ViewControllerContainer {
     }
 
     // Coordinator View Controller registration
-    private static func quickRegister<T: CoordinatorVC<M>, M: ViewModelType>(container: Container,_ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
+    private static func quickRegister<T: CoordinatorVC<M>, M: ViewModelType>(container: Container, _ type: T.Type, resolverCallback: @escaping (T, Resolver) -> Void) {
         container.register(type) {
             let instance = T.init(viewModel: $0.resolve(M.self)!, coordinator : $0.resolve(SceneCoordinatorType.self)!)
             resolverCallback(instance, $0)

@@ -9,12 +9,33 @@
 import Domain
 
 // sourcery: injectable
-final class DashboardViewDataMapper: Mapper {
+protocol DashboardViewDataMapper {
+    func mapPostData(from resource: Post) -> PostListItemCell.Data
+    func mapPostError(from error: NetworkError) -> String
+}
+
+final class DashboardViewDataMapperImpl: DashboardViewDataMapper {
     
-    func map(from resource: Post) -> PostListViewData {
+    func mapPostData(from resource: Post) -> PostListItemCell.Data {
         return .init(
             title: resource.title,
-            author: "Author \(resource.userId)"
+            author: "By: Author \(resource.userId)"
         )
+    }
+    
+    func mapPostError(from error: NetworkError) -> String {
+        switch error {
+        case .unauthorized:
+            return "Unauthorized"
+            
+        case .internalServerError:
+            return "Server error"
+            
+        case .unrecognized:
+            return "An error occurred. Please check your Internet connection."
+            
+        default:
+            return "Could not fetch posts."
+        }
     }
 }

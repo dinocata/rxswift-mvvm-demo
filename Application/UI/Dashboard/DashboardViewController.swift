@@ -13,7 +13,12 @@ import RxCocoa
 class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     
     // MARK: View definition
-    // TODO: Define views here
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(cellType: PostListItemCell.self)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 32, right: 0)
+        return tableView
+    }()
     
     // MARK: Input subjects
     private let loadingSubject = PublishRelay<Void>()
@@ -22,9 +27,17 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     override func setupView() {
         self.title = "Dashboard"
         
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .white
+        
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.leftMargin)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.rightMargin)
+            make.bottom.equalToSuperview()
+        }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingSubject.accept(())
@@ -39,9 +52,7 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     
     override func bindOutput(_ output: DashboardViewModel.Output) {
         output.postData
-            .drive(onNext: { data in
-                print(data)
-            })
+            .drive(tableView.rx.items(cellType: PostListItemCell.self)) { $2.configure(with: $1) }
             .disposed(by: disposeBag)
         
         output.failure

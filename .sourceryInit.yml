@@ -6,3 +6,7 @@ templates:
   - Templates
 output:
   path: Generated
+  link:
+    project: MVVM-Demo.xcodeproj
+    target: Application
+    group: Generated

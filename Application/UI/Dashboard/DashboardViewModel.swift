@@ -24,7 +24,7 @@ extension DashboardViewModel: ViewModelType {
     struct Output {
         let loading: Driver<Bool>
         let failure: Driver<String>
-        let postData: Driver<[PostListViewData]>
+        let postData: Driver<[PostListItemCell.Data]>
     }
     
     func transform(input: Input) -> Output {
@@ -35,12 +35,12 @@ extension DashboardViewModel: ViewModelType {
         
         let success = postsResult
             .compactMap { $0.value }
-            .map { $0.map(self.mapper.map) }
+            .map { $0.map(self.mapper.mapPostData) }
             .asDriver(onErrorJustReturn: [])
         
         let failure = postsResult
             .compactMap { $0.error }
-            .map { "Error \($0.rawValue)" }
+            .map(mapper.mapPostError)
             .asDriver(onErrorJustReturn: "Unknown error")
         
         let loading = Driver.merge(

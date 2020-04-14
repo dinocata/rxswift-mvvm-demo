@@ -21,7 +21,6 @@ final class InstanceContainer {
             {% endfor %}
 
             {% else %}
-
             {% for impl in types.implementing[item.name] %}
             let instance = {{ impl.name }}()
             {% for var in impl.allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
@@ -44,7 +43,6 @@ final class InstanceContainer {
         }
 
         {% endfor %}
-
         return container
     }()
 }

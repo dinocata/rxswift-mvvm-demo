@@ -19,18 +19,20 @@ extension StartScreenViewModel: ViewModelType {
     struct Input {
         let dashboardButtonPressed: Driver<Void>
         let loginButtonPressed: Driver<Void>
-        let loginEventReceived: Driver<LoginEvent>
     }
     
     struct Output {
-        let showLogin: Driver<Void>
         let transition: Driver<Scene>
     }
     
     func transform(input: Input) -> Output {
+        let transition: Driver<Scene> = .merge(
+            input.loginButtonPressed.map { .login },
+            input.dashboardButtonPressed.map { .dashboard }
+        )
+        
         return Output(
-            showLogin: input.loginButtonPressed,
-            transition: input.dashboardButtonPressed.map { .dashboard }
+            transition: transition
         )
     }
 }

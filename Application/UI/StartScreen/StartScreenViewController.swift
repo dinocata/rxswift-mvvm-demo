@@ -28,9 +28,6 @@ class StartScreenViewController: CoordinatorVC<StartScreenViewModel> {
         return button
     }()
     
-    // MARK: Input subjects
-    private let loginResultNotifier = PublishRelay<LoginEvent>()
-    
     // MARK: Setup
     override func setupView() {
         self.title = "MVVM Demo"
@@ -46,18 +43,11 @@ class StartScreenViewController: CoordinatorVC<StartScreenViewModel> {
     override func bindInput() -> StartScreenViewModel.Input {
         return .init(
             dashboardButtonPressed: self.dashboardButton.rx.tap.asDriver(),
-            loginButtonPressed: self.loginButton.rx.tap.asDriver(),
-            loginEventReceived: self.loginResultNotifier.asDriver(onErrorJustReturn: .cancel)
+            loginButtonPressed: self.loginButton.rx.tap.asDriver()
         )
     }
     
     override func bindOutput(_ output: StartScreenViewModel.Output) {
-        output.showLogin
-            .compactMap { [weak self] in self?.loginResultNotifier }
-            .map(Scene.login)
-            .drive(transition)
-            .disposed(by: disposeBag)
-        
         output.transition
             .drive(transition)
             .disposed(by: disposeBag)

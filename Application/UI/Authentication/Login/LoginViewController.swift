@@ -13,11 +13,6 @@ import Domain
 // sourcery: scene = login, transition = modal
 class LoginViewController: CoordinatorVC<LoginViewModel> {
     
-    // Parameters
-    // sourcery:begin: parameter
-    var resultNotifier: PublishRelay<LoginEvent>!
-    // sourcery:end
-    
     // MARK: View definition
     private lazy var closeButton: UIButton = {
         let button = UIButton()
@@ -46,15 +41,7 @@ class LoginViewController: CoordinatorVC<LoginViewModel> {
     
     override func bindOutput(_ output: LoginViewModel.Output) {
         output.close
-            .drive(onNext: { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.coordinator.pop(animated: true) {
-                    self.resultNotifier.accept(.cancel)
-                }
-            })
+            .drive(dismiss)
             .disposed(by: disposeBag)
     }
     
