@@ -118,3 +118,7 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
 // When navigating:
 self.coordinator.navigate(to: .dashboard(someParam: "Hello World!", anotherParam: 5))
 ```
+
+<b>TODO:</b>
+
+Storage and local persistence implementation example is currently missing, but it will be added in the future.
