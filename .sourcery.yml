@@ -1,5 +1,5 @@
 sources:
-  - Application
+  - Presentation
   - Data
   - Domain
 templates:

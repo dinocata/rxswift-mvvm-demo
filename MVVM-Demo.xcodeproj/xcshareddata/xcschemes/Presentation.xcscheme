@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D617C5621B40901009D2113"
-               BuildableName = "Application.app"
-               BlueprintName = "Application"
+               BuildableName = "Presentation.app"
+               BlueprintName = "Presentation"
                ReferencedContainer = "container:MVVM-Demo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -31,8 +31,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D617C5621B40901009D2113"
-            BuildableName = "Application.app"
-            BlueprintName = "Application"
+            BuildableName = "Presentation.app"
+            BlueprintName = "Presentation"
             ReferencedContainer = "container:MVVM-Demo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D617C5621B40901009D2113"
-            BuildableName = "Application.app"
-            BlueprintName = "Application"
+            BuildableName = "Presentation.app"
+            BlueprintName = "Presentation"
             ReferencedContainer = "container:MVVM-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -81,8 +81,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D617C5621B40901009D2113"
-            BuildableName = "Application.app"
-            BlueprintName = "Application"
+            BuildableName = "Presentation.app"
+            BlueprintName = "Presentation"
             ReferencedContainer = "container:MVVM-Demo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

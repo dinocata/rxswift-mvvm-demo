@@ -11,7 +11,7 @@ import Domain
 
 // sourcery: injectable
 class PostDetailsViewModel {
-    var useCase: PostDetailsUseCase!
+    var getPostByIdUseCase: GetPostByIdUseCase!
     var mapper: PostDetailsViewDataMapper!
 }
 
@@ -30,7 +30,7 @@ extension PostDetailsViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let postData = input.loadPost
             .asObservable()
-            .flatMapLatest(useCase.getPost)
+            .flatMapLatest(getPostByIdUseCase.execute)
             .share()
         
         let success = postData

@@ -11,7 +11,7 @@ import Domain
 
 // sourcery: injectable
 class LoginViewModel {
-    var useCase: LoginUseCase!
+    var loginUserUseCase: LoginUserUseCase!
     var mapper: LoginViewDataMapper!
 }
 
@@ -39,11 +39,12 @@ extension LoginViewModel: ViewModelType {
         let request = input.submit
             .withLatestFrom(credentials)
             .asObservable()
-            .flatMapLatest(useCase.login)
+            .flatMapLatest(loginUserUseCase.execute)
             .share()
         
         let success = request
-            .compactMap { $0.value }
+            .filter { $0.value != nil }
+            .mapToVoid()
             .asDriver(onErrorJustReturn: ())
         
         let failure = request

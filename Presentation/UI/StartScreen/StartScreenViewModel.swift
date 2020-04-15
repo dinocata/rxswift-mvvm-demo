@@ -11,7 +11,9 @@ import Domain
 
 // sourcery: injectable
 class StartScreenViewModel {
-    var loginUseCase: LoginUseCase!
+    var isUserLoggedInUseCase: IsUserLoggedInUseCase!
+    var loginUserUseCase: LoginUserUseCase!
+    var logoutUserUseCase: LogoutUserUseCase!
 }
 
 // Binding
@@ -29,7 +31,7 @@ extension StartScreenViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let isLoggedIn = loginUseCase.isUserLoggedIn()
+        let isLoggedIn = isUserLoggedInUseCase.execute()
             .asDriver(onErrorJustReturn: false)
         
         let transition: Driver<Scene> = .merge(
@@ -39,8 +41,8 @@ extension StartScreenViewModel: ViewModelType {
         
         let logout = input.logoutButtonPressed
             .asObservable()
-            .flatMapLatest { self.loginUseCase.logout() }
-            .map { _ in }
+            .flatMapLatest(logoutUserUseCase.execute)
+            .mapToVoid()
             .asDriver(onErrorJustReturn: ())
         
         return Output(

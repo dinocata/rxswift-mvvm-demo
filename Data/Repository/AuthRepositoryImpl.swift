@@ -2,7 +2,7 @@
 //  AuthRepositoryImpl.swift
 //  Data
 //
-//  Created by Dino Catalinac on 13/04/2020.
+//  Created by Dino Catalinac on 15/04/2020.
 //  Copyright © 2020 github.com/dinocata. All rights reserved.
 //
 
@@ -10,20 +10,18 @@ import RxSwift
 import Domain
 
 public class AuthRepositoryImpl: AuthRepository {
-    
+  
     public var authService: AuthService!
     public var keychainAccess: KeychainAccessManager!
     
     public init() {}
     
-    public func login(using credentials: LoginRequestData) -> Single<NetworkResult<Void>> {
+    public func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>> {
         return authService.login(using: credentials)
     }
     
-    public func isUserLoggedIn() -> Observable<Bool> {
-        return keychainAccess
-            .getAuthToken()
-            .map { $0 != nil }
+    public func setAuthToken(_ token: String?) {
+        keychainAccess.authToken = token
     }
     
     public func logout() -> Completable {

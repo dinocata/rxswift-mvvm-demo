@@ -1,5 +1,5 @@
 sources:
-  - Application
+  - Presentation
   - Data
   - Domain
 templates:
@@ -8,5 +8,5 @@ output:
   path: Generated
   link:
     project: MVVM-Demo.xcodeproj
-    target: Application
+    target: Presentation
     group: Generated

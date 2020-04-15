@@ -11,8 +11,9 @@ import Domain
 
 // sourcery: injectable
 class DashboardViewModel {
-    var postListUseCase: PostListUseCase!
-    var loginUseCase: LoginUseCase!
+    var getPostsUseCase: GetPostsUseCase!
+    var isUserLoggedInUseCase: IsUserLoggedInUseCase!
+    var logoutUserUseCase: LogoutUserUseCase!
     var mapper: DashboardViewDataMapper!
 }
 
@@ -41,7 +42,7 @@ extension DashboardViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let postsResult = input.loadPosts
             .asObservable()
-            .flatMapLatest(postListUseCase.getPosts)
+            .flatMapLatest(getPostsUseCase.execute)
             .share()
         
         let success = postsResult
@@ -59,19 +60,17 @@ extension DashboardViewModel: ViewModelType {
             postsResult.map { _ in false }.asDriver(onErrorJustReturn: false)
         )
         
-        let isLoggedIn = loginUseCase.isUserLoggedIn()
+        let isLoggedIn = isUserLoggedInUseCase.execute()
             .asDriver(onErrorJustReturn: false)
         
         let logout = input.logoutButtonPressed
             .asObservable()
-            .flatMapLatest { self.loginUseCase.logout() }
-            .map { _ in }
+            .flatMapLatest(logoutUserUseCase.execute)
+            .mapToVoid()
             .asDriver(onErrorJustReturn: ())
         
         let postDetailsCheck = input.postSelected
-            .asObservable()
-            .withLatestFrom(loginUseCase.isUserLoggedIn())
-            .asDriverOnErrorJustComplete()
+            .withLatestFrom(isLoggedIn)
         
         let postDetails = postDetailsCheck
             .filter { $0 }
