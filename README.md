@@ -124,18 +124,19 @@ You can also explicitly define a transition type and a completion block:
 self.coordinator.transition(to: .dashboard, type: .push) { print("Transition done!") }
 ```
 
-If you need to pass some parameters to the view controller, you can use <code>parameter</code> annotation and Sourcery will automatically define these parameters as associated values in the enum case:
+If you need to pass some parameters or a delegate to the view controller, you can use <code>parameter</code> annotation and Sourcery will automatically define these parameters as associated values in the enum case:
 ```swift
 // sourcery: scene = dashboard, transition = present, navigation
 class DashboardViewController: CoordinatorVC<DashboardViewModel> {
   // sourcery:begin: parameter
   var someParam: String!
   var anotherParam: Int!
+  weak var delegate: SomeDelegate?
   // sourcery:end
 }
 
 // When navigating:
-self.coordinator.transition(to: .dashboard(someParam: "Hello World!", anotherParam: 5))
+self.coordinator.transition(to: .dashboard(someParam: "Hello World!", anotherParam: 5, delegate: self))
 ```
 
 ...and lastly:
