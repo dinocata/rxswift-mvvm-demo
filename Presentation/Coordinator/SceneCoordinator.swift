@@ -56,11 +56,9 @@ final class SceneCoordinator: SceneCoordinatorType {
             )
             
             self.currentViewController = navigationController.viewControllers.last
-            
         } else if let presenter = currentViewController.presentingViewController {
             currentViewController.dismiss(animated: animated, completion: completion)
             self.currentViewController = presenter.actualViewController
-            
         } else {
             fatalError("Not a modal, no navigation controller: can't navigate back from currentViewController!")
         }

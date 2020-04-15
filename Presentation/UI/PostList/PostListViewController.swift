@@ -1,5 +1,5 @@
 //
-//  DashboardViewController.swift
+//  PostListViewController.swift
 //  Application
 //
 //  Created by Dino Catalinac on 13/04/2020.
@@ -9,8 +9,8 @@
 import UIKit
 import RxCocoa
 
-// sourcery: scene = dashboard
-class DashboardViewController: CoordinatorVC<DashboardViewModel> {
+// sourcery: scene = postList
+class PostListViewController: CoordinatorVC<PostListViewModel> {
     
     // MARK: View definition
     private lazy var tableView: UITableView = {
@@ -54,12 +54,12 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
     }
     
     // MARK: View Model Binding
-    override func bindInput() -> DashboardViewModel.Input {
+    override func bindInput() -> PostListViewModel.Input {
         let postSelection = tableView.rx.itemSelected
             .map { $0.row }
             .asDriverOnErrorJustComplete()
         
-        return DashboardViewModel.Input(
+        return PostListViewModel.Input(
             loadPosts: loadingSubject.asDriver(onErrorJustReturn: ()),
             postSelected: postSelection,
             loginButtonPressed: loginButton.rx.tap.asDriver(),
@@ -67,7 +67,7 @@ class DashboardViewController: CoordinatorVC<DashboardViewModel> {
         )
     }
     
-    override func bindOutput(_ output: DashboardViewModel.Output) {
+    override func bindOutput(_ output: PostListViewModel.Output) {
         output.postData
             .drive(tableView.rx.items(cellType: PostListItemCell.self)) { $2.configure(with: $1) }
             .disposed(by: disposeBag)

@@ -1,5 +1,5 @@
 //
-//  DashboardViewModel.swift
+//  PostListViewModel.swift
 //  Application
 //
 //  Created by Dino Catalinac on 13/04/2020.
@@ -10,7 +10,7 @@ import RxCocoa
 import Domain
 
 // sourcery: injectable
-class DashboardViewModel {
+class PostListViewModel {
     var getPostsUseCase: GetPostsUseCase!
     var isUserLoggedInUseCase: IsUserLoggedInUseCase!
     var logoutUserUseCase: LogoutUserUseCase!
@@ -18,7 +18,7 @@ class DashboardViewModel {
 }
 
 // Binding
-extension DashboardViewModel: ViewModelType {
+extension PostListViewModel: ViewModelType {
     typealias Index = Int
     
     struct Input {

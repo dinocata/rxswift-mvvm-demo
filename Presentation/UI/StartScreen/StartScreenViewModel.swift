@@ -36,7 +36,7 @@ extension StartScreenViewModel: ViewModelType {
         
         let transition: Driver<Scene> = .merge(
             input.loginButtonPressed.map { .login },
-            input.dashboardButtonPressed.map { .dashboard }
+            input.dashboardButtonPressed.map { .postList }
         )
         
         let logout = input.logoutButtonPressed
