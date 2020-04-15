@@ -6,7 +6,7 @@ This project is based on https://github.com/sergdort/CleanArchitectureRxSwift wi
 - Data contains platform-specific data providers (networking and local persistence) and repository implementations
 - Domain contains entities, use cases, use case implementations and repository definitions
 
-It utilizes automatic dependency injection through <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> annotations and <a href="https://github.com/Swinject/Swinject">Swinject</a>.
+It utilizes automatic dependency injection through <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> annotations and <a href="https://github.com/Swinject/Swinject">Swinject</a>, thus eliminating the boiler plate of writing instance providers.
 
 Routing is handled globally through a Coordinator, while view controllers are abstracted into Scenes.
 
