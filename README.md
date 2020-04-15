@@ -119,6 +119,10 @@ You can now navigate to this view controller with:
 ```swift
 self.coordinator.transition(to: .dashboard)
 ```
+You can also explicitly define a transition type and a completion block:
+```swift
+self.coordinator.transition(to: .dashboard, type: .push) { print("Transition done!") }
+```
 
 If you need to pass some parameters to the view controller, you can use <code>parameter</code> annotation and Sourcery will automatically define these parameters as associated values in the enum case:
 ```swift
