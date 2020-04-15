@@ -10,11 +10,10 @@ It utilizes automatic dependency injection through <a href="https://github.com/k
 
 Routing is handled globally through a Coordinator, while view controllers are abstracted into Scenes.
 
-This is an ongoing project, so some things (like test, storage and local persistence examples) are on the TODO list.
+This is an ongoing project, so some things (like tests, storage and local persistence examples) are on the TODO list.
 
 
-<b>HOW TO INSTALL:</b>
-- Clone the project
+<b>HOW TO BUILD THE PROJECT:</b>
 - Install <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> via <code>brew install sourcery</code>
 - Inside the project's root directory run the following command: <code>sourcery --config .sourceryInit.yml</code>. This will generate annotated code and link the generated files into the project. You only need to run this command once, since the code will be automatically generated each time you build the project through a build phase run script.
 
@@ -35,7 +34,7 @@ class ServiceImpl: Service {
 ```
 The above code will register <code>Service</code> into a global instance container through Swinject and resolve it as <code>ServiceImpl</code>, provided you have a defined implementation class. If a class is annotated, the class itself will be resolved.
 
-Now comes the magic. After a type is annotated with <code>injectable</code>, it can now be used as a automatically injected dependency in any other <code>injectable</code> type. 
+Now comes the magic part. After a type is annotated with <code>injectable</code>, it will be automatically injected in any other <code>injectable</code> type when used as a dependency.
 
 For example, the following code will inject <code>ServiceImpl</code> into <code>RepositoryImpl</code>:
 ```swift
@@ -49,7 +48,7 @@ class RepositoryImpl: Repository {
 ```
 Important note: All dependencies should be defined as force-unwrapped variables, because Sourcery is injecting the dependencies AFTER the instance is initialized.
 
-You can also explicitly define a implementation class with annotation parameter:
+You can also define a implementation class explicitly with annotation parameter:
 ```swift
 // sourcery: injectable = Dog
 protocol Animal {}
@@ -61,11 +60,26 @@ class Dog: Animal {
 // sourcery: injectable = Owner
 protocol Person {}
 
+// Owner will have a pet Dog
 class Owner: Person {
   var pet: Animal!
 }
 ```
-You can always manually resolve an instance, same as Sourcery does it under-the-hood. For example, <code>InstanceContainer.instance.resolve(Person.self)!</code> for the above example will return an instance of <code>Owner</code>, who has a pet <code>Dog</code>. But you should rarely, if ever need to do this.
+
+You can even explicitly choose which implementation to inject with, if you have multiple types conforming to the same protocol, for example:
+```swift
+// sourcery: injectable
+class Dog: Animal {}
+
+// sourcery: injectable
+class Cat: Animal {}
+
+class Owner: Person {
+  // sourcery: inject = Cat
+  var pet: Animal!
+}
+```
+You can always manually resolve an instance, same as Sourcery does it under-the-hood. For example, <code>InstanceContainer.instance.resolve(Person.self)!</code> for the above example will return an instance of <code>Owner</code>, who has a pet <code>Cat</code>. But you should rarely, if ever need to do this.
 
 
 
@@ -103,21 +117,26 @@ The above will register a <code>DashboardViewController</code> to a <code>ViewCo
   
 You can now navigate to this view controller with:
 ```swift
-self.coordinator.navigate(to: .dashboard)
+self.coordinator.transition(to: .dashboard)
+```
+You can also explicitly define a transition type and a completion block:
+```swift
+self.coordinator.transition(to: .dashboard, type: .push) { print("Transition done!") }
 ```
 
-If you need to pass some parameters to the view controller, you can use <code>parameter</code> annotation and Sourcery will automatically define these parameters as associated values in the enum case:
+If you need to pass some parameters or a delegate to the view controller, you can use <code>parameter</code> annotation and Sourcery will automatically define these parameters as associated values in the enum case:
 ```swift
 // sourcery: scene = dashboard, transition = present, navigation
 class DashboardViewController: CoordinatorVC<DashboardViewModel> {
   // sourcery:begin: parameter
   var someParam: String!
   var anotherParam: Int!
+  weak var delegate: SomeDelegate?
   // sourcery:end
 }
 
 // When navigating:
-self.coordinator.navigate(to: .dashboard(someParam: "Hello World!", anotherParam: 5))
+self.coordinator.transition(to: .dashboard(someParam: "Hello World!", anotherParam: 5, delegate: self))
 ```
 
 ...and lastly:
