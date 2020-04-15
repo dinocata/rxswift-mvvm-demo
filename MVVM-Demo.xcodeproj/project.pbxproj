@@ -394,13 +394,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		6E757A7924479CB500154249 /* UserService */ = {
+		6E757A7924479CB500154249 /* AuthService */ = {
 			isa = PBXGroup;
 			children = (
 				6EC20D9A2445B3D900AC8956 /* AuthService.swift */,
 				6E757A7E24479E4700154249 /* AuthServiceImpl.swift */,
 			);
-			path = UserService;
+			path = AuthService;
 			sourceTree = "<group>";
 		};
 		6E757A7D24479D3400154249 /* PostService */ = {
@@ -609,7 +609,7 @@
 		6EBAFFAB2444A9F10077C927 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				6E757A7924479CB500154249 /* UserService */,
+				6E757A7924479CB500154249 /* AuthService */,
 				6E757A7D24479D3400154249 /* PostService */,
 			);
 			path = Service;
