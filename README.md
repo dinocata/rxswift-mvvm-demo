@@ -142,3 +142,5 @@ self.coordinator.transition(to: .dashboard(someParam: "Hello World!", anotherPar
 ...and lastly:
 
 This is <b>NOT</b> a library or a framework. It is an example iOS project written in RxSwift and following Clean Architecture patterns with minimal boiler plate. You are free to use the Sourcery .stencil templates found in the Templates/ directory inside the root folder and modify them however you like. The annotation feature is completely custom and architecture-independent. You only need <a href="https://github.com/krzysztofzablocki/Sourcery">Sourcery </a> and <a href="https://github.com/Swinject/Swinject">Swinject</a> in your project for it to work. Rest is just an example usage.
+
+If you have questions, suggestions or any feedback, feel free to send them at dino.chata@gmail.com
