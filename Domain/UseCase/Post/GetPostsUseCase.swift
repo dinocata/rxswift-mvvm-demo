@@ -8,7 +8,7 @@
 
 import RxSwift
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol GetPostsUseCase {
     func execute() -> Single<NetworkResult<[Post]>>
 }

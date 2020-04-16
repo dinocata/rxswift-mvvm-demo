@@ -8,7 +8,7 @@
 
 import RxSwift
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol UserRepository {
     func getCurrentUser() -> Observable<User>
     func saveUser(_ user: User)

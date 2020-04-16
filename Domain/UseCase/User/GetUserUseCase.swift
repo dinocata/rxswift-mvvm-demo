@@ -8,7 +8,7 @@
 
 import RxSwift
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol GetUserUseCase {
     func execute() -> Observable<User>
 }

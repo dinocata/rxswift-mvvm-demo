@@ -8,7 +8,7 @@
 
 import RxSwift
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol LoginUserUseCase {
     func execute(email: String, password: String) -> Single<NetworkResult<User>>
 }

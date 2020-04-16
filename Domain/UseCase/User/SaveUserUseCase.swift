@@ -8,7 +8,7 @@
 
 import Foundation
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol SaveUserUseCase {
     func execute(user: User)
 }

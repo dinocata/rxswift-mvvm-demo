@@ -8,7 +8,7 @@
 
 import RxSwift
 
-// sourcery: injectable
+// sourcery: injectable, AutoMockable
 public protocol AuthRepository {
     func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>>
     func setAuthToken(_ token: String?)
