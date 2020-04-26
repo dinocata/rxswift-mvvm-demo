@@ -15,9 +15,11 @@ public protocol GetPostsUseCase {
 
 public class GetPostsUseCaseImpl: GetPostsUseCase {
     
-    public var postRepository: PostRepository!
+    private let postRepository: PostRepository
     
-    public init() {}
+    public init(postRepository: PostRepository) {
+        self.postRepository = postRepository
+    }
     
     public func execute() -> Single<NetworkResult<[Post]>> {
         return postRepository.getPosts()

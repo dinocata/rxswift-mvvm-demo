@@ -23,7 +23,7 @@ public class KeychainAccessManagerImpl: KeychainAccessManager {
         static let authToken = "auth_token"
     }
     
-    public var notificationManager: NotificationManager!
+    private let notificationManager: NotificationManager
     
     private let keychain: Keychain = {
         return Keychain(service: Keys.service)
@@ -37,6 +37,10 @@ public class KeychainAccessManagerImpl: KeychainAccessManager {
         }
     }
     
+    public init(notificationManager: NotificationManager) {
+        self.notificationManager = notificationManager
+    }
+    
     public func getAuthToken() -> Observable<String?> {
         return notificationManager
             .observe(notification: .authTokenChange)
@@ -44,6 +48,4 @@ public class KeychainAccessManagerImpl: KeychainAccessManager {
             .startWith(())
             .map { self.authToken }
     }
-    
-    public init() {}
 }

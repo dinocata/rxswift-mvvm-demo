@@ -15,9 +15,11 @@ public protocol GetPostByIdUseCase {
 
 public class GetPostByIdUseCaseImpl: GetPostByIdUseCase {
     
-    public var postRepository: PostRepository!
+    private let postRepository: PostRepository
     
-    public init() {}
+    public init(postRepository: PostRepository) {
+        self.postRepository = postRepository
+    }
     
     public func execute(id: Int) -> Single<NetworkResult<Post>> {
         return postRepository.getPost(id: id)

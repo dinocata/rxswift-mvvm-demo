@@ -11,9 +11,18 @@ import Domain
 
 // sourcery: injectable
 class StartScreenViewModel {
-    var isUserLoggedInUseCase: IsUserLoggedInUseCase!
-    var loginUserUseCase: LoginUserUseCase!
-    var logoutUserUseCase: LogoutUserUseCase!
+    private let isUserLoggedInUseCase: IsUserLoggedInUseCase
+    private let loginUserUseCase: LoginUserUseCase
+    private let logoutUserUseCase: LogoutUserUseCase
+    
+    init(
+        isUserLoggedInUseCase: IsUserLoggedInUseCase,
+        loginUserUseCase: LoginUserUseCase,
+        logoutUserUseCase: LogoutUserUseCase) {
+        self.isUserLoggedInUseCase = isUserLoggedInUseCase
+        self.loginUserUseCase = loginUserUseCase
+        self.logoutUserUseCase = logoutUserUseCase
+    }
 }
 
 // Binding

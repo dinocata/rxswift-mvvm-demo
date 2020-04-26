@@ -15,9 +15,11 @@ public protocol IsUserLoggedInUseCase {
 
 public class IsUserLoggedInUseCaseImpl: IsUserLoggedInUseCase {
     
-    public var getUserUseCase: GetUserUseCase!
+    private let getUserUseCase: GetUserUseCase
     
-    public init() {}
+    public init(getUserUseCase: GetUserUseCase) {
+        self.getUserUseCase = getUserUseCase
+    }
     
     public func execute() -> Observable<Bool> {
         return getUserUseCase.execute().map { $0.type != .offline }

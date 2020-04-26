@@ -15,10 +15,13 @@ public protocol LoginUserUseCase {
 
 public class LoginUserUseCaseImpl: LoginUserUseCase {
     
-    public var authRepository: AuthRepository!
-    public var saveUserUseCase: SaveUserUseCase!
+    private let authRepository: AuthRepository
+    private let saveUserUseCase: SaveUserUseCase
     
-    public init() {}
+    public init(authRepository: AuthRepository, saveUserUseCase: SaveUserUseCase) {
+        self.authRepository = authRepository
+        self.saveUserUseCase = saveUserUseCase
+    }
     
     public func execute(email: String, password: String) -> Single<NetworkResult<User>> {
         let requestData = LoginRequestData(

@@ -15,9 +15,11 @@ public protocol GetUserUseCase {
 
 public class GetUserUseCaseImpl: GetUserUseCase {
     
-    public var userRepository: UserRepository!
+    private let userRepository: UserRepository
     
-    public init() {}
+    public init(userRepository: UserRepository) {
+        self.userRepository = userRepository
+    }
     
     public func execute() -> Observable<User> {
         return userRepository.getCurrentUser()

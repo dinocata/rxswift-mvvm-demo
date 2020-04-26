@@ -11,10 +11,13 @@ import Domain
 
 public class UserRepositoryImpl: UserRepository {
     
-    public var userDefaults: UserDefaultsManager!
-    public var keychainAccess: KeychainAccessManager!
+    private let userDefaults: UserDefaultsManager
+    private let keychainAccess: KeychainAccessManager
     
-    public init() {}
+    public init(userDefaults: UserDefaultsManager, keychainAccess: KeychainAccessManager) {
+        self.userDefaults = userDefaults
+        self.keychainAccess = keychainAccess
+    }
     
     public func getCurrentUser() -> Observable<User> {
         let combine = Observable.combineLatest(

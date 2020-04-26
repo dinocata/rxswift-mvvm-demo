@@ -11,10 +11,13 @@ import Domain
 
 public class AuthRepositoryImpl: AuthRepository {
   
-    public var authService: AuthService!
-    public var keychainAccess: KeychainAccessManager!
+    private let authService: AuthService
+    private var keychainAccess: KeychainAccessManager
     
-    public init() {}
+    public init(authService: AuthService, keychainAccess: KeychainAccessManager) {
+        self.authService = authService
+        self.keychainAccess = keychainAccess
+    }
     
     public func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>> {
         return authService.login(using: credentials)

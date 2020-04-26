@@ -11,8 +11,13 @@ import Domain
 
 // sourcery: injectable
 class LoginViewModel {
-    var loginUserUseCase: LoginUserUseCase!
-    var mapper: LoginViewDataMapper!
+    private let loginUserUseCase: LoginUserUseCase
+    private let mapper: LoginViewDataMapper
+    
+    init(loginUserUseCase: LoginUserUseCase, mapper: LoginViewDataMapper) {
+        self.loginUserUseCase = loginUserUseCase
+        self.mapper = mapper
+    }
 }
 
 extension LoginViewModel: ViewModelType {

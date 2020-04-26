@@ -11,9 +11,11 @@ import Domain
 
 public class AuthServiceImpl: AuthService {
     
-    public var network: NetworkProtocol!
+    private let network: NetworkProtocol
     
-    public init() {}
+    public init(network: NetworkProtocol) {
+        self.network = network
+    }
     
     public func login(using credentials: LoginRequestData) -> Single<NetworkResult<LoginResponseData>> {
         return network.request(.login(request: credentials))

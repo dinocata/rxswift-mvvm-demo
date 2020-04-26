@@ -15,9 +15,11 @@ public protocol LogoutUserUseCase {
 
 public class LogoutUserUseCaseImpl: LogoutUserUseCase {
     
-    public var authRepository: AuthRepository!
+    private let authRepository: AuthRepository
     
-    public init() {}
+    public init(authRepository: AuthRepository) {
+        self.authRepository = authRepository
+    }
     
     public func execute() -> Completable {
         return authRepository.logout()

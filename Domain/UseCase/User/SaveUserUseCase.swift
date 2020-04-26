@@ -15,9 +15,11 @@ public protocol SaveUserUseCase {
 
 public class SaveUserUseCaseImpl: SaveUserUseCase {
     
-    public var userRepository: UserRepository!
+    private let userRepository: UserRepository
     
-    public init() {}
+    public init(userRepository: UserRepository) {
+        self.userRepository = userRepository
+    }
     
     public func execute(user: User) {
         userRepository.saveUser(user)

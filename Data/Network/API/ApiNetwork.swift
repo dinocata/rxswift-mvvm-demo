@@ -27,10 +27,13 @@ extension NetworkProtocol {
 
 public class ApiNetwork: NetworkProtocol {
     
-    // sourcery: inject = MoyaProvider<ApiService>
-    public var provider: MoyaProvider<ApiService>!
+    private let provider: MoyaProvider<ApiService>
     
-    public init() {}
+    public init(
+        // sourcery: inject! = MoyaProvider<ApiService>
+        provider: MoyaProvider<ApiService>) {
+        self.provider = provider
+    }
     
     public func request<T: Decodable>(_ target: ApiService, responseType: T.Type, retries: Int) -> Single<NetworkResult<T>> {
         return provider.rx.request(target)

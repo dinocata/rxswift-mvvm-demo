@@ -11,9 +11,11 @@ import Domain
 
 public class PostServiceImpl: PostService {
     
-    public var network: NetworkProtocol!
+    private let network: NetworkProtocol
     
-    public init() {}
+    public init(network: NetworkProtocol) {
+        self.network = network
+    }
     
     public func getPosts() -> Single<NetworkResult<[Post]>> {
         return network.request(.posts)

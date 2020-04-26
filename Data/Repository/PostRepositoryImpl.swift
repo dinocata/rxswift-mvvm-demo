@@ -11,9 +11,11 @@ import Domain
 
 public class PostRepositoryImpl: PostRepository {
     
-    public var service: PostService!
+    private let service: PostService
     
-    public init() {}
+    public init(service: PostService) {
+        self.service = service
+    }
     
     public func getPosts() -> Single<NetworkResult<[Post]>> {
         return service.getPosts()

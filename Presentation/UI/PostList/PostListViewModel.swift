@@ -11,10 +11,20 @@ import Domain
 
 // sourcery: injectable
 class PostListViewModel {
-    var getPostsUseCase: GetPostsUseCase!
-    var isUserLoggedInUseCase: IsUserLoggedInUseCase!
-    var logoutUserUseCase: LogoutUserUseCase!
-    var mapper: DashboardViewDataMapper!
+    private let getPostsUseCase: GetPostsUseCase
+    private let isUserLoggedInUseCase: IsUserLoggedInUseCase
+    private let logoutUserUseCase: LogoutUserUseCase
+    private let mapper: DashboardViewDataMapper
+    
+    init(getPostsUseCase: GetPostsUseCase,
+         isUserLoggedInUseCase: IsUserLoggedInUseCase,
+         logoutUserUseCase: LogoutUserUseCase,
+         mapper: DashboardViewDataMapper) {
+        self.getPostsUseCase = getPostsUseCase
+        self.isUserLoggedInUseCase = isUserLoggedInUseCase
+        self.logoutUserUseCase = logoutUserUseCase
+        self.mapper = mapper
+    }
 }
 
 // Binding

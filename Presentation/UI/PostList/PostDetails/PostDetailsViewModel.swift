@@ -11,8 +11,13 @@ import Domain
 
 // sourcery: injectable
 class PostDetailsViewModel {
-    var getPostByIdUseCase: GetPostByIdUseCase!
-    var mapper: PostDetailsViewDataMapper!
+    private let getPostByIdUseCase: GetPostByIdUseCase
+    private let mapper: PostDetailsViewDataMapper
+    
+    init(getPostByIdUseCase: GetPostByIdUseCase, mapper: PostDetailsViewDataMapper) {
+        self.getPostByIdUseCase = getPostByIdUseCase
+        self.mapper = mapper
+    }
 }
 
 // Binding
