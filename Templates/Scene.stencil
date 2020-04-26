@@ -14,6 +14,7 @@ extension Scene {
     var viewController: UIViewController {
         switch self {
         {% for item in types.classes where item|annotated:"scene" %}
+        // MARK: {{ item.name }}
         case .{{ item.annotations.scene }}{% for parameter in item.allVariables where parameter|annotated:"parameter" %}{% if forloop.first%}({% endif %}let {{ parameter.name }}{% if not forloop.last%}, {% else %}){% endif %}{% endfor %}:
             let controller = ViewControllerContainer.instance.resolve({{ item.name }}.self)!
             {% for parameter in item.allVariables where parameter|annotated:"parameter" %}
@@ -28,6 +29,8 @@ extension Scene {
             result.modalPresentationStyle = .fullScreen
             {% endif %}
             return result
+
+            
         {% endfor %}
         }
     }

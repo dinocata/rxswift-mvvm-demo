@@ -8,6 +8,7 @@
 
 import UIKit
 
+// sourcery: injectable, singleton
 protocol SceneCoordinatorType {
     /// Keeps track of currently active view controllers. Helpful for preventing controller leaking.
     /// For a reference, this should always be equal to 1 whenever you navigate back to the Start screen,
@@ -21,6 +22,9 @@ protocol SceneCoordinatorType {
     
     /// Navigates to a Scene using specified transition type.
     func transition(to scene: Scene, type: SceneTransition, completion: (() -> Void)?)
+    
+    /// Navigates to a view controller using specified transition type.
+    func transition(to viewController: UIViewController, type: SceneTransition, completion: (() -> Void)?)
     
     /// Dismisses (or pops) current view controller.
     func pop(animated: Bool, completion: (() -> Void)?)

@@ -17,6 +17,7 @@
 		6E173CD2244460C800BEAB68 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E173CCA244460C800BEAB68 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E173CD62444617500BEAB68 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E173CB82444608300BEAB68 /* Domain.framework */; };
 		6E173CD72444617500BEAB68 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E173CB82444608300BEAB68 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6E667F822455B95B000E3DD0 /* ApiProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E667F812455B95B000E3DD0 /* ApiProvider.swift */; };
 		6E757A74244797A900154249 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E757A73244797A900154249 /* User.swift */; };
 		6E757A76244797FE00154249 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E757A75244797FE00154249 /* UserType.swift */; };
 		6E757A7F24479E4700154249 /* AuthServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E757A7E24479E4700154249 /* AuthServiceImpl.swift */; };
@@ -41,7 +42,6 @@
 		6EBAFF8D244499650077C927 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF8C244499650077C927 /* SceneCoordinator.swift */; };
 		6EBAFF8F24449BE20077C927 /* CoordinatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF8E24449BE20077C927 /* CoordinatorVC.swift */; };
 		6EBAFF9224449D270077C927 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF9124449D270077C927 /* UIViewControllerExt.swift */; };
-		6EBAFF9524449FCB0077C927 /* ManualRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF9424449FCB0077C927 /* ManualRegistration.swift */; };
 		6EBAFF9B2444A3630077C927 /* LoginRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF9A2444A3630077C927 /* LoginRequestData.swift */; };
 		6EBAFF9D2444A36C0077C927 /* LoginResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFF9C2444A36C0077C927 /* LoginResponseData.swift */; };
 		6EBAFFA32444A56B0077C927 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBAFFA22444A56B0077C927 /* NetworkError.swift */; };
@@ -82,11 +82,11 @@
 		8D617C6521B40902009D2113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6421B40902009D2113 /* Assets.xcassets */; };
 		8D617C6821B40902009D2113 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D617C6621B40902009D2113 /* LaunchScreen.storyboard */; };
 		8D9D63F821B5231300979814 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D9D63FA21B5231300979814 /* Localizable.strings */; };
-		BF_102540522666 /* AppContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_647677293887 /* AppContainer.generated.swift */; };
-		BF_191510074000 /* InstanceContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_870670406904 /* InstanceContainer.generated.swift */; };
-		BF_419298012066 /* Scene.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_379720624693 /* Scene.generated.swift */; };
-		BF_771065965569 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_268999290295 /* AutoMockable.generated.swift */; };
-		BF_976085770891 /* ViewControllerContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_543265800658 /* ViewControllerContainer.generated.swift */; };
+		BF_129318352669 /* Scene.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_550959931927 /* Scene.generated.swift */; };
+		BF_293574688057 /* AppContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_339299476935 /* AppContainer.generated.swift */; };
+		BF_627323490869 /* ViewControllerContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_432523119611 /* ViewControllerContainer.generated.swift */; };
+		BF_687263650737 /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_244985361119 /* AutoMockable.generated.swift */; };
+		BF_715148745571 /* InstanceContainer.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_913067905086 /* InstanceContainer.generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +151,7 @@
 		6E173CCA244460C800BEAB68 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E173CCC244460C800BEAB68 /* Data.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
 		6E173CCD244460C800BEAB68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E667F812455B95B000E3DD0 /* ApiProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProvider.swift; sourceTree = "<group>"; };
 		6E757A73244797A900154249 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6E757A75244797FE00154249 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		6E757A7E24479E4700154249 /* AuthServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceImpl.swift; sourceTree = "<group>"; };
@@ -175,7 +176,6 @@
 		6EBAFF8C244499650077C927 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		6EBAFF8E24449BE20077C927 /* CoordinatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorVC.swift; sourceTree = "<group>"; };
 		6EBAFF9124449D270077C927 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
-		6EBAFF9424449FCB0077C927 /* ManualRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualRegistration.swift; sourceTree = "<group>"; };
 		6EBAFF9A2444A3630077C927 /* LoginRequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestData.swift; sourceTree = "<group>"; };
 		6EBAFF9C2444A36C0077C927 /* LoginResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseData.swift; sourceTree = "<group>"; };
 		6EBAFFA22444A56B0077C927 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -228,11 +228,11 @@
 		E555CF8858FB503AD37DA82B /* Pods-Presentation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Presentation.release.xcconfig"; path = "Pods/Target Support Files/Pods-Presentation/Pods-Presentation.release.xcconfig"; sourceTree = "<group>"; };
 		EC2A47652E81F312CF55A922 /* Pods_Presentation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Presentation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA422CC581228C396FA86C78 /* Pods_Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FR_268999290295 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
-		FR_379720624693 /* Scene.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Scene.generated.swift; sourceTree = "<group>"; };
-		FR_543265800658 /* ViewControllerContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ViewControllerContainer.generated.swift; sourceTree = "<group>"; };
-		FR_647677293887 /* AppContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AppContainer.generated.swift; sourceTree = "<group>"; };
-		FR_870670406904 /* InstanceContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = InstanceContainer.generated.swift; sourceTree = "<group>"; };
+		FR_244985361119 /* AutoMockable.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
+		FR_339299476935 /* AppContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = AppContainer.generated.swift; sourceTree = "<group>"; };
+		FR_432523119611 /* ViewControllerContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = ViewControllerContainer.generated.swift; sourceTree = "<group>"; };
+		FR_550959931927 /* Scene.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Scene.generated.swift; sourceTree = "<group>"; };
+		FR_913067905086 /* InstanceContainer.generated.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = InstanceContainer.generated.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,11 +378,11 @@
 		6E173CE32444637D00BEAB68 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				FR_647677293887 /* AppContainer.generated.swift */,
-				FR_268999290295 /* AutoMockable.generated.swift */,
-				FR_870670406904 /* InstanceContainer.generated.swift */,
-				FR_379720624693 /* Scene.generated.swift */,
-				FR_543265800658 /* ViewControllerContainer.generated.swift */,
+				FR_339299476935 /* AppContainer.generated.swift */,
+				FR_244985361119 /* AutoMockable.generated.swift */,
+				FR_913067905086 /* InstanceContainer.generated.swift */,
+				FR_550959931927 /* Scene.generated.swift */,
+				FR_432523119611 /* ViewControllerContainer.generated.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -564,14 +564,6 @@
 			path = UIKitExtensions;
 			sourceTree = "<group>";
 		};
-		6EBAFF9324449FBD0077C927 /* DI */ = {
-			isa = PBXGroup;
-			children = (
-				6EBAFF9424449FCB0077C927 /* ManualRegistration.swift */,
-			);
-			path = DI;
-			sourceTree = "<group>";
-		};
 		6EBAFF992444A33D0077C927 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +597,7 @@
 				6EBAFFBF2444D8940077C927 /* ApiService.swift */,
 				6EBAFFC12444D8AA0077C927 /* ApiConfig.swift */,
 				6EBAFFC32444DBE10077C927 /* ApiNetwork.swift */,
+				6E667F812455B95B000E3DD0 /* ApiProvider.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -725,7 +718,6 @@
 		8D617C5921B40901009D2113 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				6EBAFF9324449FBD0077C927 /* DI */,
 				6EBAFF6B244481710077C927 /* Common */,
 				6EBAFF6A244481410077C927 /* Coordinator */,
 				6EBAFF69244481370077C927 /* UI */,
@@ -815,6 +807,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D617C7721B40902009D2113 /* Build configuration list for PBXNativeTarget "Presentation" */;
 			buildPhases = (
+				6E667F802455A920000E3DD0 /* ShellScript */,
 				782ED0AD3758A42AB513E8A6 /* [CP] Check Pods Manifest.lock */,
 				6E173CE52444649F00BEAB68 /* ShellScript */,
 				8D617C5321B40901009D2113 /* Sources */,
@@ -931,7 +924,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/Sourcery/bin/sourcery\" --config .sourcery.yml\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		6E667F802455A920000E3DD0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=Generated/AppContainer.generated.swift\nif [ -f \"$FILE\" ]; then\n    \"$PODS_ROOT/Sourcery/bin/sourcery\" --config .sourcery.yml\nelse \n    \"$PODS_ROOT/Sourcery/bin/sourcery\" --config .sourceryInit.yml\nfi\n";
 		};
 		782ED0AD3758A42AB513E8A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1029,6 +1035,7 @@
 				6E757A852447A40F00154249 /* AuthRepositoryImpl.swift in Sources */,
 				6EC20D992445B2B300AC8956 /* NotificationNameExt.swift in Sources */,
 				6EC20D9B2445B3DA00AC8956 /* AuthService.swift in Sources */,
+				6E667F822455B95B000E3DD0 /* ApiProvider.swift in Sources */,
 				6EC20D972445B0E300AC8956 /* NotificationManager.swift in Sources */,
 				6EBAFFC42444DBE10077C927 /* ApiNetwork.swift in Sources */,
 			);
@@ -1055,7 +1062,6 @@
 				6EC20DA02445BFA400AC8956 /* UIViewRx.swift in Sources */,
 				6EC20D8F244595CE00AC8956 /* UIViewExt.swift in Sources */,
 				6EBAFF89244497120077C927 /* SceneTransition.swift in Sources */,
-				6EBAFF9524449FCB0077C927 /* ManualRegistration.swift in Sources */,
 				6EBAFF9224449D270077C927 /* UIViewControllerExt.swift in Sources */,
 				6EBAFF812444844B0077C927 /* MVVMController.swift in Sources */,
 				6EBAFFB92444C9DC0077C927 /* PostListViewModel.swift in Sources */,
@@ -1068,12 +1074,12 @@
 				6EC20DA52445CC7B00AC8956 /* PostDetailsViewModel.swift in Sources */,
 				6EC20D892445941500AC8956 /* UITableViewCellExt.swift in Sources */,
 				6EC20D852445927100AC8956 /* PostListItemCell.swift in Sources */,
-				BF_102540522666 /* AppContainer.generated.swift in Sources */,
-				BF_771065965569 /* AutoMockable.generated.swift in Sources */,
 				6EC20D9E2445B7FA00AC8956 /* LoginViewDataMapper.swift in Sources */,
-				BF_191510074000 /* InstanceContainer.generated.swift in Sources */,
-				BF_419298012066 /* Scene.generated.swift in Sources */,
-				BF_976085770891 /* ViewControllerContainer.generated.swift in Sources */,
+				BF_293574688057 /* AppContainer.generated.swift in Sources */,
+				BF_687263650737 /* AutoMockable.generated.swift in Sources */,
+				BF_715148745571 /* InstanceContainer.generated.swift in Sources */,
+				BF_129318352669 /* Scene.generated.swift in Sources */,
+				BF_627323490869 /* ViewControllerContainer.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

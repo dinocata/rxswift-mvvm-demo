@@ -22,8 +22,10 @@ final class AppContainer {
             {% for initializer in type[item.annotations.injectable].initializers %}
             let instance = {{ type[item.annotations.injectable].name }}(
             {% for parameter in initializer.parameters %}
-                {% if parameter.type|annotated:"injectable" or parameter|annotated:"inject!" %}
+                {% if parameter.type|annotated:"injectable" %}
                 {{ parameter.name }}: resolver.resolve({% if parameter.annotations.inject and parameter.annotations.inject != 1 %}{{ parameter.annotations.inject }}{% else %}{{ parameter.unwrappedTypeName }}{% endif %}.self)!{% if not forloop.last%}, {% endif %}
+                {% elif parameter|annotated:"inject!" %}
+                {{ parameter.name }}: {{ parameter.annotations.inject! }}
                 {% else %}
                 #error("Cannot inject non-injectable dependency '{{ parameter.name }}' of type '{{ parameter.unwrappedTypeName }}'")
                 {% endif %}
@@ -31,8 +33,12 @@ final class AppContainer {
             )
             {% endfor %}
             {% endif %}
-            {% for var in type[item.annotations.injectable].allVariables where var.type|annotated:"injectable" or var|annotated:"inject" %}
+            {% for var in item.allVariables where var|annotated:"inject" %}
+            {% if var.type|annotated:"injectable" %}
             instance.{{ var.name }} = resolver.resolve({% if var.annotations.inject and var.annotations.inject != 1 %}{{ var.annotations.inject }}{% else %}{{ var.unwrappedTypeName }}{% endif %}.self)!
+            {% else %}
+            #error("Cannot inject non-injectable dependency '{{ var.name }}' of type '{{ var.unwrappedTypeName }}'")
+            {% endif %}
             {% endfor %}
 
             return instance
@@ -44,8 +50,10 @@ final class AppContainer {
             {% for initializer in impl.initializers %}
             let instance = {{ impl.name }}(
             {% for parameter in initializer.parameters %}
-                {% if parameter.type|annotated:"injectable" or parameter|annotated:"inject!" %}
+                {% if parameter.type|annotated:"injectable" %}
                 {{ parameter.name }}: resolver.resolve({% if parameter.annotations.inject and parameter.annotations.inject != 1 %}{{ parameter.annotations.inject }}{% else %}{{ parameter.unwrappedTypeName }}{% endif %}.self)!{% if not forloop.last%}, {% endif %}
+                {% elif parameter|annotated:"inject!" %}
+                {{ parameter.name }}: {{ parameter.annotations.inject! }}
                 {% else %}
                 #error("Cannot inject non-injectable dependency '{{ parameter.name }}' of type '{{ parameter.unwrappedTypeName }}'")
                 {% endif %}

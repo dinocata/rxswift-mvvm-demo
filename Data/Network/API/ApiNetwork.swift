@@ -10,7 +10,7 @@ import Moya
 import RxSwift
 import Domain
 
-// sourcery: injectable = ApiNetwork, singleton
+// sourcery: injectable, singleton
 public protocol NetworkProtocol {
     func request<T: Decodable>(_ target: ApiService,
                                responseType: T.Type,
@@ -27,11 +27,9 @@ extension NetworkProtocol {
 
 public class ApiNetwork: NetworkProtocol {
     
-    private let provider: MoyaProvider<ApiService>
+    private let provider: ApiProvider
     
-    public init(
-        // sourcery: inject! = MoyaProvider<ApiService>
-        provider: MoyaProvider<ApiService>) {
+    public init(provider: ApiProvider) {
         self.provider = provider
     }
     

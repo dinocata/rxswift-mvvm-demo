@@ -10,6 +10,13 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    static var instance: AppDelegate {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Could not resolve App Delegate")
+        }
+        return appDelegate
+    }
 
     var window: UIWindow?
 
@@ -17,9 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        ManualRegistration.build(appDelegate: self)
         
         AppContainer.instance.resolve(SceneCoordinatorType.self)?.onboardingTransition()
         

@@ -9,24 +9,29 @@
 import UIKit
 
 final class SceneCoordinator: SceneCoordinatorType {
-  
+    
     private let window: UIWindow
     
     var sceneCount: Int = 0
     
     var currentViewController: UIViewController!
     
-    init(window: UIWindow) {
-         self.window = window
-     }
+    init(
+        // sourcery: inject! = AppDelegate.instance.window!
+        window: UIWindow) {
+        self.window = window
+        self.window.makeKeyAndVisible()
+    }
     
     func transition(to scene: Scene, type: SceneTransition, completion: (() -> Void)?) {
-        let viewController = scene.viewController
-        
+        self.transition(to: scene.viewController, type: type, completion: completion)
+    }
+    
+    func transition(to viewController: UIViewController, type: SceneTransition, completion: (() -> Void)?) {
         switch type {
         case .root:
             self.window.rootViewController = viewController
-
+            
         case .push(let animated):
             guard let navigationController = self.currentViewController.navigationController else {
                 fatalError("Can't push a view controller without a current navigation controller")
