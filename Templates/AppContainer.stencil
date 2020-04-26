@@ -50,10 +50,10 @@ final class AppContainer {
             {% for initializer in impl.initializers %}
             let instance = {{ impl.name }}(
             {% for parameter in initializer.parameters %}
-                {% if parameter.type|annotated:"injectable" %}
+                {% if parameter|annotated:"inject!" %}
+                {{ parameter.name }}: {{ parameter.annotations.inject! }}{% if not forloop.last%}, {% endif %}
+                {% elif parameter.type|annotated:"injectable" %}
                 {{ parameter.name }}: resolver.resolve({% if parameter.annotations.inject and parameter.annotations.inject != 1 %}{{ parameter.annotations.inject }}{% else %}{{ parameter.unwrappedTypeName }}{% endif %}.self)!{% if not forloop.last%}, {% endif %}
-                {% elif parameter|annotated:"inject!" %}
-                {{ parameter.name }}: {{ parameter.annotations.inject! }}
                 {% else %}
                 #error("Cannot inject non-injectable dependency '{{ parameter.name }}' of type '{{ parameter.unwrappedTypeName }}'")
                 {% endif %}
@@ -83,7 +83,9 @@ final class AppContainer {
             {% for initializer in item.initializers %}
             let instance = {{ item.name }}(
             {% for parameter in initializer.parameters %}
-                {% if parameter.type|annotated:"injectable" %}
+                {% if parameter|annotated:"inject!" %}
+                {{ parameter.name }}: {{ parameter.annotations.inject! }}{% if not forloop.last%}, {% endif %}
+                {% elif parameter.type|annotated:"injectable" %}
                 {{ parameter.name }}: resolver.resolve({% if parameter.annotations.inject and parameter.annotations.inject != 1 %}{{ parameter.annotations.inject }}{% else %}{{ parameter.unwrappedTypeName }}{% endif %}.self)!{% if not forloop.last%}, {% endif %}
                 {% else %}
                 #error("Cannot inject non-injectable dependency '{{ parameter.name }}' of type '{{ parameter.unwrappedTypeName }}'")
